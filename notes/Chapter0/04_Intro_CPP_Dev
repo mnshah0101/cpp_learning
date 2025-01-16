@@ -1,0 +1,28 @@
+Introduction to C++ development
+
+Lets get into detail in how C++ programs get developed.
+
+Define Problem > Design A Solution > Write Program > Compule Program > Link object files > test the program
+
+Step 1: Define the Problem
+
+This is the what step. Coming up with the idea for what the program should do is often the easier or the hardest step. All you need is a well defined idea. 
+
+
+Step 2: Determine how to solve the problem
+This is the how step, This is the most neglected step in software development. There are many ways to solve problems, some are good and some are bad. Too often a programmer codes the first idea they have. This often generates a solution that falls into the bad category.
+
+Typically Good Solutions Have These Characteristics:
+- Are Straightforward
+- Well Docuemnted
+- Built Modularly
+- Can recover gracefully
+
+When you dont plan, you can lead to fragile problems that are hard to change or extend. Studies have found that 60-90% of coding is spent on debugging rather than code writing. It is worth spending some extra time to future proof the program and save yourself the trouble of debugging.
+
+
+Step 3: Write the program.
+In order to write the program we need knowledge of a programming langauge and a text editor. The code that we write is called source code. 
+Since source code is wrriten using ASCII characters, programming languages use s certain amount of ascii art to represent mathmatical concepts. since the not equal to sign is not part of the ASCII character set, programming languages use !=. Some fonts, such as Fira code, use ligautres to combine art back into a single characters. 
+
+Each source code file is then saved to the disk, which means that it needs a file name. The main program is usually called main.cpp, however, some programs will name the file after the name of the program, such as poker.cpp. Best practice is to use main.cpp.

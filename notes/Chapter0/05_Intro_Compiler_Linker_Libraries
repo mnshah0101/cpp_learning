@@ -1,0 +1,33 @@
+Introduction to the compiler, linker, and libraries
+
+
+Step 4: Compiling your source code:
+
+The C++ compiler goes through each source code file (.cpp) and does two things.
+
+First it checks your C++ code to make sure it follows the rules of the C++ language. If it doesn't the compiler will through an error.
+
+Then, the compiler tranlsates your C++ code into language instructions. These instructions are stored in an intermediate file called an object file. It contains other data that is required in other steps.
+
+Object files are named name.o or name.onj, which is the same name of the .cpp file.
+
+Step 5:Linking object files and libaries
+
+After the compiler finishes, the linker kicks in. It combines all the object files and produces the output file (executable). This is called linking.
+First the linker makes sures all the object files are valid.
+Then the linker makes sure all the cross file dependencies are resolved correctly. For example, if you define something in one .cpp file, and then use it in a different .cpp file, the linker connects the two together. If the linker is unable to connect a reference to something with its definition, you’ll get a linker error, and the linking process will abort.
+
+Then the linker also links library files. A library file is a collection of precompiled code that is packaged up for use in other programs.
+
+C++ comes with the C++ standard library, which provides useful capablities for use in programs. You can also link other libraries that your OS or someone else on GitHub has created.
+
+The term building encompases the linking and compiling step. 
+
+For complex projects, build automation tools (such as make or build2) are often used to help automate the process of building programs and running automated tests. 
+
+Steps 6: Run and Debug
+Once you run your program, you can test to see if it runs as expected. It the program doesn't work,  you have to debug, to find the program's errors.
+
+
+
+

@@ -1,0 +1,8 @@
+Configuring your compiler: Compiler extensions
+
+
+The C++ standard defines rules about how programs should behave, and compilers will usually follow these rules. However, many compilers implement their own changes to the languages. These compiler specific behavorials are called compiler extensions.
+
+Writing a program that uses compiler extensions makes it incompatible with the C++ standard and are generally not compatible with other compiles.
+
+Compiler extensions are enabled by default. Since the compiler extensions are never necessary, we will turn the compiler extensions off.

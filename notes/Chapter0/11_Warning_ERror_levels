@@ -1,0 +1,24 @@
+Warning and error levels
+
+
+When you write your program, the compiler makes sure you followed the rules of the C++ language. If you did something that doesn't follow these rules, then your program is ill formed.
+
+When the compiler encounters an issue it emits a diagnostic message (diagnostic for short). Modern compilers have adopted the following conventions:
+
+A diagnostic error means the compiler has decided to halt compilation, because it either cannot proceed or deems the error serious enough to stop.
+
+A diagnostic warning means the compiler has decided not to halt compilation. In such cases, the issue is simply ignored, and compilation proceeds.
+
+Don’t let warnings pile up. Resolve them as you encounter them (as if they were errors). Otherwise a warning about a serious issue may be lost amongst warnings about non-serious issues.
+
+By default, most compilers will only generate warnings about the most obvious issues. However, you can request your compiler be more assertive about providing warnings, and it is generally a good idea to do so.
+
+Turn your warning levels up, especially while you are learning. The additional diagnostic information may help in identifying programming mistakes that can cause your program to malfunction.
+
+Above the “${file}” line, add new lines containing the following commands (one per line):
+
+"-Wall",
+"-Weffc++",
+"-Wextra",
+"-Wconversion",
+"-Wsign-conversion",

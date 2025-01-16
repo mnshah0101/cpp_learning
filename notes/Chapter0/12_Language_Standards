@@ -1,0 +1,20 @@
+Configuring your compiler: Choosing a language standard
+
+
+With many versions of C++ available (C++98, C++03, C++11, C++14, C++17, C++20, C++23, etc…), how does a compiler know which to use.
+
+The compiler will pick a standard to default to. The latest is not typically the default. Many default to C++14. The most common to use is one or two versions back from the latest finalized standard. This is done so all bugs are hammered out. For personal projects and learning, we should use the latest so we can learn it.
+
+Where can i follow standards?
+Each C++ language standard is described by a standards document, which is a formal technical document that is the authoritative source for the rules and requirements of a given language standard. The standards document is not designed for learning -- rather, it’s designed for compiler writers to be able to implement new language standards accurately. You will occasionally see people quoting the standards document when explaining how something works.
+
+The approved C++ standards document for a given language standard is not available for free. There is a link to purchase the latest standard here.
+
+
+
+Even after a language standard is finalized, compilers supporting that language standard often still have missing, partial, or buggy support for certain features.
+
+The CPPReference website tracks compiler support for each feature per language standard. You can find those support tables linked from their home page, top right, under “Compiler Support” (by language standard).
+
+If a newer version of your compiler supports the problematic feature, you can upgrade your compiler to the latest version and try compiling your program again. If the latest version of your compiler still doesn’t support the feature you are trying to use, you can either try a different compiler that does provide support, or find a solution using a different set of features.
+

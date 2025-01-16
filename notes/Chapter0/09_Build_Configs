@@ -1,0 +1,9 @@
+Configuring Your Compiler
+
+A build config is a collection of project settings that determines how your IDE will build a project. It includes things like the executable name, the directories the IDE will look through, and how much to compile.
+
+A debug config helps you debug your program, and is the one you use when writing your programs. This includes all the debugging info, which makes your program larger and slower,but easier to debug.
+
+The release config is designed to be used when releasing a program to the public. It is optimized for size and performance but doesn't have extra debug info.
+
+The best practice is to use debug when developing a program and release when in deployment.

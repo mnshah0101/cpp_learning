@@ -1,0 +1,100 @@
+Chapter 1 Notes:
+
+
+A computer program is a sequence of intrsuctions.
+
+They are written in a programming language, which is designed to help the writing of instructiosn fro computers.
+
+When a computer is performing the actions specified byt he computer program, we say it is running/executing the prograom. 
+
+Programs are executed on the computer's hardware, which is the physical compontenet of the computer.
+
+The hardware includes:
+- CPU > executes info
+- Memory > where the program is loaded before execution
+- INteractive devices > allows user to interact 
+- Storage - Retains info even when computer is turned off
+
+Software refers to the programs that are executed on the hardware.
+
+Programs interact with more than hardware, they interact with other software on the system.
+
+The term platform is the compatible set of hardware and software that provides the environment for the software to run.
+
+PC > windows on a x-86 family computer
+Platform provides useful services for the program.
+A program that can run on other platforms is portable.
+Modifying a program to run on different platform is porting.
+
+
+Machine Language:
+
+A computer CPU is only capable of processing machine language (machine code).
+The set of all possible machine language instructions is called an instruction set.
+
+An example is: 10110000 01100001
+
+Each instruction is interpreted by the CPI into a command to do a specific job, such as compare these numbers or put this into this memory location.
+Writing these instructions is very time consuming.
+
+Each instruction is composed of binary digits (bits). The number of bigs varies, for some they are 32 btis, some such as in the 86 family have variable length.
+
+Each family of compatible CPUs (ex. 86, ARM64), has its own machine leanguage, and they are not compatible between differenet families. 
+A CPU family is called an ISA (Instruction Set Architecture)
+
+
+Assembly:
+Since machine language is hard for humans to read and understand, assembly language was invented. In assembly, each instruction is identified by a short abbrev instead of bits. Here is the same instruction as in the example, in x86 aseembly: mov al, 061h
+
+This makes assembly easier to read than machine language. Programs in assembly are fast and resource frugal. 
+An assembler turns assembly into machine language. Every ISA has its own assembly.
+
+Low Level Languages: 
+- Machine language and assembly are low level, since they provide no abstraction.
+However low level languagse are not portable since they are tailored to ISA.
+Writing these programs requries detailed knowledge of the architecture.
+They are also hard to understand and long.
+
+
+Primary benefit is they are fast.
+
+
+High Level Language:
+High level languages are portable and comprehensive.
+There are two ways high level languages are turned into machine code: compiling and interpreting.
+
+Compilers are programs that read source code of one language and translates it to another. A C++ compiler translates a C++ source code into machine code.
+Most C++ compilers can also generate assembly code if configured.
+The machine code output is packaged into an executable that can be distributed to others and ran by the OS.
+Running an executable doesnt require a compiler to be installed.
+Compilers have became very good at producing fast, optimized code, sometimes better than humans.
+
+Here is the process:
+High Level Code > Compiler > Executable > Hardware > Program Results
+
+An interpreter is a program that directly executes the insturctions in the source code without a compilation process.
+They are more flexible but slower since they need to be interpreted every time the program is run. The interpreter must also be installed.
+Compilers are quicker since the instructions are just for themselves and not also the interpreter, and it can see all the code up front, and perform the analysis and optimization.
+
+Python is compiled into byte code and then an interpreter turns it into machine code and runs it.
+
+
+Benefits Of High Level Languages:
+They provide abstraction from the architecture.
+Consider b = 3;, this lets us store 3 somewhere in memory called b, we don't need to know exactly where it was placed, just that we have a reference to it.
+We don't care about the architecture.
+A C++ file will compile anywhere that has a C++ compiler. A program that runs on many platforms is called cross platform.
+
+Here are things that can inhibit portability of code:
+- OS that offers platform specific capabilities
+- Third party libraries only available on certain platforms.
+- Compiler Specific Extensions
+- C++ features that have OS defined behavior
+
+
+- Also high level programs are easier to read, write and learn since they represent natural language and math.
+- They include capabilities that make it easier to perform common programming tasks.
+
+
+We still might call C++ a low level language relative to other high level langauges.
+Today C++ is a mid level language, as C++ lets you choose the level of abstraction.
