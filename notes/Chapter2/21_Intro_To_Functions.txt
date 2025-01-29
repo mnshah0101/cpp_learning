@@ -1,0 +1,34 @@
+Introduction to Functions
+
+A function is a reusable sequence of statements designed to do a paticular job.
+
+Every executable program has a function named main().
+
+Standard library comes with many functions but the functions you write yourself are called user-defined functions.
+
+
+Functional call - tells the CPU to interrupt currenct function and execute anohter function.
+
+
+A function being called is the calle and the function calling i the caller. Invocation and invoking is also used.
+
+
+An example of a user-defined function:
+returnType functionName(){
+    //this is the function body
+}
+
+The first line is thes function header and it tells the compuler about the function the functions name and some other information that we'' cover in future lessons.
+
+
+Curly braces contain the function body
+Functions can be called multiple times.
+
+Functions an call functions that call other functions
+
+
+Nested functions are not supported in C++.
+
+Foo is a meaningless word that is used as aplacefholder name for a function or variable when the name is unimportantt ot he demonstration of some concept.
+
+

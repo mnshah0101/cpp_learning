@@ -1,0 +1,11 @@
+2.3 Void Functions
+
+To tell the compiler the function doesn't return a value, we use the void keyword.
+We can use this for functions that are standalone and don't affect other parts of the program.
+Void functions don't need a return statement
+
+Void functions also can't be used anywhere that requires an expression since it doesn't return anything. This will cause a compiler error, for example using a void function call in a std::cout
+Returning a value from a void function causes a compiler error.
+
+
+

@@ -1,0 +1,39 @@
+2.2 Function return values
+
+
+Here is a code snipped
+
+#include <iostream>
+int main(){
+
+    std::cout << "Enter an integer""
+
+    int num {};
+    std::in >> num;
+
+    std::cout << num << " doubled is: " << num *2 << '\n';
+    return 0
+}
+
+First we get the value from the user then we double that value
+
+This program is trivial enough to where we don't need to break it into multiple functions, but some aren't.
+
+We use a return statement inside the function to return a value. The value returned is called the return value. When a return statement is exited, the function ends, the return value is copied back to the caller. This is called return by value.
+
+Revisiting main()
+
+main() is just a function that is called by the OS when a program runs. The name must be main and it must return an int.
+The return value from main is the status code. 0 means the program run expectedly, a non-zero means failure, EXIT_SUCCESS and EXIT_FAILURE are macros defined by standard library
+The OS returns this code to the program that called it.
+
+A value returning function that doesn't return anything will produce undefined behavior, where a function is value returning if it returns anything other than void
+Most times the compiler will catch it, but sometimes it won't.
+
+Main function will implicilty return 0 if no return is stated.
+Functions can only return one value once.
+The function author gets to decide what the function returns
+
+Use DRY: Don't repeat yourself > Write everything twice
+
+

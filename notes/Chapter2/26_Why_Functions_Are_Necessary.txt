@@ -1,0 +1,20 @@
+2.6 Why Are Functions Necessary and When To Use Them
+
+
+Functions provide:
+Organization - can organize code better, almost write mini progams
+Reusability - can use the same function instead of writing the function again and again
+Testing - since there is less code, there is less code to text
+Extensibility - when we want to extend our program, we only have to change it once
+Abstraction - we can write the function once and believe it works
+
+
+Effectively Using Functions:
+
+- Groups of code that appear a lot of times should be af unction
+- Code that has a good set of inputs and outputs should be a function
+- Should perform one task
+- When a function becomes too long it should be broken up into many functions (called refactoring)
+
+
+

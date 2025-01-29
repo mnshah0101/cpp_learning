@@ -1,0 +1,82 @@
+2.7 Forward Declarations
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n';
+    return 0;
+}
+
+int add(int x, int y)
+{
+    return x + y;
+}
+
+This code will produce an output because it doesn't know what the function add is, as it is defined later in the program.
+
+To fix this there are two things we can do
+
+We can either change the order of the functions.
+This is simple for small programs but for larger programs, this is an issue.
+
+
+Option 2:
+We can use a forward declaration, which tells the compiler about the function before identifying the identifier.
+We can use a function declaration for this, or a function prototype.
+It is worth noting that function declarations do not need to specify the names of the parameters (as they are not considered to be part of the function declaration). In the above code, you can also forward declare your function like this:
+We choose to give names to give a better idea of what the functions do.
+
+
+
+
+Most often, forward declarations are used to tell the compiler about the existence of some function that has been defined in a different code file. Reordering isn’t possible in this scenario because the caller and the callee are in completely different files! We’ll discuss this in more detail in the next lesson (2.8 -- Programs with multiple code files).
+Forward declarations can also be used to define our functions in an order-agnostic manner. This allows us to define functions in whatever order maximizes organization (e.g. by clustering related functions together) or reader understanding.
+
+If we have two functions that call each other, reordering isn't possible.
+
+What happens if we decleare the function and don't give it a body?
+
+If it is never called, nothing, but if it is called, then we get a compile time error. The linker will complain it can't resolve the function call.
+Forward declarations can also be used for other identifiers like variables.
+
+Definition vs Declaration:
+A declaration tells the compiler that this exists,
+a definiton actually implements the function
+
+All definitions are declarations but not all declearations are definitions.
+ Declarations that aren’t definitions are called pure declarations. Types of pure declarations include forward declarations for function, variables, and types.
+
+
+
+In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call int x; a definition, even though it is both a definition and a declaration.
+
+
+Term	                Technical Meaning	                                                            Examples
+Declaration	            Tells compiler about an identifier and its associated type information.	        void foo(); // function forward declaration (no body)
+                                                                                                        void goo() {}; // function definition (has body)
+                                                                                                        int x; // variable definition
+
+Definition	            Implements a function or instantiates a variable.                               void foo() { } // function definition (has body)
+                        Definitions are also declarations.                                              int x; // variable definition   
+
+
+Pure declaration	    A declaration that isn’t a definition.	                                        void foo(); // function forward declaration (no body)
+
+
+Initialization	        Provides an initial value for a defined object.	                                int x { 2 }; // x is initialized to value 2
+
+
+
+int x; is default init (initializes to some undetermiemd value)
+int x {2}; is initializtion to some value
+
+One Definition Rule:
+Within a file, each function, variable, type, or template in a given scope can only have one definition. Definitions occurring in different scopes (e.g. local variables defined inside different functions, or functions defined inside different namespaces) do not violate this rule.
+Within a program, each function or variable in a given scope can only have one definition. This rule exists because programs can have more than one file (we’ll cover this in the next lesson). Functions and variables not visible to the linker are excluded from this rule (discussed further in lesson 7.6 -- Internal linkage).
+Types, templates, inline functions, and inline variables are allowed to have duplicate definitions in different files, so long as each definition is identical. We haven’t covered what most of these things are yet, so don’t worry about this for now -- we’ll bring it back up when it’s relevant.
+
+
+Functions that share an identifier but have different sets of parameters are also considered to be distinct functions, so such definitions do not violate the ODR. We discuss this further in lesson 11.1 -- Introduction to function overloading.
+
+

@@ -1,0 +1,14 @@
+2.4 Intro To Function Params:
+
+In many cases we want to pass information to a function being called so the function has data to work with. We can define the function param in the function header. An arguement is the parameter in the function call.
+The values in the arguement are copied into the function header as parameters. This is called pass by value. Note that the number of params should match the number of arguements or you will get a compile error.
+We can also use return values from the function into the params of a new function call > this is passing return values into the arguement
+Parameters and return values work together by allowing us to do some manipulation with the parameters and spitting out an output with the return value.
+
+Unreferenced parameters:
+In some function, you may have unreferenced paramters. Also in function defnining, the name of the parameter is optional. This can be used lets say we have an old function that takes two params, but now we only need the function to take 1 param, we can just unname the second function.
+
+OPerators ++ and -- have postfix varaints, unreferenced paramaters are used to tell the difference.
+
+
+
