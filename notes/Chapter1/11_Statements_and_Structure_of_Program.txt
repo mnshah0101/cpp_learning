@@ -1,0 +1,107 @@
+1.1 Statements of the Structure of A Program
+
+Now we are going to go over some of the basics of writing C++ programs. This is going to be a very shallow indroduction to get you writing simple programs.
+
+We will revisit a majority of these topics in more detail. 
+
+Statements:
+A computer program is a sequence of instruction that tells what the computer what to do.
+A statement is a type of instruction that causes the program to perform an action.
+
+Statements are by far the most common type of intruction in C++.
+They are the smallest independent unit of computation in C++. They act like a sentence in natural language. 
+Most statements end in a semicolon. If you see a line end in a semicolon, it is most likely a statement.
+
+There are many different kinds of statements:
+- Declration
+- Jump
+- Expression 
+- Compound
+- Selection (conditional)
+- Iteration (loops)
+- Try Blocks
+
+Function and main function:
+In C++, statements are grouped into units called functions. A function is a collection of statements that get executed sequentially. 
+
+Every C++ program must have a special function called main.
+
+When a program is run, the statements inside of main are executed in sequential order.
+
+Functions are typically written to do a specific job or perfrom some useful action. For example, a function named max might contain statements that figure out which number is larger.
+Its fairly common, in nomenclature, to append a pair of parenthesis to the end of a function name. This helps differentiate between names.
+
+
+Dissecting Hello World:
+
+Lets look at a hello world script:
+
+#include <iostream>
+
+int main()
+{
+   std::cout << "Hello world!";
+   return 0;
+}
+
+
+Line 1 is a preoprocessor directive. This #include preprocessor directive indicates we want to use the contents of the iostream library, which is part of the C++ standard library. We need this line to use std::cout, as without it, the compiler wouldn't know what std::cout is.
+
+
+Line 2 is blank and is ignored by the compiler, it just makes it easier for humans to read.
+
+Line 3 tells the comiler that we are going to write a function whos name (identifier) is main. Every c++ program must have a main function or it will fail to link.
+
+Line 4 and 7 (brackets) tell the compiler what is part of the function. This is called the function body.
+
+Line 5 is the first statement in the function main. It is the first statement that is executed. std:: cout standards character outut and << is overrided to allow us to insert the character into the print stream.
+
+Line 6 is the return statement. When the program finishes running, this is the value sent back to the operating system, indicating whether it ran. 0 means everything went okay.
+
+
+Syntax and Syntax Errors:
+
+In english, sentences are dictated by specific grammatical rules that humans can understand. For example, sentences end in punctuation. The rules that govern the language is called syntax. When you violate a rule, the compiler sends a sytax error.
+
+Let’s see what happens if we omit the semicolon on line 5 of the “Hello world” program, like this:
+
+#include <iostream>
+
+int main()
+{
+   std::cout << "Hello world!"
+   return 0;
+}
+Feel free to compile this ill-formed program yourself.
+
+Visual Studio produces the following error (your compiler may generate an error message with different wording):
+
+c:\vcprojects\hello.cpp(6): error C2143: syntax error : missing ';' before 'return'
+
+
+
+The compiler is telling you it encountered a synatx error on line 6. Syntax errors are common and easy to fix, the compuler usually tells you the issue!
+
+Questions W Answers
+
+What is a statement?
+
+A statement is the smallest unit of computation in C++, where an action takes place.
+
+What is a function?
+A function is a sequence of statements that can be called.
+
+What is the name of the function all programs must have?
+This is the main function.
+
+What happens when a program is run?
+It looks for the main function and runs it.
+
+What symbol are statements in C++ often ended with?
+The semicolon ";"
+
+What is a syntax error?
+An error thrown by the compiler when you don't follow the syntax rules of the language.
+
+What is the C++ Standard Library?
+A library shipped with C++ (a bunch of precompiled code) that has been packaged up and includes additional functionality for your programs.

@@ -1,0 +1,43 @@
+1.11 Developing your first program
+
+Lets create a program that takes an input and prints its double
+
+#include <iostream>
+
+// worst version
+int main()
+{
+	std::cout << "Enter an integer: ";
+
+	int num{ };
+	std::cin >> num;
+
+	num = num * 2; // double num's value, then assign that value back to num
+
+	std::cout << "Double that number is: " << num << '\n';
+
+	return 0;
+}
+
+#include <iostream>
+
+// preferred version
+int main()
+{
+	std::cout << "Enter an integer: ";
+
+	int num{ };
+	std::cin >> num;
+
+	std::cout << "Double that number is: " <<  num * 2 << '\n'; // use an expression to multiply num * 2 at the point where we are going to print it
+
+	return 0;
+}
+
+
+The first and primary goal of programming is to make your program work. A program that doesn't work isn't useful regardless of hiw well its written.
+
+You have to write a program once to know how you should have written it the first time.
+
+Solutions are obvious the first time.
+

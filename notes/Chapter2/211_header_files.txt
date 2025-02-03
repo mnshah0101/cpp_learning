@@ -1,0 +1,93 @@
+2.11 Header Files
+
+Code can be split among multiple files. Create a large amount of forward declarations can be tedious. To address this we make header files that contain all of our forward declarations.
+
+
+Header Files:
+
+HEader files have .h or .hpp
+
+iostream header files :
+when we include iostream, this has all the forward declarations in the header file, which is recursivecly put in there
+
+In the previous example where we included a forward declaration for add.
+
+Manually adding forward declarations, can be tedious
+We can write a header file for this
+
+there are two things in a header file:
+
+1) Header gaurd
+2) header content
+
+
+Adding a header file to a project is analogus to source file
+Header file and source file should have same name
+
+When preprocessor processes #include "add.h" it copies the contents of add.h into the current file at that point,
+the functionality is the same as where we manually added the forward declaration.
+
+Includeing definition in a header file results in violation of one definition rule:
+
+
+Lets say we have three files.
+main.cpp:
+#include "add.h" // Contents of add.h copied here
+#include <iostream>
+
+int main()
+{
+    std::cout << "The sum of 3 and 4 is " << add(3, 4) << '\n';
+
+    return 0;
+}
+add.cpp
+#include "add.h" // Contents of add.h copied here
+
+add.hpp:
+// We really should have a header guard here, but will omit it for simplicity (we'll cover header guards in the next lesson)
+
+// definition for add() in header file -- don't do this!
+int add(int x, int y)
+{
+    return x + y;
+}
+
+
+Now what happens is the function in the header is put in twice and the linker will compilation
+Do not put function and var definitios in header files
+
+Sourec files should include their paired header:
+it is best practice since it will show typing errors in the definitions
+
+
+
+Do not include cpp files since they can cause naming collisions and will violate order
+
+Angled brackets vs double quotes:
+When we use angled breackets, it tells the compiler we didnt write it oureslves, the processor will serach for header only in the directories specified by the include directories.
+
+THey are part of the compiler settings. 
+In double quotes, we tell its a header file we weote, it will search the current directory and then search include directories.
+
+Why doesnt io stream have a .h?
+.h is a different header file than iostream, 
+
+When C++ was created the standarad libarry ended in.happens
+this included iostream dn stddef
+
+When language was standardized the decided to put all the names in the standard library.
+THis presented a problem, none of the old programs that included iostream would working
+To work around this C++ introduced new header files that lack the .h extension. These new header files declare all names inside the std namespace. This way older programs that include #include <iostream.h> that use global namespace dont' need to be rewritten
+
+Use the standard library header files without the .h extension. User-defined headers should still use a .h extension.
+
+
+Include header files from other directors you can use relative path.
+
+Headers can also include other headers.
+
+When you cpp includes a header file you recursively get other included header files.
+
+
+

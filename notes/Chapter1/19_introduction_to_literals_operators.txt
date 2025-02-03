@@ -1,0 +1,69 @@
+1.9 Introduction to literals and operators
+
+Consider this program:
+
+std::cout << "Hello World";
+int x { 5 };
+
+
+What are hello world and '5', they are literals. Literalys and variables both have a vlaue and a type, but inlike a variable, the value of a literal is fixed and cannot change, Literals are constants
+
+lets examin this program:
+
+#include <iostream>
+
+int main()
+{
+    std::cout << 5 << '\n'; // print the value of a literal
+
+    int x { 5 };
+    std::cout << x << '\n'; // print the value of a variable
+    return 0;
+}
+
+On line 5 we are priting 5 to the consolr. The value 5 is compiled into the executable and can be used directly.
+
+On line 7 we create a varaible x and initing it with value 5, the compuler generates code that copies the literal value 5 into the memory location is given to x. On line 8 we print x, the compiler genreates codes that causes std::cout to print the value at the memroy location x.
+
+This explains why a literal is a constant value: it lives in the executable. Literals are values that live in the source code.
+
+
+
+Operators:
+
+In math, an operation is a process that involves input values called operands that produces an output. The transofrmation is called an operator.
+
+for example 2 + 3 = 5 is an operation.
+
+In C++ operations work as you would expect:
+
+C++ operators include +, 0, *, /, =, <<, >> and ==. some operators are keywords: new, delete, throw
+
+the number of operands and opertor takes is called its arity:
+
+unary: singel operator, such as -, or ++, or --
+
+binary operators operate on two operands, called left and right operand, as << and >> are binary since they take the std::cout and the literal is the other
+
+Teneray operators act on three, (conditional)
+
+Nullary operators act on 0, such as the throw
+
+
+Chaining Operator:
+Operators can be changed together such that the output of one operator can be used as the input for another, PEMDAS is the order
+
+
+Return values and side effects
+Most operators in C++ just use their operands to calculate a return value. for example -5 produces a return valeu -5 and 2 +3 produces 5.
+Some oeprators do not produce a return value, like delete and throw
+
+Some operators have side effects, for example x = 5  gives the value of 5 into x
+
+
+In C++ side effect means an observable effect of an operator beyond the return value
+For operators we call for their return values, it is obvious what their return values are
+For operators we call for their side effects it is not always obvious the return values will be
+= and << return left operand for Chaining
+
+

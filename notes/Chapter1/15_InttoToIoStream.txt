@@ -1,0 +1,231 @@
+1.5 Introduction to iostream: cout, cin, and endl
+
+
+Here we will talk about std::cout, which we used in our Hello World Program to output Hello WOrld to the console.
+
+The input/output library:
+
+The io library is part of the C++ standard library that deals with input and output. We'll use this functionality to get input from the keyboard and output data to the console. The io part of iostream stands for input/output
+
+This is how we include:
+
+#include <iostream>
+
+
+std::cout is a predefined variable which allows us to send data to the console to be printed as text.
+
+#include <iostream>
+
+int main(){
+    std::cout << "Helo world!"; //print hello world
+    return 0;
+}
+
+In this program we included iostream so that we have access to std::cout. The insertion operator (<<) to send the text Hello world! to the console to be printed.
+
+std::cout can print text, numbers and vairables
+
+We can print both text and a value of the varaible in the same statement:
+
+#include <iostream>
+int main(){
+    int x{5};
+    std::cout << "x is equal to: " << x;
+    return 0;
+}
+
+This program prints:
+x is equal to: 5
+
+
+Using std::endl to output a newline
+
+#include <iostream>
+
+int main(){
+    std::cout << "hi!";
+    std::cout << "My name is Alex.";
+    return 0;
+}
+
+
+This will print: "hi!My name is Alex"
+
+Seperate output statements don't result in seperate lines of output on the console.
+
+If we want to print seperate lines output on the console. We can do that by outputting a new line. A newline is an OS-specific caharacter that moves the cursor to the next line.
+
+One way to output a new line is to output std::endl
+#include <iostream> // for std::cout and std::endl
+
+int main()
+{
+    std::cout << "Hi!" << std::endl; // std::endl will cause the cursor to move to the next line
+    std::cout << "My name is Alex." << std::endl;
+
+    return 0;
+}
+
+This prints:
+Hi!
+My name is Alex
+
+
+The last std::endl isn't necessary but it indicates the line of output is complete thought, and it positions the cursor on the next line . ALso after running an exec, some OS don't output a new line before showing the command prompt. This is best practice
+
+
+std::cout is buffered. Statements in our program request that output be sent to the consolr. That is not typically sent to the console immediately. Instead, the requested output gets in line and is sotred ina re giion of memory set aside to collect such requests called a buffer. Typically the buffer flushed, meaning all of the data is collected in the buffer is transfered to its destination and cleared. If the program stops before the buffer is flished, any output waiting in the buffer won't be displayed.
+
+Ust std::endl is iniefficient since it outputs a newline and flishes the buffer.
+
+We typically dont' need to flush explicitly, C++ does it periodicallym and its more efficient to let it flush itself.
+
+To output a newlinew tihout flushing the output buffer, we use '\n'
+
+We use "\n" instaed of '\n' since it helps avoid multicharacter literals.
+
+
+std::cin
+
+std::cin is another predfined variable in the iostream library. std::cout prints data to the console, std::cin reads input from the keyboard. We use the extraction operator to put the input data in a varaible.
+
+#include <iostream>
+
+int main(){
+    std::cout << "Enter a number: ";
+    int x{};
+    std::cin >> x;
+    std::cout << "You entered " << x << '\n';
+    return 0
+}
+
+
+This is an easy way to get keyboar dinput from a user
+
+Note that you dont need to output '\n' when accepting a line of input as the user has to enter key to have the input accepeted.
+
+It is also possible to accept more than one value on a single line:
+
+#include <iostream>  // for std::cout and std::cin
+
+int main()
+{
+    std::cout << "Enter two numbers separated by a space: ";
+
+    int x{}; // define variable x to hold user input (and value-initialize it)
+    int y{}; // define variable y to hold user input (and value-initialize it)
+    std::cin >> x >> y; // get two numbers and store in variable x and y respectively
+
+    std::cout << "You entered " << x << " and " << y << '\n';
+
+    return 0;
+}
+
+value entered should be seperated by whitespace
+
+
+There’s some debate over whether it’s necessary to initialize a variable immediately before you give it a user provided value via another source (e.g. std::cin), since the user-provided value will just overwrite the initialization value. In line with our previous recommendation that variables should always be initialized, best practice is to initialize the variable first.
+
+
+
+std::cin is buffered 
+
+Inputting has a two stae process:
+- The individual data entered is added to an end of an input buffer.
+- The exctraction operator removes characters from the front of the input buffer and convers them into a value tha tis assigned via copy-assignment ot the associated variable. This variable can then be used in subsequent statements.
+
+
+The basic extraction process:
+1) First leading whitespace is discared from the input buffer. This will discard an unextracted newline character reminaing from a prior line of input.
+2) If the input buffer is empty >> will wait for the user to enter more data.
+3) Operator >> extracts as many consectuvei characters as it can, until it encounters a newline character or a character that is not valid for the varaible being extracted to.
+
+The result is that if any characters were extracted then it is a sucess, the characters are converted to a value that is copy assigned to the variable.
+If no characters could be extracted in step 3 above, then the extraction failed. The object being extracted is copy assigned to 0 and any future extractions will fail unti std::cin is cleared.
+
+
+for example:
+int x{};
+std::cin >> x;
+
+If the user 5a and enter, 5a\n will be added to the buffer. 5 will be extracted converted to an integer and assigned to variable x. a\n will be left in the input buffer for the next extraction.
+
+if the user 'b' and enter, b\n would be added to the buffer, since b is not valid integer no chracters can be extracted. so this is an extraction failure. varaible x would be set to 0 and future extractions will fail until the input stream is cleared.
+
+
+Question #1
+
+Consider the following program that we used above:
+
+#include <iostream>  // for std::cout and std::cin
+
+int main()
+{
+    std::cout << "Enter a number: "; // ask user for a number
+    int x{}; // define variable x to hold user input
+    std::cin >> x; // get number from keyboard and store it in variable x
+    std::cout << "You entered " << x << '\n';
+
+    return 0;
+}
+The program expects you to enter an integer value, as the variable x that the user input will be put into is an integer variable.
+
+Run this program multiple times and describe the output that results when you enter the following types of input:
+
+a) A letter, such as h.
+
+
+Result: 0 is always printed.
+What’s happening: An integer can’t hold a letter, so extraction completely fails. x is assigned the value 0.
+
+b) A number with a fractional part (e.g. 3.2). Try numbers with fractional parts less than 0.5 and greater than 0.5 (e.g. 3.2 and 3.7).
+
+
+Result: The fractional part is dropped (not rounded).
+What’s happening: Given the number 3.2, the 3 gets extracted, but . is an invalid character, so extraction stops here. The .2 remains for a future extraction attempt.
+
+If you are wondering why this isn’t a disallowed narrowing conversion, narrowing conversions are only disallowed during list-initialization (which happens on line 6). The extraction happens on line 7.
+
+c) A small negative integer, such as -3.
+
+
+Result: The entered number is output.
+What’s happening: A minus sign at the beginning of a number is acceptable, so it is extracted. The remaining numbers are extracted as well.
+
+d) A word, such as Hello.
+
+
+Result: 0 is always printed.
+What’s happening: An integer can’t hold a letter, so extraction completely fails. x is assigned the value 0.
+
+e) A really big number (at least 3 billion).
+
+
+Result: You are most likely to get the number 2147483647.
+What’s happening: x can only hold numbers up to a certain size. If you enter a value larger than the largest number x can hold, it will be set to the largest number that x can hold (which is probably 2147483647, but might be different on your system). We discuss this further in lesson 4.4 -- Signed integers.
+
+f) A small number followed by some letters, such as 123abc.
+
+
+Result: The numeric values are printed (e.g. 123).
+What’s happening: 123 is extracted, the remaining characters (e.g. abc) are left for a later extraction.
+
+g) A few letters followed by a small number, such as abc123.
+
+
+Result: 0 is always printed.
+What’s happening: An integer can’t hold a letter, so extraction completely fails. x is assigned the value 0.
+
+h) +5 (three spaces, followed by a plus symbol, and a 5).
+
+
+Result: 5 is printed.
+What’s happening: The leading whitespace is skipped. Plus is a valid symbol at the start of a number (just as a minus sign would be), so it is extracted. The 5 is also extracted.
+
+i) 5b6.
+
+
+Result: 5 is printed.
+What’s happening: 5 is extracted. b is invalid, so extraction stops here. The b6 remains for a future extraction attempt.
+
+

@@ -1,0 +1,57 @@
+2.x Chapter 2 Summary and Quiz
+
+A function is reusable sequence of statements designed to do a paticular job. Functions you write yourself user-defined functions.
+
+A function call is an expression that tells the CPU to execute a function. 
+
+The curly braces are function body.
+
+A function that returns a value is a value returning function. rEturn type in function header. Return value is copied, return by value
+
+Return from main is status code
+
+DRY - Dont repeat yourself.
+
+
+Void function > doesnt' return anything
+
+Retyrn statement thats not the last statement of a function is an early return
+
+Function parameter in header, arguement when used> paramters are copied by value
+
+
+Variabes and params inside funcion body are local variables.
+
+The time in which a variabel exists is its lifetime. 
+
+A variables scope determines where it can be used and seen. Scope is compile time property.
+
+Whitespace refers to characters used for formatting purposes.
+
+Forward declaration allows us tell the compiler about the existence of an identifier, function prototype
+
+Definition implements/instantiates for varaibles, declarations tell compiler about existence
+Pure declarations are not definitions
+
+More non trivial programs contain multiple files
+
+Naming colliision > two identifiers in the same program
+
+Namespaces guarantees all identiiers are unique within the namespaces
+
+Preprocessor tells us thr process that runs before its compiled.
+Directives are special instructions in the preprocesor, they start with a # and end with a new line
+Macro is a replacement
+
+Header files: are designed to propogate declarations to code files,  when using angled brackets its for system headers and "" is for user defined headers.
+
+Header gaurds: prevent the contents of a header from being included more than once into a given code file. They do not prevent contents of a header from included into multiple different code files.
+
+
+
+
+
+
+
+
+

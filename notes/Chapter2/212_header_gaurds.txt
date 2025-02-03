@@ -1,0 +1,55 @@
+2.12 Header guards
+
+The duplicate definition problem:
+
+With header files its easy to end up in a situation where a definition in a header file gets included more than once. THis happens with a header file includes another header file.
+
+Consider this example:
+square.h:
+int getSquareSides()
+{
+    return 4;
+}
+
+wave.hpp
+#include "square.h"
+
+main.cpp:
+#include "square.h"
+#include "wave.h"
+
+int main(){
+    return 0;
+}
+
+main.cpp has square twice
+
+header gaurds solve this
+
+#ifndef SOME_NAME
+#define SOME_NAME
+
+#endif
+
+so after the first time its included it wont include it
+
+Even the standard library headers use header guards. If you were to take a look at the iostream header file from Visual Studio, you would see:
+
+Header guards do not prevent a header from being included once into different code files
+
+
+They prevent more than once, not once
+You can still get linkage errors
+
+Can’t we just avoid definitions in header files?
+
+
+Yes, but sometimes we need it, maybe if we are creating cstom types. 
+
+
+#pragma once
+Modern compilers support a simpler alternate form using the #pragam preprocessoer directive in the .hpp
+
+
+There is once case where #pragma once will fail, if a header file is copied so that it exists in multiple place in the fule system, if both copies get included, header gaurds will sucessfully de dpu the identifical headers but #pragma once wont, since the compiler wont realize they are identical.
+

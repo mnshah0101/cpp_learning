@@ -1,0 +1,55 @@
+Name spaces and naming collisions
+
+
+When two identifiers with the same name exist in the same program that is a naming collision.
+They will compile fine, but will result in a linkage error.
+
+
+ost naming collisions occur in two cases:
+
+Two (or more) identically named functions (or global variables) are introduced into separate files belonging to the same program. This will result in a linker error, as shown above.
+Two (or more) identically named functions (or global variables) are introduced into the same file. This will result in a compiler error.
+
+As programs become larger, linkage error risk will increase as there could be more overalp with identifiers.
+
+One way around this is scope regions:
+Inside a function, you can use variables that are scoped within the function and they wont collide with same names outside the scope.
+
+
+Another is namespaces:
+
+Any identifiers inside the namespace can't be mistaken for identical names in other scopes.
+Unlike functions (which are designed to contain executable statements), only declarations and definitions can appear in the scope of a namespace. For example, two identically named functions can be defined inside separate namespaces, and no naming collision will occur.
+Namespaces are often used to group related identifiers in a large project to help ensure they don’t inadvertently collide with other identifiers. For example, if you put all your math functions in a namespace named math, then your math functions won’t collide with identically named functions outside the math namespace.
+
+
+Global Namespaces
+Anything not put in a namespace or a function is in the global namespace.
+
+Identifiers declared inside the global scope are in scope from the point of declaration to the end of the file.
+Although variables can be defined in the global namespace, this should generally be avoided (we discuss why in lesson 7.8 -- Why (non-const) global variables are evil).
+
+The standard namespace::
+Originally C++ was designed with the standard library not a namespace in the global namespace, however this provided naming collisions
+Now std sits in the standard namespace
+
+
+The most straightforward way to tell the compiler that we want to use cout from the std namespace is by explicitly using the std:: prefix. For example:
+
+:: is the scope resolution operaotr
+if no ::, then global is assumed
+
+using namespace std; // this is a using-directive that allows us to access names in the std namespace with no namespace prefix
+then std:: is uneeded
+This is the using directive
+This is bad practice
+
+In C++, curly braces are often used to delineate a scope region that is nested within another scope region (braces are also used for some non-scope-related purposes, such as list initialization). For example, a function defined inside the global scope region uses curly braces to separate the scope region of the function from the global scope.
+
+In certain cases, identifiers defined outside the curly braces may still be part of the scope defined by the curly braces rather than the surrounding scope -- function parameters are a good example of this.
+
+Fuction params are inside the function scope
+
+
+
+

@@ -1,0 +1,19 @@
+Adding Files to your Project
+
+When programs get to big its good convention to split them into multiple files for organiztion or reusability.
+
+To compile: 
+When you compile your program, you’ll need to include all of the relevant code files on the compile line. For example: g++ main.cpp add.cpp -o main, where main.cpp and add.cpp are the names of your code files, and main is the name of the output file.
+
+
+WHen we compile files together, we need to give forward declarations so the compiler knows about the other files.
+The limited visibility of the compiler allows for:
+- Compilation in any order
+- Only changed files need to be compiled
+- Reduces prob of naming conflicts between filess
+
+
+C++ is designed so that each source file can be compiled independently, with no knowledge of what is in other files. Therefore, the order in which files are actually compiled should not be relevant.
+
+We will begin working with multiple files a lot once we get into object-oriented programming, so now’s as good a time as any to make sure you understand how to add and compile multiple file projects.
+

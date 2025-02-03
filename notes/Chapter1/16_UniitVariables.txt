@@ -1,0 +1,54 @@
+1.6 Unitiailized Variables and Undefined Behavior
+
+Unitiailized Variables:
+
+C/C++ doesn't automatically initialize most variables to a given value. When a variable that is not initialized is given a memory address to store data, the default value of that variable is whatever garbage value happens to already be in that memory adress. A variable that has not been given a known value is called an unitiialized variable.
+
+Many readers expect the terms “initialized” and “uninitialized” to be strict opposites, but they aren’t quite! In common language, “initialized” means the object was provided with an initial value at the point of definition. “Uninitialized” means the object has not been given a known value yet (through any means, including assignment). Therefore, an object that is not initialized but is then assigned a value is no longer uninitialized (because it has been given a known value).
+
+int x; < this is uninitialized
+
+This lack of initialization is a performance optimization inherited from C, back when computers were slow. Imagine a case where you were going to read in 100,000 values from a file. In such case, you might create 100,000 variables, then fill them with data from the file. If C++ initialized all of those variables with default values, this would create 100,000 variables and fill them with data.
+
+
+Using uninit vairables leads to unexpected results.
+
+Printing uninit variables can lead to unexpected results.
+
+Most compilers detect if a var is used without given a value. They generally issue a warning or error.
+
+
+Undefined Behavior:
+
+
+This is the result of executing code whose behavor is not well defined by C++. This case means C++ doesn't have any rules determining what ahppens if a varaibel doesnt have a value.
+
+Take care to avoid all situations that result in undefined behavior, such as using uninitialized variables.
+
+
+Implementation-defined behavior and unspecific behevorial:
+A specific compiler and the associated std lib comes with are called implementation. In some cases, the C++ language standard allows the implementation to determine how some asepct of the langauge will behave, so that the compuler can choose a behavore that is efficient for a given platform. Behavori that is weill defined by the implementation is called implementation-defined behavior. It must be well documented and consistent for a given implemenation.
+
+
+#include <iostream>
+
+int main(){
+    std::cout << sizeof(int) << '\n'; //print how many butes of memory an int value takes
+
+    return 0;
+}
+
+On most platforms, this will produce 4 but in others it may produce 2.
+
+
+Unspecified behavior is almost identical to implementation-defined behavior in that the behavior is left up to the implementation to define, but the implementation is not required to document the behavior.
+
+
+Questions: 
+
+What is an unitialized variable:
+No value given. Implementation defined
+
+What is undefined behavior and what can happen if you do something that exhibits undefined behavior?
+
+Undocumented and inconsistent implemenation defined behavior.

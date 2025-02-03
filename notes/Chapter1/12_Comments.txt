@@ -1,0 +1,89 @@
+Comments:
+
+A comment is a note for a programmer that is inserted directly in the source code of the program. Comments are ignored by the compiler.
+
+There are two different styles of comments in C++.
+
+Single Line Comments: 
+
+std::cout << "Hello World"; //Everything from the double slashes is ignored
+Typicall we use single line comments to make a quick comment about a single line of code:
+std::cout << "Hello world!\n"; // std::cout lives in the iostream library
+std::cout << "It is very nice to meet you!\n"; // these comments make the code hard to read
+std::cout << "Yeah!\n"; // especially when lines are different lengths
+
+
+Sometimes comments clutter the code, so we can align the comments with a tab stop:
+
+std::cout << "Hello world!\n";                 // std::cout lives in the iostream library
+std::cout << "It is very nice to meet you!\n"; // this is much easier to read
+std::cout << "Yeah!\n";                        // don't you think so?
+
+
+Sometimes we just add them on top incase it makes the line too long:
+// std::cout lives in the iostream library
+std::cout << "Hello world!\n";
+
+// this is much easier to read
+std::cout << "It is very nice to meet you!\n";
+
+// don't you think so?
+std::cout << "Yeah!\n";
+
+
+Multi Line Comments:
+
+/* and */ denote C style multi line comments. Everything in between the two symbols is ignored.
+
+/* This is a multi-line comment.
+   This line will be ignored.
+   So will this one. */
+
+
+   Since everything between the symbols is ignored, you will sometimes see programmers “beautify” their multi-line comments:
+
+/* This is a multi-line comment.
+ * the matching asterisks to the left
+ * can make this easier to read
+ */
+
+ulti-line style comments can not be nested. Consequently, the following will have unexpected results:
+
+/* This is a multi-line /* comment */ this is not inside the comment */
+// The above comment ends at the first */, not the second */
+
+
+Programmers use comments for three things.
+
+For a library or function comments are used to desceribe what the library/program/function does, they are usually placed at the top of the file.
+
+Second is within a library/file/program to describe how the code is going to accomplish this goal.
+
+Third is at the statement level, we use comments to describe why the code is doing something. 
+
+
+Here are some examples of bad comments and good comments:
+
+Bad:
+// Set sight range to 0
+sight = 0;
+
+Good:
+// The player just drank a potion of blindness and can not see anything
+sight = 0;
+
+
+Bad:
+// Calculate the cost of the items
+cost = quantity * 2 * storePrice;
+
+Good:
+// We need to multiply quantity by 2 here because they are bought in pairs
+cost = quantity * 2 * storePrice;
+
+
+Comments should be written in a way that makes sense to someone who has no idea what the codes does
+
+Another reason people will use comments is to comment out code. This provides a convinent and temporary way to exclude parts of your code from being compiled.
+
+You may want to do this if you are writing a new piece of code you don't want to compile yet, your are debugging some code, to find the source of an error, or if you want to replace one piece of code with another.

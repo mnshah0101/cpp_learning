@@ -1,0 +1,149 @@
+1.4 - Variable Assignment and Initializaiton
+
+Variable Assignment:
+
+After a variable has been defined, you can give it a value using the = operator. The process is called assignment and the = operator is called the assignment operator.
+
+here is an example
+
+int width;
+width = 5;
+
+By default, this is called copy assignment.
+Once the variable has been giving a value, that can be printed via std::cout and the << operator.
+
+Assignment can be used whenever we want to change the variable's value.
+
+Lets look at this program:
+
+#include <iostream>
+
+int main(){
+    int width;
+    width = 5;
+    std::cout << width; #prints 5
+
+    width = 7;
+    std::count << width; #prints 7
+
+    return
+}
+
+When the program is run, execution begins at the top and runs sequentually. First memory for variable width is allocated, then we assign width value 5, then we output width, it prints 5 to the console, we assign it 7, and then it prints 7.
+
+Normaly variables can only hold one value at any time.
+
+
+Variable Initializaiton
+
+One downside of assignment is it requires two lines to define the variable.
+
+We can combine these steps. This is called Initializaiton and the syntax is valled an initilizaer.
+
+
+int main(){
+    int width {5};
+    std::cout << width; //prints 5
+}
+
+
+
+Different Forms of Initializaiton:
+
+Initializaiton in C++ is pretty complex.
+
+Different Forms of Initializaiton:
+int a;         // default-initialization (no initializer)
+
+// Traditional initialization forms:
+int b = 5;     // copy-initialization (initial value after equals sign)
+int c ( 6 );   // direct-initialization (initial value in parenthesis)
+
+// Modern initialization forms (preferred):
+int d { 7 };   // direct-list-initialization (initial value in braces)
+int e {};      // value-initialization (empty braces)
+
+
+Copy, Direct and Direct List Initialization behave similarly.
+
+Default Initializaiton:
+When no initializer is provided, this is default initialization, and it leaves the variable with an indeterminate value or some default value.
+
+
+Copy Initializaiton:
+This is when an initial value is provided with an equal sign. This copies the right hand side value into the object's value. This is less efficient for complex types.
+Copy is used whenever values are implicitly copied, like passing arguements or returning from a function
+
+
+Direction initialization:
+This is when a value is provided with parenthesis. This was introduced for more efficient init of complex objects, such as those with calss types. This has fallen out of favor by direct list initialization.
+This is used when values are explicitly cast to another type.
+
+
+List- Initializaiton
+This is the modern way of initializing objects.
+
+
+Prioer to C++11, some types of initialization requied copy-initialization and some required direct. Copy initialization is hard to distinguisn between copy assignment since they both use =
+List initialization was introduced to provide an unambigioys syntax to initialize an object.
+
+You can also use it to initialize a list of objects.
+List initialization also disallows narrowing conversions. This means if you list initialize a variable that it can not safely hold, the compiler produces a diagnostic. 
+
+int w1 {4.5} //compiler error
+int w2 = 4.5 //compiles
+
+The restriction on narrowing conversions only applies to list initialization, not any subsequent assignments to the variable.
+
+Value init vs zero init:
+When a variable is init using an empty set of braces. Most times the value-init will implicity init the var to 0, or the closest to 0 for the type. This is called zero init.
+
+For class types, value-initialization (and default-initialization) may instead initialize the object to predefined default values, which may be non-zero.
+
+
+List init is the preferred form of init in modern C++
+
+It is the most consistent, disallows narrow conversions, and supports init with list of values.
+
+
+You can use direct list initi when you are actually using the value, and can use value init when the objects value is temporary and it will be replaced:
+
+int x {};
+std::cin >> x; //we are replacing it anyway
+
+Initialize your variables upon creation. You may ignore this advice for specific reasons, like when performance critical section of your code uses a lot of variables.
+
+
+Instantiation: This is a fancy word that a variable has been created and initialized (this include default init). An initiated object is called an instance.
+
+Multiple Variables:
+it is best to avoid this syntax but here are the examples:
+int a = 5, b = 6;          // copy-initialization
+int c ( 7 ), d ( 8 );      // direct-initialization
+int e { 9 }, f { 10 };     // direct-list-initialization
+int i {}, j {};            // value-initialization
+
+
+
+If we only init one one, then the compiler may or may not complain.
+
+
+Unused Init Variable warnings:
+
+Modern compulers generate warnings if av ariable is initialized but not used. 
+Some ways to fix this is to either delete the definition or use the variable.
+
+The [[maybe uniused]] aattribute tells the compuler that we are okay with a variable being unused. They have no performance inpact.
+
+Questions w Answers
+
+Difference between init and assignment:
+Init gives it its first value when it is created. Assignment gives a varaible after it hase been created.
+
+What form of init should you prefer when you want to init a variable wtih a specific value?
+You should prfer list initialization.
+
+What are default and value init?
+Default init is the value when a variable init has no initializer, ex: int x;
+
+Value init is when you give an empty brace init: int x{}; , this will perform zero init

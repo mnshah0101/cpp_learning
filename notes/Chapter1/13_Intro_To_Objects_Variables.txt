@@ -1,0 +1,117 @@
+1.3 - Introduction to objects and variables
+
+
+How do programs actually produce results? They do so by reading, alterting and writing data. In computing, data is any infromation that can be moved, processed or stored by a computer.
+
+Programs are just collections of instructions that manipulate data to produce a desired result.
+
+Computer programs are technically data too, since they can be moved, processed and stored. Programs live in the global text area of a computer's memory (as opposed to the stack or heap)
+
+A program can acquire data many ways: from a file, a database, a network, or a user input from keyboard or directly in the program.
+
+In the Hello World example, the Hello World string was manually inputted.
+
+A single piece of data is called a value. Common examples include, letters, numbers, and text.
+
+RAM
+
+The main memory in a computer is called Random Access Memory. When we run a program, the OS loads the program into RAM. Any data is also loaded in at this point. 
+
+The OS reserves additional RAM for the program to use while its running. Common uses for this memory is to store values entered by the user, store read data from a file/network, or to store calculated values while the program is running to reference again.
+
+You can think of RAM as a series of numbered boxes that can be used to store data while the program is running.
+
+Objets and variables
+In C++, direct memory access is discouraged. INstead we acess memory indirectly through an object. An object represents a region of storage that can hold a value. Objects also have associated properties.
+
+How the compiler and OS work together to work to assign memory to objects we will learn later. But the key point is that instead of saying go get the value associated with memory box 7532, we can just say go get the value stored by this object, and the compiler can figure out where to store and retrieve the values.
+
+Although objects in  can be unnamed (anonymous), we usually name our objects with identifiers, called variables.
+
+
+An object is used to store a value in memory. A variable is an object that has a name.
+Naming our objects lets us refer to them later.
+
+In general programming, the term object typiucally refers to an unnamaed object in memory, a variable, or a afunction.
+In C++, we exclude functions.
+
+Variable Definition:
+In order to use a variable in our program, we need to tell the compuler that we want one. We do this with a definition.
+
+A definition statement is used to tell the compiler we want to use a variable in our program.
+
+At compile time, the compiler makes a note to itself that we want a variable with the name x and that it has type int. Whenever we use x now on in our code, the compiler will know what we are referring to.
+
+The compiler handles all other details about the variable. It determines how much memory the object will need, what kind of storage will be placed, where it will be placed, when it will be created/destroyed.
+
+A variable created via a definition statement is said to be defined at the point where the definition is placed.
+
+Variable Creation:
+
+At run time, each object is given an actual storage location that it can use to store values. The process of reserving storage for an object's use case is called allocation. Once an allocation has occured, the object has been created and can be used.
+
+Let's say variable x is instantiated at memory location 140, whenever the program uses variable x, it will acess the value in memory location 140.
+
+Data Types:
+
+A data type determines what kind of value the object will store.
+
+In the above eaxample, x was given the type int, which means variable x will store an integer value. An integer is a number that can be written without a fractional component. 
+
+In C++, the type of an object must be known at compile time and that type cannot be changed. 
+The type must be known so that the compiler knows how much memory that object requires.
+
+There are a ton of data types supported:
+
+double width; // define a variable named width, of type double
+
+
+C++ also allows you to create your own custom types, and what makes it so powerful.
+
+
+You can also do multiple variables of the same type definition in the same statement using commas. The following two snippets are the same:
+
+int a;
+int b;
+
+is the same as
+
+int a, b;
+
+you only have to say the type once, and they must be the same type
+
+Although the language allows you to do so, avoid defining multiple variables of the same type in a single statement. Instead, define each variable in a separate statement on its own line (and then use a single-line comment to document what it is used for).
+
+
+In C++, we use objects to access memory. A named object is called a variable. Each variable has an identifier, a type, and a value (and some other attributes that aren’t relevant here). A variable’s type is used to determine how the value in memory should be interpreted.
+
+Variables are actually created at runtime, when memory is allocated for their use.
+
+Questions With Anwers:
+
+What is data?
+
+Data is some information that can be accessed, modified and stored.
+
+What is a value?
+
+A value is some useful concept like number, letter, text that can be represented as data.
+
+What is an object?
+
+An object is a region in memory that stores a value.
+
+
+What is a variable?
+
+A variable is a named object.
+
+An identifier is the name that acesses a variable.
+
+What is a data type used for?
+
+A data type is used by the compiler to know how much memory to allocate.
+
+
+What is an integer?
+An integer is a non-fractional number.

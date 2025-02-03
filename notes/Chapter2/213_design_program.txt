@@ -1,0 +1,52 @@
+2.13: How to design your first program:
+
+
+A little up front planning will save a lot of time and frustration in the long run:
+
+Step 1:
+Define your goal. Should be a sentnce a two, an example is
+allow the user to organize a list of name and associated phone numbers
+
+
+Step 2:
+Define requiremetns:
+The next step is to think about requirements. Requirements is a fancy word for constraints and capabilities of the program.
+
+Step 3:
+ Define tools, targets and backup planning.
+Define what tools you will be using, the team, and testing/feedback release strategy and dterming how you will backup code.
+
+
+
+Step 4:
+Break hard problems down into easy problems.
+
+We often make the use of top down metohod of problem solving. Instead of solving a single complex task we can break it up into subtasks.
+
+
+Step 5: Figure out sequence of events:
+
+Now that program has structure, its time to determine how to link all the tasks together. 
+
+
+Implementation step 1:
+Outline main function
+
+Implementaion Step 2: Imeplement each function
+
+Step 3L final testing
+
+
+Insights:
+
+- Keep programs simpel to start and expand later
+
+- Add features over time
+- Focus on one area at atime
+
+- Test each piece of code as you go
+- Dont invest in perfecting early code
+- Optimize for maintainability not performance
+
+Many new programmers shortcut the design process (because it seems like a lot of work and/or it’s not as much fun as writing the code). However, for any non-trivial project, following these steps will save you a lot of time in the long run. A little planning up front saves a lot of debugging at the end.
+

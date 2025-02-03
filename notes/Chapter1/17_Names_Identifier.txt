@@ -1,0 +1,25 @@
+1.7 Naming Identifiers
+
+Identifier naming rules:
+
+as a reminder, the name of variable (or a function, type, or other kind of item) is called an identifier, c++ gives a lot of flexibility to name identifiers as you wish.
+
+- Identifiers can not be a keyword, keywords are reserved
+- Can only be xomposed of letters, numbers and underscore character
+- Must begin with a letter or underscore
+- c++ is case sensitive
+
+
+Bes practice is Camel Case or snake Case
+
+
+Name your identifiers something that should make clear what value they are hokding. 
+
+Giving a trivial identifier an over complex name impedes understanding of the program. A good rule of thumb is to make the length of an identifier propertional to how specific and accesible the identifier is.
+
+An identifier that exists for only a few statements (e.g. in the body of a short function) can have a shorter name.
+An identifier that is accessible from anywhere might benefit from a longer name.
+An identifier that represents a non-specific number (e.g. anything the user provides) can have a shorter name.
+An identifier that represents a specific value (e.g. the length of an inseam in millimeters) should have a longer name.
+
+

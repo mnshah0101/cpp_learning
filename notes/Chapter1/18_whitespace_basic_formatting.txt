@@ -1,0 +1,66 @@
+1.8 Whitespace and basic formatting
+
+Whitespace is a term that refers to characters that are used for formatting purposes. In C++, this refers to spaces, tabs, newlines. Whitespace in C++ is used for 3 things: seperating langauge lements, inside text, and for formatting code
+
+
+Some langauge elements must be white space seperated, for example variable declerations.
+
+When a whitespace is required, the compiler doesnt care about how many whitespaces, just that there are
+
+Some new lines are used as seperators, for eaxmple in comments
+Preprocessor directives have to be in seperate lines
+
+Quotes text takes the amount of whitepsace literally
+
+We use whitespaces to format code
+
+Lvels of white space:
+
+#include <iostream>
+int main(){std::cout<<"Hello world";return 0;}
+
+#include <iostream>
+int main() {
+std::cout << "Hello world";
+return 0;
+}
+
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello world";
+
+    return 0;
+}
+
+#include <iostream>
+
+int main()
+{
+    std::cout
+        << "Hello world"; // works fine
+    return 0;
+}
+
+Basic formatting
+Unlike some other languages, C++ does not enforce any kind of formatting restrictions on the programmer. For this reason, we say C++ is a whitespace independent langauge.
+You should use 4 spaces instead of a tab for spacing and scoping clarity.
+
+Putting braces in its own line also looks better
+
+Also keep lines 80 chars or less:
+std::cout << "Hello world!\n"; // cout lives in the iostream library
+std::cout << "It is very nice to meet you!\n"; // these comments make the code hard to read
+std::cout << "Yeah!\n"; // especially when lines are different lengths
+
+
+// cout lives in the iostream library
+std::cout << "Hello world!\n";
+
+// these comments are easier to read
+std::cout << "It is very nice to meet you!\n";
+
+// when separated by whitespace
+std::cout << "Yeah!\n";

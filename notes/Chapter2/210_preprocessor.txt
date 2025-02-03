@@ -1,0 +1,72 @@
+Intro To Preprocessor
+
+Before compilation we have the preprocessing phase.
+
+
+The proeprocess make changes to the text of the source code.
+
+It doesn't modify the code in any way, it is either temporarily in memory or using temporary files.
+
+Historically, the preprocessor was a separate program from the compiler, but in modern compilers, the preprocessor may be built right into the compiler itself.
+
+
+Most of what it does is uninteresing like taking out comments and ensuring each file ends in a new line.
+
+It processes #include directves.
+The result of the preprocessor is called a translation unit.
+
+The process of proporcessing, compiling and linking is called translation.
+
+When preprocesor does it looks for preprocessor directives, they end in newline not ; and start with a #
+
+The final output of the preprocessor contains no directive.
+
+The preprocessor replaces the #include directive with the contents of the included file
+
+
+Macro defines
+
+
+The #define directive can be used to create a macro in C++
+
+Eeach translation unit consists of a single code file and all header files applied recursively
+There are two basic types of macros: object like macros and function like macros
+
+Function like macros act like function, they are consdered unsafe and almost anything they do can be done by a normal function
+
+Object like macros can be defined on oe of two ways
+
+#define IDENTIFIER
+#define IDENTIFIER sub_text
+
+when the preprocessor encounters macro w sub text an association is made an the macro replaces the macro in all of the code with the sub text
+
+Object like macros are now mostly seen in legacy code, they used to be used to assign names to literals
+Global constants are now avaiable
+
+avoid macros with sub text
+
+Objct-like macros wihtout sub text just turn into nothing,
+
+Conditional Compilation
+We can specify under what conditions something will or won't copmiple:
+#ifdef, #ifndef, #endif
+
+
+#ifdef PRINTJOE
+    std::cout << "Joe\n"; // will be compiled since PRINT_JOE is defined
+#endif
+
+#if 0 < pretty much comments it out
+
+In most cases, macro substitution does not occur when a macro identifier is used within another preprocessor command.
+
+
+There is at least one exception to this rule: most forms of #if and #elif do macro substitution within the preprocessor command.
+
+
+Directives are resolved before compilation from top to bottom on file by file basiss
+
+The preprocessor doesnt understand functions so this behaves exactly like if at begeinning
+
+Once the proprocessor has finished all defined identifiers from that file are discarged. This means diresctives are only valid from start to end of file. 
