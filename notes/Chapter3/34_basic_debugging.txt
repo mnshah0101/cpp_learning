@@ -1,0 +1,36 @@
+3.4 Basic debugging
+
+Debugging tactic 1: commenting code:
+
+Try commenting some code out and see if the issue remains. 
+
+If the problem goes away then that was the problem code,
+if the problem is unchanged than that function was not the issue.
+And if it morophs into a different problem, then the function does something important that other code is reliant on. 
+
+
+You can also use a third party library that leaves debugging statements in your code and then compiles them out in release mode via a preprocesses macro.
+
+
+
+Debugging tacttic 2:
+Validting code clode. Another problem is calling a function too many times or too few.
+
+It is helpful to place statements at the top to print the name of the function being called.
+
+
+Use std::cerr since it isnt buffered and will always print regardless of crash and it makes it clear its not normal print but error
+
+Debugging tactic 3: Printinv gvalues
+
+With some bugs the program may be calculating or passing the wrong value
+We can output the value of vars or epxressions to ensure they are correct.
+Why using printing statements to debug isn’t great
+
+While adding debug statements to programs for diagnostic purposes is a common rudimentary technique, and a functional one (especially when a debugger is not available for some reason), it’s not that great for a number of reasons:
+
+Debug statements clutter your code.
+Debug statements clutter the output of your program.
+Debug statements require modification of your code to both add and to remove, which can introduce new bugs.
+Debug statements must be removed after you’re done with them, which makes them non-reusable.
+We can do better. We’ll explore how in future lessons.

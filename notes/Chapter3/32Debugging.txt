@@ -1,0 +1,44 @@
+3.2 The debugging processs
+
+
+All bugs come from a simple premise:
+
+
+Something you though was correct wasnt. Figuing out where the error is is challenging. Let's outline the dbeugging process.
+
+A genearl approach:
+
+1)Find the root cause of the problem (line of code not working)
+2) Ensure you understand why the issue is occuring.
+3) Determine how you'll fix the issue
+4) Repair the issue causing the problem
+5) Retest to ensure no new problems have emerged
+
+
+#include <iostream>
+
+int add(int x, int y) // this function is supposed to perform addition
+{
+    return x - y; // but it doesn't due to the wrong operator being used
+}
+
+int main()
+{
+    std::cout << "5 + 3 = " << add(5, 3) << '\n'; // should produce 8, but produces 2
+
+    return 0;
+}
+
+Lets try with this ine of code:
+
+1) Find the root cause: on line 10 we are passing in literals for arguements, so no error there, but when we are returning we have the wrong symbol.
+
+2) Understand the problem, we are using the wrong operator.
+
+3) Determine a fix: We canchange the opeartor form minus to add.
+
+4) Repair the issue: Actually change the operator.
+
+
+5) Try the simple program, and test it!
+

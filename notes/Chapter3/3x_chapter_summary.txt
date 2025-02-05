@@ -1,0 +1,46 @@
+Chapter 3 Summary
+
+
+A syntax error is when you write a statement that is not valid in C++.
+A semantic error occurs when a statement is syntiacicaly valid, but does not do what the programmer intended.
+
+The process of finding and removing errors from a program is caled debugging.
+
+
+5 steps to debugging:
+1. Find the root cause.
+2. Understand the problem.
+3. etermine a fix.
+4. Repair the issue.
+5. Retest.
+
+
+A static analysis tool looks at your code to look for semantic issues.
+
+There are a number of tactics we can use to find issues:
+comment out code
+output statements to valid code flow
+printNames
+
+Log file records events that occur in a program, writing info is logging
+
+Restructuring code wtihout changing how it behaves is called Refactoring
+
+Unit teting is testing small untis of source code
+
+Defensive programming to write programs that dont break
+
+A debugger is a tool that allows the programer to control how a program executes 
+
+Stepping is set of function to go through code
+Step into: stepping line by line 
+Step over: like step into but steps over functions
+Run to cursor: goes to the cursor
+Step Out: executves all remaining code in the function
+Run to coursor: executes to the cursor
+Continue: finishes all the way
+Breakpoint: runs to breakpoint
+Set next: when runs goes to set next
+Watching a variable allows you to inspect value while in debug.
+
+The call stack is the list of all active functions we're in.

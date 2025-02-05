@@ -1,0 +1,16 @@
+3.9 Using an integrated debugger: The call stack
+
+
+Modern debuggers contain one more debugger information window that can be very useful:
+
+
+The call stack is a list of all active function that have been called to the current point of exection.
+
+The call stack window is a debugger that shows the current call stack.
+
+This shows the list of functions that were called/
+
+WHen the function is returned it is removed from the call stack.
+
+Congratulations, you now know the basics of using an integrated debugger! Using stepping, breakpoints, watches, and the call stack window, you now have the fundamentals to be able to debug almost any problem. Like many things, becoming good at using a debugger takes some practice and some trial and error. But again, we’ll reiterate the point that the time devoted to learning how to use an integrated debugger effectively will be repaid many times over in time saved debugging your programs!
+

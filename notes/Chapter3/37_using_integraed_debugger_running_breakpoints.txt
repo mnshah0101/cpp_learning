@@ -1,0 +1,20 @@
+3.7 Using an integrated debugger: Running and breakpoints
+
+Run to cursor:
+
+The program executes until the exectuion reaches the statement selected by cursor.
+
+Continue:
+Once you're in the middle of a debugging session you may way to just run the program forward, You can to do this to run the program till the enxt breakpoints
+
+
+Start:
+The start command perofrms same as conitnue but from the start and can only run when you're not already in a debug session
+
+Breakpoints:
+Breakpoint tells the debugger to stop execution of the program at the breakpoint in debug mode
+
+Set Next Statement:
+This is jumping, it allows us to set the next point of running, you can move forward or backwards
+
+Step back rewinds the program and set next just does it all again

@@ -1,0 +1,52 @@
+3.3 A Strategy For Debigging
+
+
+Finding problems via code inspection:
+
+We can appro where the issue is in smaller programs based on the nature of the program.
+
+
+Look at this program:
+
+int main()
+{
+    getNames(); // ask user to enter a bunch of names
+    sortNames(); // sort them in alphabetical order
+    printNames(); // print the sorted list of names
+
+    return 0;
+}
+
+If you exepected them to print in alphabetical order but it printed in the reverse order, the issue is probabily in the sort function
+
+As programs get more complex, this becomes hard as well.
+
+
+First theres a lot more code to look at and the coe has more sissues where it could go wrong
+
+Finally bugs can be caused by bad assumptions and its almost impossible if this is the issue.
+
+Finding problems by runing the program:
+
+We can watch the behavior of the program as it runs and diagnose the issue from that
+
+1)Figure out how to reproduce the problem
+2) Run the program and gather information to narrow down the problem
+3) Repeat the prior step until you find the problem
+
+Reproducing the problem:
+
+The mos timportant step in finding the problem is to reproduce the problem. THis means making it appear in a consistent manner.
+
+Reproduction steps are a list fo clear and precise step that can be followed to recur the issue with a high level of predictablity.
+An issue that comes up 50% of the time will take two times as long to debug.
+
+Homing in on issue
+Now we need to find where it is.
+We can use code that executes between beginning and where the bug is. If we don't know where we can keep cutting further and further.
+
+
+We will also usually have an inital guess thats close to where the problem is.
+
+Withou enough guesses and good technique we can find where the problem is, if we haven't made any bad assumptions.
+

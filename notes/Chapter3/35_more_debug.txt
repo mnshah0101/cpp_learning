@@ -1,0 +1,20 @@
+3.5 More debugging tactics
+
+
+Debug statements
+
+Conditionalizing your debug code:
+
+
+You can use processor directives to debug
+Now we can enable debugging my simple commenting/uncommenting enable debug
+
+Using a logger:
+An alterantive approaches is send debug info to a logger.
+A lof is a sequential record of events that is time stamped.
+
+Most applications and operating systems write log files that can be used to daignoze issues that occur.
+
+C++ contains an output stream named std::clog, and writes to the stnadard error stream by fagilt, while you can redirect to a file instead using a third party tool is generally better.
+
+plog is really good for this usecase

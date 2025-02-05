@@ -1,0 +1,52 @@
+3.10 - Finding issues before they becomes problems
+
+The best way to avoid debugging is to not make errors in the first place:
+
+- Follow best practices
+- Don't program when tired or frusturated.
+- Underestand common pitfalls in a langauge
+- Don't let functions get too long
+- Prefer using the standard library to your own code.
+- Comment your code liberally
+- Start withs imple solutions then layer in complexity icnrementlly
+- Avoid clever/non obvois solutions
+- Optimize for readiblity and maintanbility
+
+Everyone knows that debugging is twice as hard as writing a program in the first place. So if you’re as clever as you can be when you write it, how will you ever debug it?
+
+
+Refactoring code:
+As your code becomes more complex,  you will have to refactor, which is changing the structure wihtout chanigng its behavoir
+
+Introduction to Defensive Programming:
+Defensive programmis where a programmer tries to anticpiate all the ways software can be misued by the user or the programmer.
+
+Finding errors fast:
+SInce not mkaing errors is difficult in large programs the next best thing is  find them quickly.
+Catch errors while you write them.
+
+
+An Introduction to Testing functions
+One common way to help uncover issues with your program is to write testing functions to excericse code you've written.
+This is called unit testing.
+
+
+Introduction to constraints
+
+Contrains based techniques involve adding exttra code to check that some set of assumptions/expectationsare not violated.
+
+For example if we were writing a function that expects a non negative arguement, it should check to make sure the caller passed a non negative arguement
+
+You can do this with asert/static assert
+
+Shotgunning for general issues:
+
+programmers tend to make certain kinds of mistakes and programs can be discovered by programs ttrained to lok for them. These programs are known as static analysis tools, or called linters.
+Static means they analyze your code without running it. The issue found by static analysis tools may or may not be the cause of any problem but help with vulnerabilities.
+
+The compiler is a static analysis tool. most modern C++ tools do some light static analysis.
+
+
+
+clang-tidy, spplint, sppcheck, Sonarlint
+

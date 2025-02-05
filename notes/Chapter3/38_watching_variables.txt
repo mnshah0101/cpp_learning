@@ -1,0 +1,23 @@
+3.8 Watching Variables
+
+Watching variables tells us the values of our variables while the program is executing in debug mode. Most debuggers provide several ways to do this.
+
+You can hover your mouse of the variable and it will tell you the value.
+
+The watch window:
+
+
+The watch window is a window where you can add variables youdl like to continuosly inspect, these variables will be updates as you step through the program.
+
+
+Setting a breakpoint on watched variables
+
+Some debugger will allow you to set a breakpoint on watched variables rather than a line.
+This will stop execution whenever the value of that variable changes.
+
+The watch window can evaluate expressions too
+The watch window will also allow you to evaluate simple expressions. If you haven’t already, run to cursor to line 12. Then try entering x + 2 into the watch window and see what happens (it should evaluate to 8).
+
+
+
+Many debuggers will offer some way to watch the value of all vairables local to a scope.

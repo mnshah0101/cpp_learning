@@ -1,0 +1,37 @@
+3.6 Using an integrated debugger: Stepping
+
+When you run your program, execution begins at top o fmain and then proceed sequentially. When your program is running, it is keeping track of a lot of things at any given time, including variable names/states which functions have been called, current point of execution.
+This is called the program state.
+
+We can use a debugger to stop/pause at a point in time in the debugger.
+
+The debugger:
+The debugger ia s computer program that allows the programmer to contorl how programs executes and azeamin the program state while that progrma is running.
+
+
+Most IDes have intagreated debuggers.
+
+What we can do:
+
+Stepping
+Stepping is the name for a set of debugger features that let us ececutre in our code statement by statement.
+
+
+Number of features
+Step into:
+Step into executes the next statement in the normla execution path of the program and then pauses execution of the program. If its a function call step into causes the program to jump to the top of the function where it will pause
+A yellow marker will appear where we are stepping into.
+
+
+std::cout << std::unitbuf; emables automatic flushing
+
+
+Step over:
+The step over command exeutes the next statement in the normla exution of the program, and skips over function calls
+
+Step out:
+It executes all the code until the end of the function
+
+Step Back:
+Not all debuggers support it but it lets you go a step backwards.
+
