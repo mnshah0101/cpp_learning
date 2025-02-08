@@ -1,0 +1,66 @@
+4.3 Object sizes and the sizeof operator
+
+Object sizes:
+
+
+Modern machine data is organized into byte sized units with each having its own unique address.
+
+This analogy is not correct, most objects take up more than 1 byte of memory
+Since we access memory through variable names, the compiler hides the details of how many bytes a given object uses from us.
+
+The compiler knows how many bytes of data need to be retrived beased on the var type
+
+There are several reasons to know how much memory an object uses.
+an object with n bits can hold 2^n unique values
+Thus the size of the object puts a limit on how many unique values it can stores
+
+Second compuetrs can have a finite amount of free memory. We want to limit the number of data we use.
+
+
+Fundamental data type sizes:
+
+How much memory do objects of a given type use?
+The C++ standard does not define the exact size of any of the fundamental types
+
+The standard says the following:
+
+- It must be atleast one byte, where one byte is at least 8 bits,
+- The integeral types char, short, int, long, and long must be atleast 8, 16, 16, 32, and 64 bits respectfully
+
+char and char8_t are exactly 1 byte
+
+When we talk about the size of a type, we really mean the size of an instantiated object of that type.
+We will present a simplified view, by making some reasonable assumptions that are generally true for modern architectures:
+
+A byte is 8 bits.
+Memory is byte addressable (we can access every byte of memory independently).
+Floating point support is IEEE-754 compliant.
+We are on a 32-bit or 64-bit architecture.
+
+
+Here are the reasonable sizes:
+
+bool - 1 byte 
+char - 1 byte
+char8_t - 1 byte
+
+Integral
+short - 2 bytes
+int - 4 bytes (min 2)
+long - 4-8 bytes (min 4)
+long long - 8 bytes
+
+For maximum portability, you shouldn’t assume that objects are larger than the specified minimum size.
+
+The sizeof operator:
+In order to determine the size of data types, C++ gives the sizeof operator, it takes a variable or a type and returns the sixe of an object in bytes.
+
+using sizeof on an incomplete type results in a compilation error.
+
+sizeof does not include dynamically allocated memory used by an object.
+
+Fundamental data type performance:
+
+On modern machines objects of the fundamental data types are fast, so performance while using or copying these types are not usually a concern.
+
+Types that use more memory are not slower, cpus are often optimized to process data of a certain type.

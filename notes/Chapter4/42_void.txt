@@ -1,0 +1,20 @@
+4.2 Void
+
+
+Void is the easiest of the data type, it basically means no type
+
+Void is out first example of an incomplete type, and incomplete type is something that has been declared and not yet defined.
+
+
+The compiler knows about the existence of the type but doesnt know how much memory to allocate for it. void is intentionanly incomplete since it represents the lack of a type
+
+Functions that do not return a value:
+
+we use void as a return value for a function that doesnt return anything
+
+In C void is an easy way to say a function does not take any parameters
+
+The keyword void is considerted deprecated in C++.
+
+
+The void keyword has void pointers.

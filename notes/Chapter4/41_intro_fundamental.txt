@@ -1,0 +1,60 @@
+Intro To Fundamental Data Types
+
+Variables are names for a piece of memory that stores information.
+
+Computers have random aceess memory for programs to use. When a varaibe is defined, RAM is set aside for that variable.
+
+The smallest unit of memory is a binary digit (bit)
+
+Memory is organized into sequential units called memory adresses
+It is similar to street addresses, memory addresses allow us to find where memory is.
+
+Each bit does not get its own address, each memory address holds 1 byte of data.
+
+In C++ we typically work with byte sized chunks of data.
+
+Adress 3: 11101000
+Adress 2: 00000000
+Adress 1: 10010111
+Address 0: 01101001
+
+Data Types:
+
+Because all data on a computer is just a sequence of bits, we use a data type to tell the compiler how to interpret contents of memory in a meaningful way.
+When we declare a variable an integer, we are telling the compile the piece of memory this var is going to use will be interpreted like an integer.
+
+When you give an object a value, the compuler and CPU ecnode into the sequence of bits for that data type.
+For example, 65 gets converted into a sequence of bits.
+
+Fundamental data types:
+
+there are fundamental types but are also called basic types or primitive types
+
+
+Types	Category	Meaning	Example
+float
+double
+long double	Floating Point	a number with a fractional part	3.14159
+bool	Integral (Boolean)	true or false	true
+char
+wchar_t
+char8_t (C++20)
+char16_t (C++11)
+char32_t (C++11)	Integral (Character)	a single character of text	‘c’
+short int
+int
+long int
+long long int (C++11)	Integral (Integer)	positive and negative whole numbers, including 0	64
+std::nullptr_t (C++11)	Null Pointer	a null pointer	nullptr
+void	Void	no type	n/a
+
+
+These besides null pointer we will explore, there are also more complex types called complex types
+
+Integer and integral are similar but have different meaningful
+Integer is a number with no fractional part
+Integral means like an integer, 
+
+Most modern langauges have a string type, but they are a compound type.
+
+the _t suffix: many of the types defined in newer versions of C++ use a _t suffix. This suffix means type and is common nomenclature applied to modern types

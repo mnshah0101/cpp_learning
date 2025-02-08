@@ -1,0 +1,48 @@
+4.4 Signed Integers
+
+An integer is an integral type that can represent positive and negative whole numbers including 0
+
+
+short int (16 bits)
+int (16 bits)
+long int (32 bits)
+long long int (64 bits)
+
+Larger integers can hold bigger numbers
+
+As an aside the bool and char are integral types (they store their values as integers)
+
+Signed Integers:
+- By default integers are signed, the sign is stored as part of the value
+- integer can take optional signed keyword
+
+
+Prefer the shorthand types that do not use the int suffix or signed prefix.
+
+
+Signed integer ranges:
+Since integers have different memory sizes, they have different valid ranges
+n bit signed integer has range -(2^n-1) to (2^n-1) -1
+8-bit signed is -128 to 127
+16-bit signed is -32768 to 32767
+32-bit signed is -2147483648 to 2147483647
+64-bit signed is -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+
+The range assumed two complement binary representation. This is defacto as its easy to implement in hardware
+In prior standard sign magnitue and ones complement were permitted.
+
+
+Overflow
+what if we assign 140 to 8-bit signed integer. This is called overflow.
+If an operation attempts to create a value outside the range it is called integer overvlow
+For signed integerse this will result in undefined behavior
+
+The output varies on machine sometimes it wraps around, sometimes it has a 0.
+
+Overflow results in information being lost
+
+Integer divison:
+It divides and gets rid of remainder
+
+
+

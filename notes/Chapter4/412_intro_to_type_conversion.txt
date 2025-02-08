@@ -1,0 +1,100 @@
+4.12 Introduction to Type Conversion and Static_Cast
+
+Implicit Type Conversion:
+
+Consider this program:
+#include <iostream>
+
+void print(double x) // print takes a double parameter
+{
+	std::cout << x << '\n';
+}
+
+int main()
+{
+	print(5); // what happens when we pass an int value?
+
+	return 0;
+}
+
+print() has a parameter of type double but the caller is passing value 5 which is type int
+
+C++ will allow us to convert to another fundamental type, called type conversion
+
+When the compiler does it on our behalf this is called implicit type conversion
+
+Type conversion produces a new value:
+it doesnt not change the value or the type of the value being converted, instead it creates a new one
+
+Type conversion uses direct initialization to produce a new value of the target type from a value of a different type.
+
+Implicit Type conversion warnings:
+Althuogh implicit is sufficient for most cases, there are a few cases where it is not.
+
+Consider: 
+#include <iostream>
+
+void print(int x) // print now takes an int parameter
+{
+	std::cout << x << '\n';
+}
+
+int main()
+{
+	print(5.5); // warning: we're passing in a double value
+
+	return 0;
+}
+We cahnged a doubel to an int, so the compiler will generate an error
+
+
+
+
+Can use static_cast to convert char to int 
+
+char ch{ 97 } // 97 is ASCII for 'a'
+
+We can also do static_cast<int>(ch)
+
+
+SIgn conversions using static_cast:
+Signed integral values can be converted to unsigned integral valuse, and vice versa using a static casts
+If the value being converted can be represented in the destination type the converted value will remain unchanged
+
+However, it can also module wrapp.
+Converting an unsigned integral value to a signed integral value will result in implementation-defined behavior prior to C++20 if the value being converted can not be represented in the signed type.
+
+std::int8_t and std::uint8_t likely behave like chars instead of integers
+
+
+Most compilers define and treat std::int8_t and std::unit8_t as signed char or unsigned char
+
+
+Because std::int8_t describes itself as an int, you might be tricked into believing that the above program will print the integral value 65. However, on most systems, this program will print A instead (treating myInt as a signed char). However, this is not guaranteed (on some systems, it may actually print 65).
+
+
+
+If you want to ensure that a std::int8_t or std::uint8_t object is treated as an integer, you can convert the value to an integer using static_cast:
+
+
+When std::int8_t is treated as a char, input from the console will cause problems:
+
+
+#include <cstdint>
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a number between 0 and 127: ";
+    std::int8_t myInt{};
+    std::cin >> myInt;
+
+    std::cout << "You entered: " << static_cast<int>(myInt) << '\n';
+
+    return 0;
+}
+
+Enter a number between 0 and 127: 35
+You entered: 51
+
+What happens is that it treats it as a sequence of characters, and 3 becomes 51

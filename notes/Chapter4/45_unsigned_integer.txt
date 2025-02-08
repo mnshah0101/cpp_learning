@@ -1,0 +1,53 @@
+4.5 Unsigned Integers
+
+Unsigned integers:
+they can only hold non negative whole numbers
+
+Defining Unsigned Integers
+you can use the unsigned keyword
+
+Unsigned Integer range:
+
+8 bit - 0 to 255
+its exactly 2^n - 1
+
+Remember the terms sighned and unsigned
+unsigned - no sign
+
+Unsigned Integer Overflow
+
+
+If an unsigned value is out of range it, it is divided one greater than largest number of the type and only the remainder is kept
+The number 280 is too big, and the largest is 256, so you get remainder 24 and remainder is what we get
+
+It basically wraps around (called modulo wrapping)
+
+You can also wrap in the other ditection since we cant have negative values
+In some compilers yo get warnings, and some don'tactics
+
+Many notable bugs in video game history happened due to wrap around behavior with unsigned integers. In the arcade game Donkey Kong, it’s not possible to go past level 22 due to an overflow bug that leaves the user with not enough bonus time to complete the level.
+
+In the PC game Civilization, Gandhi was known for often being the first one to use nuclear weapons, which seems contrary to his expected passive nature. Players had a theory that Gandhi’s aggression setting was initially set at 1, but if he chose a democratic government, he’d get a -2 aggression modifier (lowering his current aggression value by 2). This would cause his aggression to overflow to 255, making him maximally aggressive! However, more recently Sid Meier (the game’s author) clarified that this wasn’t actually the case.
+
+
+
+Controversy over unsigned numbers:
+many developers believe that developers should avoid unsigned integers
+This is largely because of two behaviors that can cause problems.
+
+First with signed values it takes little work to accidently overflow.
+
+Also when an unsigned integer is repeatedly decremented by 1, then it loops.
+
+When you mix them in operations, the signed integer will be converted into unsigned.
+
+The other case, is when we want something thats positive, and we use an unsigned, we lose that information.
+
+The program goes basllistic, and it can be hard to prevent this from happening.
+
+Favor signed numbers of unsigned numbers and avoid mixing them.
+
+So when should you use signed:
+They are preferred for bit manupuation and when well defined wrap around behavoir is required
+With array indexing its really good
+For embedded systems, it can be good if you have memory limits

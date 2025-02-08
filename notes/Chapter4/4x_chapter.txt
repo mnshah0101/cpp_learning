@@ -1,0 +1,33 @@
+Chapter REview
+
+
+The smalest unit of memory is a binary digit, also called bit.
+
+The smallest unit of memory that can be addressed is a byte.
+
+The modern standard is that a byte equals 8 bits.
+
+A data type tells the compiler how to interpret the contents of memory in some meaningful way.
+
+Void is used to indicate no type it is an incomplete type where the compiler doesn't know how much memory to allocate.
+
+the sizeof operator can be used to return the size of a type in bytes - its usually the size of the architecture - on 32 bit its 32 bits
+
+
+Signed - postive and negative
+Unsigned - positive
+Fixed Width - gauranteed sixes
+
+size_t - unsigned integral that is the size or length of objects
+Scientific Notation - short hand way of writing lengthy numbers
+Floating point - set of types designed to holdreal numbers, precision is how mnay sig figs, rounding error is when too many sig figs are stored,
+
+boolean - used to store true or false
+
+if statements - allow us to write certain code under certain conditions
+
+else statement can be used to executre a statement when a prioer if statement condition evals to false
+
+Char is used to store values that are interpreted as an ACII character. When using chars be careful not to mix up ASCII values and numbers
+
+Angled brackers are used in C++ to represent something that needs a paramterizable type. This is used in static_cast

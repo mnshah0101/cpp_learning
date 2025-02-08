@@ -1,0 +1,20 @@
+4.10 Intro to If statements
+
+An if statement allows us to execute a block of code only if a statement is true
+
+A condition (conditional expression) is an expression that evaluates to a boolean value.
+
+If else:
+
+This is used when we want to do something when something is true and something else in all other cases.
+
+Can also chain if statements to check if several things are true or not
+
+Non-boolean conditionals:
+Then the conditional expression will get caseted into a boolean value
+
+If-statements and early returns:
+
+A return statement that isnt' the last statement in a function is called an early return.
+
+Such a return statement will cause the function to return to the called 

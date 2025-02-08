@@ -1,0 +1,28 @@
+4.7 Introduction to Scientific Notation
+
+Scientific notation is useful shorthand for writing lengthy numbres in a concise manner,
+
+Numbers in scentific notation take the form signficant * 10^names
+
+We can make really large or small numbers smaller in scentific notation (when it has a lot of zeros)
+
+We can use the letter e to represent times 10 to the power of
+
+Sig Digits:
+The digits in the significad are the signficant digits
+
+The more digist in the significant the more precise a number is
+
+3.14 is 3.14e0 
+
+how the convert decimals numbers to scientific notation
+Use the following procedure
+
+You want to make it so only 1 digit to the left of the period
+
+
+Trailing 0s after a decmical are considered 0, but for decimals with no trailing zeros, they are insignificant
+
+so 87.0 the 0 is signifcant to signify the precision
+
+Once stored in memory there is no way to tell the difference but its good to have it as literals

@@ -1,0 +1,70 @@
+4.11 chars
+
+To this point the fundamentals we've looked at hold numbers or true/false values.
+
+But what if we want to store letters or puncutation.
+
+The char data types holds a single character.
+
+The char data type is an integral type, meaninf the unferlying value is an integer.
+
+The integer stored by char is an ACII character
+
+ASCII stands for American Stanard Code for Information Exchange
+
+Codes 0-31 and 127 are unprintable chars.
+THey were for peripheral decices like printers. Most are obslete.
+
+You can init using character literals or integers
+
+We can use std::cout to print char as an ASCII
+
+Because extracting input ignores leading whitespace.
+
+One easy way to address this is to use std::cin.get()
+
+Char size, range, default sign:
+
+Char is defined by C++ to be one byte in size,
+A char might be signed or unsigned, thought its usually signed.
+
+A signed char can hold between -128 and 127, an unsigned can hold between 0 and 255
+
+Escape sequences:
+
+Some characters are escampe, which is 
+'\n' which can be used to print a newline
+
+Another one is '\t' which embeds a horizontal tab:
+Three other notable escape sequences are:
+\’ prints a single quote
+\” prints a double quote
+\\ prints a backslash
+
+Its called an escape sequence since it leaves the actual text. They start wiht a backslash
+
+Newline vs std::endl:
+newline doesnt flush, std::endl flushes
+
+
+Whats the difference between putting symbols in single and double quotes:
+text between single quotes is treated as a char literal which represents a single character,
+for example 'a' represents the character 'a' '+' is the plus operator and '5' is the character 5
+
+Text between double quotes is a C-style string leteral which contains multiple characters.
+
+Avoid multicharacter literals: many C++ compilers support multicharacters literals which are char literals that contian multiple characters,
+multicharacter literals have implementation defined values
+'/n' is a multicharacter literal
+What about other char types: wchat_t, char8_t, char16_t and char32_t
+
+Much like ASCII maps to 0-127 to english characters other character encoding standards exist.
+The unicode standard maps over 144,000 integers to characters
+Unicode needs 32 bits
+char16_t and char32_t were added to C++11 to provide explicit support for 16-bit and 32-bit Unicode characters. These char types have the same size as std::uint_least16_t and std::uint_least32_t respectively (but are distinct types). char8_t was added in C++20 to provide support for 8-bit Unicode (UTF-8). It is a distinct type that uses the same representation as unsigned char.
+
+
+
+You won’t need to use char8_t, char16_t, or char32_t unless you’re planning on making your program Unicode compatible. wchar_t should be avoided in almost all cases (except when interfacing with the Windows API), as its size is implementation-defined.
+
+wchar_t is for windows

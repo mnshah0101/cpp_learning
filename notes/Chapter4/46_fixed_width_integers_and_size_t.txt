@@ -1,0 +1,147 @@
+4.6 Fixed Width Integers and Size The
+
+C++ only gaurantees integer variables will have a minimmum size
+For example int has a min size of 16 bits but its typically 32-buts modern architecture
+
+If you assume int 32 bits because thats most likely then your program will misbehave on architectures where int is actually 16 bits. 
+
+
+#include <iostream>
+
+int main()
+{
+    int x { 32767 };        // x may be 16-bits or 32-bits
+    x = x + 1;              // 32768 overflows if int is 16-bits, okay if int is 32-bits
+    std::cout << x << '\n'; // what will this print?
+
+    return 0;
+}
+
+on a machine where int is 32 buts, the value 32768 fits within the range of an int and will print 32768, however when it oesnt fit we will cause overflow and -32768 will be stored in x and then printed.
+
+This usuallu desont matter with small number of variables but when millions of int variables, wasting 2 bytes of memory per variable can have a signifiact impact on the programs overall memory usage.
+
+Why isnt the integer type fixed?
+The short answer is that this goes back to the early days of C when computers were slow.
+C opted to intentionally leave the size of an integer open so that the compiler implementers could pick a size for int that performs the best on the target architecture.
+The lack of consistent standards ranges for the various integral types sucks, especially when want to be portable.
+
+
+Fixed Width integers:
+To address the above issues C++11 has fixed width integers:
+
+std::int8_t - 1 bbyte signed
+std::uint8_t - 1 byte unsigned
+... has for 16, 32, 64
+
+#include <cstdint> // for fixed-width integers
+#include <iostream>
+
+int main()
+{
+    std::int32_t x { 32767 }; // x is always a 32-bit integer
+    x = x + 1;                // so 32768 will always fit
+    std::cout << x << '\n';
+
+    return 0;
+}
+
+Best practice:
+use a fixed width integer when using integral type that has a guaranteed range
+
+std::int8_t and std::unit8_t behave like chars,
+the modern compilres usually treat fixed width types as chars, they are the same as signed char and unsighed create
+#include <cstdint> // for fixed-width integers
+#include <iostream>
+
+int main()
+{
+    std::int8_t x { 65 };   // initialize 8-bit integral type with value 65
+    std::cout << x << '\n'; // You're probably expecting this to print 65
+
+    return 0;
+}
+it probably wont, it will print 65 char, it statically casts
+
+
+The fixed-width integers dont define new types they are just aliases existing integral types with the desired types, the compiler gets to determine which type is aliased.
+
+std:int8_t is an alias for signed char
+
+However in rare cases, the implementation may decide to make std::int8_t
+
+Fixed width has some downsides:
+they are not guaranteed to be defined on all architectures
+THey only exist on systems where there are fundamental integral types that match.
+However, given that modern architectures have standardized around 8/16/32/64-bit variables, this is unlikely to be a problem unless your program needs to be portable to some exotic mainframe or embedded architectures.
+
+Second, they may be slower than wider type on some architectures, for example if you need an integer that is guaranteed to be 32 bits, and the CPU is faster at 64 bit integers, it will slove your program.
+Modern programs are constrained by memory usage than processing type.
+
+Fast and least integral types
+THe fast types provided the fastest signed/unsigned integer types with a width of atleaset # bits:
+std::int_fast#_t
+the least types proide the smallest signed/unsighed type with a width of atleast # bits
+std::int_least#_t
+
+Not many programmer know how to use them and a lack of familiarlity can lead to errors
+
+Avoid the fast and least integral types because they may exhibit different behaviors on architectures where they resolve to different sizes.
+
+
+Best Practices for integral types:
+There is little consesus on integral best practices.
+
+Our stance is that its better to be correct than fast, and better to fail at compile time than runtime.
+Best practice
+
+Prefer int when the size of the integer doesn’t matter (e.g. the number will always fit within the range of a 2-byte signed integer). For example, if you’re asking the user to enter their age, or counting from 1 to 10, it doesn’t matter whether int is 16-bits or 32-bits (the numbers will fit either way). This will cover the vast majority of the cases you’re likely to run across.
+Prefer std::int#_t when storing a quantity that needs a guaranteed range.
+Prefer std::uint#_t when doing bit manipulation or well-defined wrap-around behavior is required (e.g. for cryptography or random number generation).
+Avoid the following when possible:
+
+short and long integers (prefer a fixed-width integer type instead).
+The fast and least integral types (prefer a fixed-width integer type instead).
+Unsigned types for holding quantities (prefer a signed integer type instead).
+The 8-bit fixed-width integer types (prefer a 16-bit fixed-width integer type instead).
+Any compiler-specific fixed-width integers (for example, Visual Studio defines __int8, __int16, etc…)
+
+What is std::size_t
+
+#include <iostream>
+
+int main()
+{
+    std::cout << sizeof(int) << '\n';
+
+    return 0;
+}
+
+sizeof returns an integer value of type std::size_t which returns size in bytes
+
+std::size_t is an alias for an implementation defined unsigned integral type, it is used within the standard library to represent the byte size of len
+
+std::size_t is actually a typedef
+
+std::size_t is defined in a number of different headers. If you need to use std::size_t, <cstddef> is the best header to include, as it contains the least number of other defined identifiers.
+
+If you use std::size_t explicitly in your code, #include one of the headers that defines std::size_t (we recommend <cstddef>).
+
+Using sizeof does not require a header (even though it returns a value whose type is std::size_t).
+
+std::size_t various in size, but at least 16 bits and usually equialent to the address width
+
+the sizeof operator returns a value of type std::size_t
+
+std::size_t imposes an upper limit on the size of an object
+If it were possible to create a larger object than sizeof would not be able to return its byte size
+
+As an aside…
+
+The size of std::size_t imposes a strict mathematical upper limit on an object’s size. In practice, the largest creatable object may be smaller than this amount (perhaps significantly so).
+
+The largest value of std::size_t is the largest object creatable in C++
+
+Some compilers limit the largest creatable object to half the maximum value of std::size_t (an explanation for this can be found here).
+
+Other factors may also play a role, such as how much contiguous memory your computer has available for allocation.

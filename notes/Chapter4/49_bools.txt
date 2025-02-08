@@ -1,0 +1,32 @@
+4.9 Boolean Values:
+
+Boolean values store yes or no (two value possibilities)
+
+A boolean var can be true or false
+
+You use the keyword bool to declare a boolean variable
+
+The ! operator flips a boolean value
+
+
+They are stored as integral values: 1 (true) or 0 (false)
+
+When we print bool values, it prints 0 for false and 1 for true 
+
+usd std::boolalpha to print true or false, this is a output manipilator
+
+Integer to boolean conversion: you can init a var using integer integrals: 0 for false 1 for true, others cause errors
+
+In any other context an integer can be converted to a boolean, the integer is converted to false and any other is true
+
+Anything besides numeric for std::cin will be true for boolean inputs
+
+Any non numeric will be false and std::cin will be in failure modern
+
+Enabling std::boolalpha will allow lower case false or true
+
+Boolea return values:
+
+Boolean values are used as the return values for functions that check whether something is true or not.
+
+They usually start with the word is or has, like isEqual
