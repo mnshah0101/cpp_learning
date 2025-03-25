@@ -1,0 +1,68 @@
+Constant expressions
+
+By default expressions are evaled at runtime
+Non I/O expressions can be valed at compile time
+The optimizer can shift work by doing at compile time
+
+constexpr variables require an initializer that can be evaluated at compile-time
+
+In cases where a constant expression is required but one is not provided, the compiler will error and halt compilation.
+
+A few common cases where a compile-time evaluatable expression is required:
+
+The initializer of a constexpr variable 
+A non-type template argument 
+The defined length of a std::array 
+
+Benfits of Compile Time Programming:
+The as-if rule should theoretically make some parts evaluated at compile time, but if we really need something evaluated at compile time we are at mercy of the compiler
+To improve upon this situation, the C++ language provides ways for us to be explicit about what parts of code we want to execute at compile-time. The use of language features that result in compile-time evaluation is called compile-time programming.
+
+
+This helps with performance (more compiled code), versaility (can use in places that reqires compile time value), predictablity (we can have the program halt if it doesnt do certain compile time evlas), and quality (undefined behavior not allowed at compile time).
+
+These are most important with compile time programming:
+- Constexpr functions 
+- Constexpr variables
+- Templates
+- static_assert
+
+Constant expressions:
+constant expressions form the backbone of compile time programmign
+A constant expression is a non-empty sequence of literals, constant variables, operators, and function calls, all of which must be evaluatable at compile-time.
+if not a compile time expression it is a runtime expression
+
+Constant expressions can be evaluated during translation, which is the whole process of preproccessing, compiling and linking
+
+
+Literals (e.g. ‘5’, ‘1.2’)
+Most operators with constant expression operands (e.g. 3 + 4, 2 * sizeof(int)).
+Const integral variables with a constant expression initializer (e.g. const int x { 5 };). This is a historical exception -- in modern C++, constexpr variables are preferred.
+Constexpr variables (discussed in upcoming lesson 5.6 -- Constexpr variables).
+Constexpr function calls with constant expression arguments (see F.1 -- Constexpr functions).
+
+
+Things that require runtime cannot be used
+
+
+Const integral types were grandfathered in since they were alerady being used.
+The committee discussed whether const non-integral types with a constant expression initializer should also be treated as constant expressions (for consistency with the const integral types case). Ultimately, they decided not to, in order to promote more consistent usage of constexpr.
+
+The compiler is only required to evaluate constant expressions at compile-time in contexts that require a constant expression.
+
+The const keyword requires it,
+Even when not required to do so, modern compilers will usually evaluate a constant expression at compile-time when optimizations are enabled.
+
+The likelihood that an expression is fully evaluated at compile-time can be categorized as follows:
+
+Never: A non-constant expression where the compiler is not able to determine all values at compile-time.
+Possibly: A non-constant expression where the compiler is able to determine all values at compile-time (optimized under the as-if rule).
+Likely: A constant expression used in a context that does not require a constant expression.
+Always: A constant expression used in a context that requires a constant expression.
+
+
+
+Why compile time expressions must be constant:
+
+if the value is changed the compiler doesn't know what the value is, for example, in a std:: in >> x;
+The compiler could say when it knows the value and when it doesn't but this would add complexity

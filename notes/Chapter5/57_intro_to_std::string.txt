@@ -1,0 +1,59 @@
+5.7 Introduction to std::string
+
+While C style strings are fine ot use, they behave oddly, 
+
+std::string and std::string_view can be used.
+
+THey arent fundamental types, they are class types
+
+
+Introducing std::string
+ 
+ std::string nane {}; - empty string
+
+ just like normal vairables you can innit or assign values to std::string objects
+
+ C++ doesnt covnert strings to integers
+
+ std::string objects can be pushed into std:: cout
+
+ when extracting into a string we only get characters up to the first whitespace it encounters
+
+ To read a full line we can use te std::getline() to input text
+ it requires the std:: in and your string variable
+
+ what the heck is std::ws?
+
+ This is an input manipulator, which ignores whitespace befoer extraction, which can be spaces, tabs or newlines
+
+ std::cin not only gets the value but also the whitespaces '\n'
+
+ We can use the length() method on a std::string
+
+ std::string deso not include the null terminator
+
+ This is a member function
+
+ it returns an unsigned integral value most likely of size_t
+ you can also use the stdd::ssize()
+
+ Init a std::string is expensive
+
+ do not pass it as a value since it creates an expensive copy use string_view instead
+
+ Literals for std::string
+ Double quoted string literals are C style strings by default
+
+
+ we can create a string literal w type std::string by using the s suffix "goo\n"s
+
+the s suffix is in std::lieterals::string_literals
+
+you wont use std::string literals very often, since you can init with a string
+
+
+if you try to define constexpr std::string you will get an error, since it isn't suppoirt in C++17 or earlier
+
+use std::string_view instead
+
+

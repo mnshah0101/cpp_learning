@@ -1,0 +1,48 @@
+Const Expression Variables
+
+The compile time const challenge
+
+IN the prior lession we noted one way to create a var that can be used in a constant expression is to use the const keyword.
+
+Only integral types can be used.
+
+However, the use of const to create vars has these effects:
+- it is not immediatly clear, for example if we have a function call
+
+Const doesn't tell the compiler we require it usable in a constant expression
+Doesnt extend to non integrals
+
+
+
+The constexpr keyword is always a compile-time constant
+
+It must be initalized with a cosntant expression or it will lead to a compile time error.
+
+const means it cannot be changed after initalized
+constexpr means it can be used in a constant expression
+
+constexpr vars are implicitly constants:
+constexpr double gravity {9.8};
+
+objects that use dynamic memory allocation are not fully compatible with constexpr
+
+- integral consts can be used to create static arrays since they are constant expression variable
+
+Const and constexpr function parameters:
+const function parameters are treated as runtime constants - non modifyable
+function parameters cannot be declared as constexpr since their init value isn't determined till runtime
+
+
+Nomenclature
+Compile time constant  - a nonmodifable object whos value is known at compile time
+Constexpr- can be a part of a constant expression
+Constant expresion - an expression that contains compile time consntas and operators
+Runtime expression - an experssion that is not a constant expression
+
+
+
+Brief Introduction to constexpr function
+
+A constexpr function is a function that can be called in an constant expression.
+It must eval at compile time when i a part of the constant expression that must eval at compile time
+

@@ -1,0 +1,78 @@
+Intro To Constants
+In programming a constant is a variable that cannot be changed.
+
+
+Named constants have identifiers associated with them 
+Literal constants don't have identifieres associated witht hem and live in the text of the progame
+
+There are three types of named Constants
+Cosntant Variables
+Object-like macros
+Enumerated constants
+
+
+
+Constant Variables
+- exactly what they sound like, varabiles whos value cannot be changed after it is initialized.
+- can use const before or after the types, common to use before, east const (after the type)
+
+Const vars must be initialized when you define them,
+Function params can be made const with the const keyword
+
+We generally dont do this because we dont care if the param is changed since it is copy assigned value
+
+
+Const return values - return values can also be const, for fundamental types this is ignored, but for complex types there is no point since we return temporary copies that will be destroyed anyway
+
+
+Why variables should be made constant
+
+If a variable can be made constant, it generally should be made constant. This is important for a number of reasons:
+
+It reduces the chance of bugs. By making a variable constant, you ensure that the value can’t be changed accidentally.
+It provides more opportunity for the compiler to optimize programs. When the compiler can assume a value isn’t changing, it is able to leverage more techniques to optimize the program, resulting in a compiled program that is smaller and faster. We’ll discuss this further later in this chapter.
+Most importantly, it reduces the overall complexity of our programs. When trying to determine what a section of code is doing or trying to debug an issue, we know that a const variable can’t have its value changed, so we don’t have to worry about whether its value is actually changing, what value it is changing to, and whether that new value is correct.
+
+
+Object like macros w sub text:
+
+- Substitiion with macros is pretty  much a constant value 
+
+
+The biggest issue is that macros don’t follow normal C++ scoping rules. Once a macro is #defined, all subsequent occurrences of the macro’s name in the current file will be replaced. If that name is used elsewhere, you’ll get macro substitution where you didn’t want it. This will most likely lead to strange compilation errors. For example:
+
+
+#include <iostream>
+
+void someFcn()
+{
+// Even though gravity is defined inside this function
+// the preprocessor will replace all subsequent occurrences of gravity in the rest of the file
+#define gravity 9.8
+}
+
+void printGravity(double gravity) // including this one, causing a compilation error
+{
+    std::cout << "gravity: " << gravity << '\n';
+}
+
+int main()
+{
+    printGravity(3.71);
+
+    return 0;
+}
+
+Second, it is often harder to debug code using macros. Although your source code will have the macro’s name, the compiler and debugger never see the macro because it has already been replaced before they run. Many debuggers are unable to inspect a macro’s value, and often have limited capabilities when working with macros.
+
+Using constants throughout a program, lets say for a phyical constant, we can make a file of constants and share them accross the program.
+
+Nomenclature- type qualifer
+const is a type qualifier
+
+it is a keyword to define how the type behaves
+volatile is the opposite of const and is used to show the value may changed
+
+cv-unqualified - means no type qualifier (int)
+cv-qualified - means type qualifier (const int)
+possibly cv-qualified  - could be qualifier

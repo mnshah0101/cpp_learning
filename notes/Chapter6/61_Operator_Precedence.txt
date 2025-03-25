@@ -1,0 +1,23 @@
+6.1 Operator Precedence and Associativity
+
+Chapter Introduction 
+
+Eval of compoind experssions
+
+
+
+Comoiler must do two things:
+the compiler must parse the expression and determine how operands are grouped with operators.
+
+This is done via precendence and associativit rulkes,
+
+At compile time or run time the operands are evaluated are they produce a result.
+
+
+Use parenthesis to make operations easier to undestand.
+
+Value computation means the execution of operators in an expression to produce a value.
+
+Evaluation of operands - term in C++
+
+Clang evaluaties left to right - GCC goes right to left

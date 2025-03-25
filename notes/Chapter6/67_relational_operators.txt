@@ -1,0 +1,34 @@
+6.7 Relational operators and floating point comparisions
+
+Relational operators let you compare two values
+
+
+Boolean conditional values:
+
+by default conditions in an if statement or conditional operators eval to a Boolean
+
+Comparision of calculated floating point values can be problematic
+
+while les than equal too usually produce a reliably answer, == doesn't 
+
+it is safe to compare a floating point literal with a variable of the same type that has been initialiezd with a literal of the same type, since they have the samae precision
+
+
+the most common way to compare is with an epsiolon (close enough)
+
+std::abs(a-b) <= epsiolon
+
+Donald Knuth - famous computer scientist suggested this method in hiss book: The Art of Computer Programming, Volume II: Seminumerical Algos (Addision-Wesley, 1969)
+#include <algorithm> // for std::max
+#include <cmath>     // for std::abs
+
+// Return true if the difference between a and b is within epsilon percent of the larger of a and b
+bool approximatelyEqualRel(double a, double b, double relEpsilon)
+{
+	return (std::abs(a - b) <= (std::max(std::abs(a), std::abs(b)) * relEpsilon));
+}
+In this case, instead if epsilon being an absolute number, epsilon is now elative to magnitude of a or b
+Can also make it constexpr
+
+In C++23, std::abs wasn't made constexpr until C++23
+

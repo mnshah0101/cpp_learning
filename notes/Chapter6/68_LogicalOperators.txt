@@ -1,0 +1,28 @@
+Logical Operators
+
+While relationla operators can be used to test whether a paticular condition is true
+or false, they can only test on condition at a time, often, we need ti nkow whether all the multiple numbers.
+
+
+Logical NOT - !
+Logical AND - &&
+Logical OR - ||
+
+NOT has a very high level of precedence
+
+Logical OR is used to test whether of two conditions is true.
+If left operand evaluates to true wherher either of the two conditions is true.
+
+Logical and is used to test whether both are true
+
+Short circuit evaluation
+short circuit means if x==1 && ++y == 2 
+if x not 1 then the second doesnt evlauation
+
+De Morgans - this is de Morgans
+
+XOR > C++ doesnt have a logical bitwise XOR
+
+
+opeeraot != produces the same as logical XOR given bool operands
+

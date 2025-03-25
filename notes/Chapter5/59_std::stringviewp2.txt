@@ -1,0 +1,102 @@
+5.9 -- std::string_view p2
+
+
+This is our first encounter with a view type, lets spend some more time discussing it further 
+
+In intro to owners and viewers
+
+say you paint a piecture of a bicycle but you dont have one
+
+you could go to the sore to buy one, you own that bike
+
+ownership is expensive, as an owner, it is your responsoibility to acquire manage and dispose the objects
+
+you could instead just paint a picture of your ornwers bike, you save a lot of time, but you cant customize or ride it, you are just a viewers
+
+std::string is a sole owner
+that is why std::string is so expensive, it allocates memory and is responsible for getting rid of it
+std::string has an independent place in memory to access
+once initilization is complete, you cant trust the initializer (the literal used to initialize it)
+
+it is usually destroyed after init
+the initilized object has no control over the initlization value
+when we call an object an owner, it is usually the sole owner unless specified
+
+
+We dont always need a copy, say we want to pass in a function that doesnt modify it but just uses the value
+
+std::string_view is a viewers
+instead of making a copy of the string, it makes an inexpensive copy of the view
+std::string_view remains dependent on its initializer through its lifetime, 
+if the initializer is damaged, we get undefined behavior
+
+std::string_view is best used as a read only function parameters
+
+Here are some misuses:
+we create a s inside a nested view then create a string view on it, at the end of the block the string is destroyed but the string_view doesnt know
+same with a function that returns a string, the string is going to be destroyed unless used outside
+
+Revalidating an invalid std::string_voew
+
+we can make them valid again by assinging a new valid string to view
+sv = s;
+
+
+be careful when returning a string view if it is viewing a local var
+
+two cases when it is safe to return string_view
+first is when viewing a c style string since they live for the entirety of the program
+
+
+
+
+The second one is a function parameter is okay to return since it is out of the scope
+
+if the string passed in is to be killed at the end of the expression than the sv must be used then since it will be left danging after
+
+View modification functions
+we can modify our view of the string
+
+the remove_prefix() removes characters from the left side (n characters)
+remove_suffix() removes characters from the right side of the view (n characters)
+
+The only way to reset the view is by reassining 
+
+std::string_view can also view a substring
+
+it also may or may not be null terminated, if it is viewing the whole string then it will be viewing the null terminated part if not, then no
+if you need a null terminated, you can always turn it into a string
+
+Use a std::string variable when:
+
+You need a string that you can modify.
+You need to store user-inputted text.
+You need to store the return value of a function that returns a std::string.
+Use a std::string_view variable when:
+
+You need read-only access to part or all of a string that already exists elsewhere and will not be modified or destroyed before use of the std::string_view is complete.
+You need a symbolic constant for a C-style string.
+You need to continue viewing the return value of a function that returns a C-style string or a non-dangling std::string_view.
+Function parameters
+
+Use a std::string function parameter when:
+
+The function needs to modify the string passed in as an argument without affecting the caller. This is rare.
+You are using language standard C++14 or older and aren’t comfortable using references yet.
+Use a std::string_view function parameter when:
+
+The function needs a read-only string.
+The function needs to work with non-null-terminated strings.
+
+
+
+Return types
+
+Use a std::string return type when:
+
+The return value is a std::string local variable or function parameter.
+The return value is a function call or operator that returns a std::string by value.
+Use a std::string_view return type when:
+
+The function returns a C-style string literal or local std::string_view that has been initialized with a C-style string literal.
+The function returns a std::string_view parameter.

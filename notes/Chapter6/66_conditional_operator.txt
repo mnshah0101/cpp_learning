@@ -1,0 +1,49 @@
+6.6 Conditional Operator
+
+? - arithmetic if is a ternary operator
+
+- it is called the ternary operator
+
+condition ? expression1: expression2
+
+The conditional operator evaluates as a part of an expression
+
+Parenthsizing the conditional operator:
+
+Beccause c++ pritizoriexes the eval of most operators over the conditional operator, it is quite easy to write expressions using the conditional operator
+
+#include <iostream>
+
+int main()
+{
+    int x { 2 };
+    std::cout << (x < 0) ? "negative" : "non-negative";
+
+    return 0;
+}
+
+std:cout becomes false as an expression
+
+The type of this expressions must match or be convertible:
+
+To avoid such eval prioriziation: 
+
+int z { (x > y) ? x : y };              
+
+std::cout << (isAfternoon() ? "PM" : "AM"); // used in compound expression, condition contains no operators (function call operator excluded)
+
+
+The type of the expresions must match or be convertible
+T
+To comply with C++’s type checking rules, one of the following must be true:
+
+The type of the second and third operand must match.
+The compiler must be able to find a way to convert one or both of the second and third operands to matching types. The conversion rules the compiler uses are fairly complex and may yield surprising results in some cases.
+
+Alternatively, one or both the second and third operands is allowed to be a throw expresion
+
+In general, its okay to mix operands with fundamentals types. if either operand is not a fundamental type, you can explicitly convert
+
+If x is constexpr, then the condition x != 5 is a constant expression. In such cases, using if constexpr should be preferred over if, and your compiler may generate a warning indicating so (which will be promoted to an error if you are treating warnings as errors).
+
+Since we haven’t covered if constexpr yet (we do so in lesson 8.4 -- Constexpr if statements), x is non-constexpr in this example to avoid the potential compiler warning.

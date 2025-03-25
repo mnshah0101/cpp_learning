@@ -1,0 +1,36 @@
+6.2 Arithmetic Operators
+
+There are two unary arithmetic operators 
+
+Unary arithmetic operators:
+unary minus +x, -x (value of x and negation)
+
+Binary arithmetic operators:
+
+addition > +
+subtraction > -
+multiplixation > *
+division > /
+remainder > %
+
+division operator has two modes - integral and floating point
+
+
+using static_cast<> to do floating point division w integers
+
+static_cast<double>(x)
+
+Dividing by 0 causes undefined behavior
+
+The result of float division is NaN or Inf
+
+Arithmetic Assingment operators:
++=
+-=
+*=...
+
+
+Modifying and non-modifying oeprators:
+
+some non modifying operators are =
+(assignment increment/decrement operators are the two types)

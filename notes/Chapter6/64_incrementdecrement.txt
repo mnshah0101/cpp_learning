@@ -1,0 +1,35 @@
+6.4 Increment/decrement operators
+
+Increment and decrement variables
+
+- Prefix > ++ ++x (increment x then return x)
+- Prefix decrement --x (decrement x then return x)
+- Postfix increment (post-increment) ++ (x++) Copy x, then increment x, then return the Copy
+- Postfix decrement (post-decrement) -- (x--) Copy x, then decrement x, then return the Copy
+
+Prefix is straightforward
+Postfix  are tricker, first a copy of the oeprand is made, then the operand is increment/decremented, then the copy is evaluated to the expression.
+
+Side effects >
+ a function or expression is said to have side effects if it has some observable effect beyond producing a return value
+
+Side effects can cause of order evaluation issues:
+
+int value{ add(x, ++x)}
+
+The sequencing of side effects:
+
+- undefined behavior:
+int value{ add(x, ++x)} - is this 5 + 6 or 6 + 6
+
+The C++ standard doesnt define these things so the compiler can do whatever is most natural
+
+The sequencing of side effects:
+In many cases, C++ also does not specify when the operators must be applied. This can lead to undefined behavior in cases where an object with a side effect is used more than once in the same statement
+
+For example, the expression x + + ++x in unspecified behavior.
+There is difference in how Clang, VSCode and GCC intereprets these kinda things
+
+Even when the C++ standard does make it clear how things should be evaluated, historically this has been an area where there have been many compiler bugs. These problems can generally all be avoided by ensuring that any variable that has a side-effect applied is used no more than once in a given statement.
+
+

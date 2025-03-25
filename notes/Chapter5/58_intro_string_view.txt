@@ -1,0 +1,28 @@
+5.8 Intro to std::string_view
+
+Init and copying a std::string is slow
+
+std::string_view:
+ 
+provides read only access to an exisiting string without making a copy
+this is great for function parameters
+
+
+std::string_view can be init with many types of strings, with a C style, std::string, or a another std::string_view
+
+the std::string_view also accepts many types of string as a string arguement, it will just get casted
+
+std::string_view will not implicitly convert to std::string
+
+
+
+If we desire this we can explicitly create or use static ast
+
+Assinging a new string to a std::string_view causes it to view a new string, it doesn't change the string
+
+
+sv creates a string view by default
+
+std::string_view has full support for constexpr
+
+conexpr str std::string_view is the preferred choice when symbolic constants are needed

@@ -1,0 +1,20 @@
+Numeral Systems  (decimal, binary, hexadecimal, and octal)
+
+In everyday we use the decimal system, so this is the one built in
+In binary there are only 2 digits: 0 and 1 so it is called base 2:
+in order of popularity we have decimal, binary, hexadecimal, octal
+
+in ocotal avaiable digits are 0,1,2,3,4,5,6,7
+Numbers are outputted in decimal by default
+
+for binary we use the 0b, hexademical we use 0x, we can use ' as decimal seperators.
+to output in the different numerical systems you can do std::cout << std::oct <<
+
+
+can use std::bitset <8>  as a type to store a bit literal
+
+and then we can print it
+
+you can also use the std::format("{:b}\n", 0b00101)
+
+32 > 20 in hexademical and 100000 in binary

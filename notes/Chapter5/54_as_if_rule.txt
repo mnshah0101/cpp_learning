@@ -1,0 +1,59 @@
+As If Rule Compile Time Optimization
+
+Optimiaztion is changing software to make it run faster
+Profiler can be used to basically see how long various parts of the program take to work
+Since hand optimizations take forever we usually focus on large improvements like changing an algo or data structure
+A program that automatically does optimizations is called an optimizer
+They look for low level ways to improve speed, for example it may turn i = i*2 into i*=2
+A programmer might not know all the optimzation son a given architecture with a given version of C++
+Modern C++ compilers have optimzeres built in
+Moden optimizers have different optimiztion levels, some are more aggresive and could change what the developer intentioned to do
+
+Most compilers default to no optimization,
+the as if rule says the optimizer should be able to affect the code as much as it likes as long as it does not affect a programs observable behavoior
+
+
+Compilation Oppurtunities
+
+#include <iostream>
+
+int main()
+{
+	int x { 3 + 4 };
+	std::cout << x << '\n';
+
+	return 0;
+}
+
+Since 3 + 4 is always constant, we can just print 7
+
+
+Modern C++ compilers are capable of fully or partially evaluating certain expressions at compile-time (rather than at runtime). When the compiler fully or partially evaluates an expression at compile-time, this is called compile-time evaluation.
+
+The compiler gets rid of some long runtime portions that we can get rid of at compile time
+
+Different types of compile time eval:
+
+Constant folding: the compiler replaces expressions with literal operands with the calcaulted value
+
+Constant Propogation: instead of grabbing the value from memory everytime, it replaces constant with the literal
+
+Deadcode Elimination: gets rid of unreachable code or no affect on the programs behavoior, such as vars not used anywhere
+when a variable is removed from a program we can say it has been optimized out
+
+
+We can help the compiler find constants that dont change by using the constant keyword
+Optimizations can make the compiled code hard to bug since it removes and switches out certain lines
+
+
+Constants in C++ are sometimes divided into two informal categories.
+
+A compile-time constant is a constant whose value is known at compile-time. Examples include:
+
+Literals.
+Constant objects whose initializers are compile-time constants.
+
+Runtime constants - non modfiyable but value not known till runtime
+Constant function parameters.
+Constant objects whose initializers are non-constants or runtime constants.
+

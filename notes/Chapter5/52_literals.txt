@@ -1,0 +1,59 @@
+5.2 Literals
+
+Literals are values in our code, and are someimtes called literal constants
+
+The type is deduced from the literals value
+
+Literals aren't always from the type that is desired, you can change the type by adding a suffix.
+
+Longs - l and floats f, strings are s, uL, uI,
+
+In most case its fine to use unsuffixed ints when casting for example: 
+int main()
+{
+    int a { 5 };          // ok: types match
+    unsigned int b { 6 }; // ok: compiler will convert int value 6 to unsigned int value 6
+    long c { 7 };         // ok: compiler will convert int value 7 to long value 7
+
+    return 0;
+}
+By default floatin g points are doubles, so they need to be explicitly casted with a suffix to a floating point,
+float f{4.1} causes a compiler error, need to specifiy 4.1f
+
+There are two different ways to write floating-point literals.
+
+double pi { 3.14159 }; // 3.14159 is a double literal in standard notation
+double d { -1.23 };    // the literal can be negative
+double why { 0. };     // syntactically acceptable, but avoid this because it's hard to see the decimal point (prefer 0.0)
+
+double avogadro { 6.02e23 }; // 6.02 x 10^23 is a double literal in scientific notation
+double protonCharge { 1.6e-19 }; // charge on a proton is 1.6 x 10^-19
+
+string literals: 
+
+std::cout << "Hello world !" << std:endl ; 
+
+"Hello, world!" is a string literal. String literals are placed between double quotes to identify them as strings (as opposed to char literals, which are placed between single quotes).
+
+Strings are not a fundamental type in C++ rather they are a more complex, strange type
+All C-Style strings have an implicit null terminator
+The reason for the null-terminator is also historical: it can be used to determine where the string ends.
+
+Unlike most other literals (which are values, not objects), C-style string literals are const objects that are created at the start of the program and are guaranteed to exist for the entirety of the program. This fact will become important in a few lessons, when we discuss std::string_view.
+Unlike C-style string literals, std::string and std::string_view literals create temporary objects. These temporary objects must be used immediately, as they are destroyed at the end of the full expression in which they are created. the literal goes away after the string object is made
+
+Magic Numbers
+
+A magic number is a literal (usually a number) that either has an unclear meaning or may need to be changed later.
+
+const int maxStudentsPerSchool{ numClassrooms * 30 };
+setMax(30);
+
+what does 30 mean in this context?
+what if we want to change 30 to 35, do we change it in both places or are they different
+
+magic Numbers are considered bad practice since we don't know immediately what they meaning
+
+Fortunately, both the lack of context and the issues around updating can be easily addressed by using symbolic constants:
+
+

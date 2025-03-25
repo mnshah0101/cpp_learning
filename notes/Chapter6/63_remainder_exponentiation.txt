@@ -1,0 +1,14 @@
+6.3 Remainder and Exponentation
+
+modulo operator returns the remainder after doing integral division
+
+remainder for negative numbers is the sign of x, x%y is a negative numbers
+
+takes sign of first operands
+
+std::pow is the exponent operator, and they may not be precise since float
+
+
+if you want integer exponents > make your own function
+
+function: 
