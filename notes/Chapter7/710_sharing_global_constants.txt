@@ -1,0 +1,53 @@
+7.10 Sharing global constants across multiple files using inline variables
+
+
+IN some applications, symbolic constants need to bs uesde throughout code,f or example pi
+
+Global constants as internal vars:
+this was the most common solution:
+- create a header file for these cosnatns
+- create a namespace with constants
+- include the header file wherever you needed it
+
+Since they have internal linkage, each .cpp file gets its own version of the global var the linker cant see
+
+if the program is big, and constants.h gets included in 20 files, there are 20 different duplicates
+
+this introduces two challenge:
+1) changing a single constant value would require recomplinge every file
+2) if constants are large in size, this can use a lot of memory
+
+Global constntas as extern:
+
+you can turn them into externs:
+however, since it is only constexpr inside the file it is defined, it won't be treated as a constexpr in other files
+in order for variables to be used in compile time contexts, the compiler must see the variable's definition
+
+Global constants as inline variables:
+
+this avoid both ODS and downside of duplicated variables, since they have external linkage by default
+
+Non-inline constexpr variables have internal linkage. If included into multiple translation units, each translation unit will get its own copy of the variable. This is not an ODR violation because they are not exposed to the linker.
+
+we can define them inline in a header file and each translation unit has its own definition, as long as they are all identical and it will only be instantiated once and shared across all code files,
+it does retaun the downside of every file that includes the constants header will have to be recompiled if any constant value is changed.
+
+
+
+inline makes it so Even though an inline function or variable might be defined in multiple translation units, only one definition should exist in the final binary.
+
+ Behind the scenes: How the linker handles inline entities
+Step-by-step:
+You mark something as inline (function or variable).
+
+The compiler sees that and:
+
+Emits the definition into each object file (.o) that includes it.
+
+Marks the symbol as "COMDAT" (in most ABIs/platforms like ELF, COFF, Mach-O).
+
+The linker sees the same symbol across multiple object files.
+
+Because it's marked COMDAT, the linker goes:
+
+“Ah, this is an inline definition. I’ll pick one, and discard the rest.”

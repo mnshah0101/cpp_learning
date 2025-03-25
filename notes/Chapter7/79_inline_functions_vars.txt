@@ -1,0 +1,59 @@
+7.9 Inline functions and variables
+
+
+Consider the case where you need to write some code to perform some task
+
+1_ Write the code as part of an existing functions: in-place
+2) create a new function to handle the task
+
+Putting the new code in a new function has good benfits:
+- easier to read and understand
+- easier to reuse 
+- easier to update 
+
+One big downside is wheneber we make a new function there is some performance overhead.
+
+Inline expansion:
+
+Fortunately the C++ compiler has a neat tricl: inline expansion is where a function call is replaced by the code from the function's definition
+
+The performance of inline code:
+inline expension has its own potential cost, if the body of the function being expanded takes more instructions than the function call being replaced, then each inline expansion will cause the executable to grow larger, and large executables don't fit in memory caches
+
+
+This means it is suited for small short functions
+
+When inline expansions occurs:
+each functions falls into two cateogires:
+- mayb expanded
+-cant be expanded
+
+most may be expanded, their function calls are expanded when its benefitial to do so, a modern compiler will 
+asses each function and each function call to make a determination of whether that function call would benefit from inline expansion.
+
+
+The most common kind of function that can't be expanded inline is a function whose definition is in another TU, since the compiler cant see it it cant do anything about it.
+
+Historically, compilers didnt heave the capability to determine whether inline expansion would be benefitical, so C++ provided the inline keyword
+
+now we let the compiler decide, its also defined at the wrong level, it should be defined at the function call
+
+The inline keyword modernly:
+
+
+in modern C++ the term inline means multiple definitions allowed,thus an inline function is one that is allowed to be defined in mulitple translation units
+
+- inline functions have two primary requirements 
+- a compuler needs to be able to see the full definition- the definition can occur after the point of use if a function declaration is also provided, except the compiler cant perform inline expansion unitl it is defined
+- every definition must be identifical, otherwise undefined behavorial will result
+
+
+since both files have a definition for function pi(), inline tells the compiler and linker there are multiple definitions of a function but it has the exact same definition
+
+historically we use inline for inline but now we use to violate ODR
+
+inline functions are typically used in header files and useful for header only libraries since no source files need to be linked
+
+making all functions inlien increases compile time a lot, and if a function defined in a single source file changes it all needs to be recompiled
+
+inline variables are also allowed to be defined in multiple files

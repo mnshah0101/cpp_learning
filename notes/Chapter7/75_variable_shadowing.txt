@@ -1,0 +1,9 @@
+7.5 Variable Shadowing
+
+Each block defines its own scope reigion. when nested vars hide outer variabes in areas when they are both in scope this is called Shadowing
+
+Avoid variable shadowing:
+
+Shadowing can lead to inadvertent errors where the wrong variable is used or modified.
+
+It is also trivially avoidable if we use the g_ prefix

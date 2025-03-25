@@ -1,0 +1,28 @@
+7.12 Scope Duration and Linkage Summary
+
+
+
+local scope:
+- local variables
+- function parameters
+
+global scope:
+- global vars
+- functions
+
+duration summary:
+- automatic duration: created in local scopes, end of scope it is destroyed
+- local vars/function parameters
+
+static duration: created at start up and destroyed at end
+- global vars
+- static local vars
+
+Linagy Summary:
+
+no linkage means it is a unique block only scope
+internal linkage means it can be used in the esame translation unit: static global vasrs, static functions, const global vars, and unnamaed namespaces
+exenterla linkage means it can be used program wide: non-static functions, non const global vars, extern const global vars, inline const global vars, namespaces
+
+identifiers with external linkage cause a duplicate deinfition linker error if deinfisions are cmopiled into more than on cpp file
+

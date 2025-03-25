@@ -1,0 +1,35 @@
+7.8 Why non const global vars are evil
+
+Why are non const global vars evil:
+
+biggest thing is their values can be change by any function that is called. and there is no easy way for the programmer to know this will happen.
+
+global vars make the programs state unpredicitable since every function call can be potentially dangerous
+
+
+
+Global vars make  your program less module and flexible, as you are relying on other stuff, a function that requiers nothing but its parameters can be used in other programs.
+
+The init order problem of global vars:
+The initialization of static vcars happens as a part of program start up before the main function
+this proceeds in two phases:
+the first phase is static init:
+- globa vars with const expr are initialized to those values, this is called constant init
+- global vars without inits are zero init, zero init is considered to be a form of static init since 0 is a constexpr value
+
+The second phase is dynamic init:
+this phase is more complex, but the gist is the global vars with non-const expr inits are initialiezd.
+
+The order in whcih static objects are init is ambigious:
+Given two files, a.cpp and b.cpp, either could have its global vars, and lets say those in b.cpp rely on the ones in a.cpp, there is no gaurantee of order
+
+this is called the static initialization order fiasco.
+
+
+Reason to use:
+there are rare cases, like a log file, since there is only one log gile, but lets say we want to change it based on the differentiate
+
+prefix all non-namepsaced global variables, or put them in a namespace
+its also good to encapsulate the var, make the sure the var can only be accessed from the file its declared in, and then provide global access functions
+
+or you can create a function in the namespace that uses the global variable

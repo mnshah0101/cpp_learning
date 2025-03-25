@@ -1,0 +1,81 @@
+7.13 Using declarations and using directives
+
+a qualified name is a name that includes an ossicated scope, names are qualified with a namespace using ::
+std::cout - qualified by namespace std
+
+
+an unqualified name is one that does not include a scoping qualifier: for example cout and x are unqualified names
+
+using declarations:
+a using declaration allows us to use an unqaulified name as an alias for a qualified name
+
+#include <iostream>
+
+int main()
+{
+   using std::cout; // this using declaration tells the compiler that cout should resolve to std::cout
+   cout << "Hello world!\n"; // so no std:: prefix is needed here!
+
+   return 0;
+} // the using declaration expires at the end of the current scope
+
+
+they are generally consdered safe
+
+using directives:
+Another way to simplify things is with a using-directives
+#include <iostream>
+
+int main()
+{
+   using namespace std; // all names from std namespace now accessible without qualification
+   cout << "Hello world!\n"; // so no std:: prefix is needed here
+
+   return 0;
+} // the using-directive ends at the end of the current scope
+
+this tells all the names in the std namespace should be usable
+
+Problems:
+using directives allow unqualified access to all the names including those you dont usethey don't prefer names form the namespace identified by the using directive over other names
+ 
+ #include <iostream>
+
+namespace A
+{
+	int x { 10 };
+}
+
+namespace B
+{
+	int x{ 20 };
+}
+
+int main()
+{
+	using namespace A;
+	using namespace B;
+
+	std::cout << x << '\n';
+
+	return 0;
+}
+
+
+this gives us ambiigious symbol error
+
+if a library does update, then we might get an error later
+
+
+The scope of using statements:
+If a using-declaration or using-directive is used within a block, the names are applicable to just that block (it follows normal block scoping rules). This is a good thing, as it reduces the chances for naming collisions to occur to just within that block.
+
+If a using-declaration or using-directive is used in a namespace (including the global namespace), the names are applicable to the entire rest of the file (they have file scope).
+
+do not use usting staemnets in header files or before an #include directive, since they will have major impact
+
+it makes it all order dependent as it may chnage if the identifiers have been introduced before them
+
+
+Once a using-statement has been declared, there’s no way to cancel or replace it with a different using-statement within the scope in which it was declared.
+

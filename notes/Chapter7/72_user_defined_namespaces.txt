@@ -1,0 +1,89 @@
+7.2 User Defined Namespaces
+
+Naming collision occurs when two identical identigiers are introduced in the same scope.
+
+
+Lets say you have functions that collide, but renaming them would mean changing the calls too.
+
+
+One way to get over that is to define your own namespace.
+
+
+namespace NamespaceIdentigier 
+{
+    //content of namespace here
+
+}
+
+it is convention to name program defined types with a capital letter: Foo::x
+
+there are two ways ti tell the compiler which version of a functions  to use: via the scope resolution operator or the using statements
+
+Accesing a namespace witht eh scope resolition operator (::)
+This is the best way, since it is the most lean
+It allows us to explicity pick which namespace to use
+
+Using the scope resoluiton operator with no name prefix:
+
+It can also be used without provideing a namespace, and the identifier will use the global namespace
+
+It we use inside a namespace with no scope resolution provided, the compuler will try to find the match in that namespace, 
+if no identifier is found, it will check each containing namespace, and then the global namespace
+
+for identifiers insside namespaces, the forward declarations also need to be inside the same name space
+
+add.h
+
+#ifndef ADD_H
+#define ADD_H
+
+namespace BasicMath
+{
+    // function add() is part of namespace BasicMath
+    int add(int x, int y);
+}
+
+#endif
+
+
+add.cpp
+
+#include "add.h"
+
+namespace BasicMath
+{
+    // define the function add() inside namespace BasicMath
+    int add(int x, int y)
+    {
+        return x + y;
+    }
+}
+
+Multiple namespace blocks are allowed in the same program, they are thought of as the same namespace.
+
+
+
+
+
+You can use nested namespacess too
+
+namespace Foo:Goo {
+
+}
+or 
+namespace Foo{
+    namespace Goo{
+
+    }
+}
+
+
+Namespace aliases
+
+because typing the qualified name inside a namespace can be default, you can create namespace alises.
+
+namespace Active = Foo:Goo;
+
+
+namespaces are meant to prevent collision, not to be used as classes.
+

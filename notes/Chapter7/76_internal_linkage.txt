@@ -1,0 +1,21 @@
+7.6 Internal linkage
+
+Global vs and function identigiers can either have internal linkage or exteneral linkage.
+
+an indeitifer with internal linkage can be seen within a single translation unit but are not accessible from other translation units.
+
+Global Variables with internal variables are called internval variables
+
+to make a non-constant global var internal we use the static keyword
+
+Const and constexpr have internal linkage by default
+
+the static kewyord is a storage class specifier, which sets the name's linkage and its storage duration:
+static, extern mutable are the most common
+
+const has internal linkage so that they are only propogated through header files 
+
+static vs unnamed spaces:
+unnamed namespaces can give internal linkage to a wider range of idenitifers
+
+

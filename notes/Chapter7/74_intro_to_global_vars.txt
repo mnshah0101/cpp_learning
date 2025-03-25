@@ -1,0 +1,30 @@
+7.4 Global variables
+
+in C++ vars can be defined outside functions, called global vars
+
+global vars are declared at the top of a file by oncetion.
+
+
+identifiers in the global namepsace have global namespace scope, which means they are visible from the point of definition until the end of the file in whcih they are declared.
+
+Once declared, a global var can be used anywhere in the file from that point onward.
+
+Global vars can also be defined in a user defined namespace.
+since the namespace has global scope, so does the variables.
+
+
+global vars have static duration:
+it is created when the program starts (before main executes) and is destroyed when it ends
+
+
+
+by convention, developers predix global var identifiers with "g" or "g_"
+
+"g_" is hungarian notation
+
+
+Unlike local vars which are unitiialized by defailt, variabes with static duration are zero-intialized by defailt.
+
+constexpr must be iniitalized (not zero iniitalized)
+const global vars can be init with a value
+

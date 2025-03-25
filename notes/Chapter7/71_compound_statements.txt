@@ -1,0 +1,13 @@
+7.1 Compound statements
+
+
+Blocks begin with a { } and statements to be executed are within them
+
+Blocks can be inside other blocks even though functions cant be inside other functions
+If statements are the most common example of blocks
+
+
+
+The nesting level/depth is the maximum number of nested blocks you can have inside the function, in C++, compilers should support 256 levels of nesting.
+
+best practice is 3 or less

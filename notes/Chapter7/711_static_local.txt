@@ -1,0 +1,45 @@
+7.11 Static local variables
+
+static has many meanings
+
+
+- static duration means variable exists from program start to end
+- static keyword gives global identifier with internal linkage
+
+
+
+lets talk about static with local variable
+
+
+Static Local Variables
+
+using the static keyword changes a local variable changes from automatic duration to static duration 
+a static variable retains its value even after it goes out of scope
+
+a static int s_value - this only runs once
+
+
+Static local variables that are zero-initialized or have a constexpr initializer can be initialized at program start.
+
+
+
+static loval vars that have no initializer or non-constexpr initalizer are zero initalized at program start
+and if they are initalized, they are initialized at program start and never ever
+since they have static duration, they are not explicityly zero initalized by default, local vars have garbage until they are initialized
+
+
+
+Static local variables are used when you need a local variable to remember its value across function calls.
+
+
+
+one of the most common use for static duration local vars is for unique ID generators, since they persist over the lifetime of the program and will remember what its on
+
+
+static variables persist but are only in scope in the function
+
+Static local constants
+
+Static local variables can be made const (or constexpr). One good use for a const static local variable is when you have a function that needs to use a const value, but creating or initializing the object is expensive (e.g. you need to read the value from a database). If you used a normal local variable, the variable would be created and initialized every time the function was executed. With a const/constexpr static local variable, you can create and initialize the expensive object once, and then reuse it whenever the function is called.
+
+Don’t use static local variables to alter flow since they are not gauranteed to be what you thinks

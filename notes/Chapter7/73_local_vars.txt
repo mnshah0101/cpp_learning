@@ -1,0 +1,20 @@
+7.3 Local variables
+
+There is no single atttirbute that defines a variable as local, they have several properites that differentiate them from non-local variables
+
+Local vars have block scope:
+they are in scope from their point of definition until the end of the block they are defined within
+
+Local variables have automatic storage duration:
+for automatic storage duration, they are created at the point of the definition and dstroyed at the nd of the block they are defined in
+
+local vars are sometimes called automatic vars
+
+ Local vars have no linkage:
+
+ linkage deterines whether a declaration of that same identifier refers to the same object or function
+ Local vars have no linkaege
+
+
+ Vars should be defined in the most limited scope:
+ if a var is only used in a nested block, it should be defined in that block.

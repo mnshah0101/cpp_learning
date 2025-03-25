@@ -1,0 +1,21 @@
+7,7 External linkage and variable forward declarations
+
+An identifier with external linkage can be seen and used from the file its defined and other files
+
+these identifiers are truly global
+
+functions have external linkage by default
+you need to use forward declarations to be able to use them
+
+global vars with external linkage:
+
+global vars with exeternal linkage are called external vars, we can use the extern keyword for this
+
+to actually use a external global var that has been defined in another file, you must place a forward declaration, which is also done by the extern keyword
+
+if you want to define an uninitlaized non constant global var, do not use the extern keyword, otherwise C++ thinks you are making a forward declaration.
+
+avoid using extern on a non const glob variable with an initializer
+
+onlu use extern for global var forward declarations or const global var definitions, since they are implicity extern
+
