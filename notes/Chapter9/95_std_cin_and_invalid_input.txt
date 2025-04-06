@@ -1,0 +1,80 @@
+9.5 std::cin and handling invalid input
+
+
+Most programs that have a user interface of some kind need to handle user input
+
+
+As you write programs you should consider how users will misuse the program and handle them gracefully to prevent them from happining in the first place
+
+We need to make it robust
+
+Before we discuss how std::cin and operator>> can fail, lets recap how they work;
+
+Here is a simplified view of how operator >> works:
+
+First leading whitespaces are discarded from the input buffer
+
+If it is empty, we wait for user to enter more data
+operator >> extracts as many consecutive characters as itc an, until it encounters a new line or non valid characters
+
+
+if no characters exctacted, 0 is assigned, and any future exctractions will fail until std::cin is cleared
+
+
+
+Validating Input
+
+Three basic ways to do input validation:
+
+Inline
+1) prevent the user from typing invalid input in the first place
+
+Post Entry:
+2) Let the user enter what ever, valid string is correct, then convert
+3) let user enter whatever they want, let std::cin and operator >> try to extract is an handle the error cases
+
+
+Some GUI and advanced text interfaces will validate input as the user enteres it.
+Can do this everytime a key is hit. std::cin doesn't support
+
+
+strings do not have restirctions on which chracters can be enetered, extraction is guaranteed to succeed 
+
+have std::cin and operator >> try to extract it, and deal with the fallout if it fails.
+
+four types of errors
+- input excratcion succeeds but input is meaningless (k for mathmatical oeprator'
+- input extraction succeeds but the user enters additional input (*q as mathmatical operator)
+- input extraction gails (q into numerical oeprator)
+- input etraction suceeds but the user oerflows a numeric value
+
+
+Error case 1: Extraction succeeds but input is meaningless
+
+Do a simple input validation and if not, make them try again
+
+Error case 2: Extraction succeeds but with extraneous input
+-cut the extraneous out by using std::cin.ignore(characters)
+
+Error case 3:Extraction fails
+
+when we try to put a string ito double
+
+the operator >> cant do the extraction, the std::cin is put in failure mode and 'a' is left in the buffer
+
+
+if std::cin.fail() >> std::cin.clear()
+ignoreLine()
+
+
+Checking for EOF:
+Another case if when no more data avaiable after an input operator fails. For example, if we were reading the contents of a file on a disk, and then try to read in more data after you've already reached the end of the file, an EOF will be generated
+in this case, we can just close the file and move on
+Now ocnsider std::cin, and it won't create an EOF
+best thing to do is to detect the EOF and then terminate the program
+
+this is a good canidate for an EOF
+
+Error case 4: Extraction succeeds but the user overflows a numeric value
+
+It assigns var to closest value but also puts into failure mode, treat same way as failed extraction.

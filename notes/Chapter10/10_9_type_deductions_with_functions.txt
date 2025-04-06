@@ -1,0 +1,71 @@
+10.9 — Type deduction for functions
+
+
+return type deduction with auto
+
+
+When this function is compiled, the compiler will determine that x + yevaluates to an int, then ensure that type of the return value matches the declared return type of the function (or that the return value type can be converted to the declared return type).
+
+Return type deduction with auto
+
+
+
+Since the compiler already has to deduce the return type from the return statement (to ensure that the value can be converted to the function’s declared return type), in C++14, the auto keyword was extended to do function return type deduction. This works by using the auto keyword in place of the function’s return type.
+
+Because the return statement is returning an int value, the compiler will deduce that the return type of this function is int.
+
+Benefits of return type deduction
+
+
+The biggest advantage of return type deduction is that having the compiler deduce the function’s return type negates the risk of a mismatched return type (preventing unexpected conversions).
+
+
+This can be particularly useful when a function’s return type is fragile (cases where return type is likely to change if the implementation changes). In such cases, being explicit about the return type means having to update all relevant return types when an impacting change is made to the implementation. If we’re lucky, the compiler will error until we update the relevant return types. If we’re not lucky, we’ll get implicit conversions where we don’t desire them.
+
+Downsides of return type deduction
+
+Functions that use an auto return type must be fully defined before they can be used (a forward declaration is not sufficient). For example:
+
+This makes sense: a forward declaration does not have enough information for the compiler to deduce the function’s return type. This means normal functions that return auto are typically only callable from within the file in which they are defined.
+
+
+When using type deduction with objects, the initializer is always present as part of the same statement, so it’s usually not overly burdensome to determine what type will be deduced. With type deduction for functions, that is not the case -- the function’s prototype gives no indication as to what type the function actually returns. A good programming IDE should make clear what the deduced type of the function is, but in absence of having that available, a user would actually have to dig into the function body itself to determine what type the function returned. The odds of mistakes being made are higher. Generally we prefer to be explicit about types that are part of an interface (a function’s declaration is an interface).
+
+
+Prefer explicit return types over return type deduction (except in cases where the return type is unimportant, difficult to express, or fragile).
+
+
+
+Trailing return type syntax
+
+The auto keyword can also be used to declare functions using a trailing return syntax, where the return type is specified after the rest of the function prototype.
+
+int add(int x, int y)
+{
+  return (x + y);
+}
+
+auto add(int x, int y) -> int
+{
+  return (x + y);
+}
+
+
+In this case, auto does not perform type deduction -- it is just part of the syntax to use a trailing return type.
+
+
+For functions with complex return types, a trailing return type can make the function easier to read:
+
+
+The trailing return type syntax can be used to align the names of your functions, which makes consecutive function declarations easier to read:
+
+
+Type deduction can’t be used for function parameter types
+
+
+Unfortunately, type deduction doesn’t work for function parameters, and prior to C++20, the above program won’t compile (you’ll get an error about function parameters not being able to have an auto type).
+
+
+
+In C++20, the auto keyword was extended so that the above program will compile and function correctly -- however, auto is not invoking type deduction in this case. Rather, it is triggering a different feature called function templates that was designed to actually handle such cases.
+

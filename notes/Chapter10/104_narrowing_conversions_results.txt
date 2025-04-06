@@ -1,0 +1,41 @@
+10.4 Narrowing conversions, list init, constexpr
+
+Narrowing conversionsL
+- potentially unsafe numeric conversion where destination type may not be able to hold all the values of the source type
+
+
+The following conversions are defined to be narrowing:
+
+- floating point to integral
+- floating to less ranked floating point
+- integral to floating point
+- from integral to smaller integral
+
+In most cases implicity convresions will result in compiler warnings
+
+
+They should be avoided as much as possible
+
+Make intentional narrow conversions explicity > document it and use static_cast
+
+Brace init disallows narrow conversions > you can use static cast inside
+
+
+Some constexpr conversions arent consdiered narrowing
+
+When source value of narrowing conversion isn't known till runtime,
+the case of the result cant be deermined until runtime
+but if we have a constexpr, and it is a positive value and we are turning it into unsigned, than that isn't narrowing
+
+
+
+List init with const expr initializeres:
+
+These constexpr exception clauses are incredibly useful when list initializing non-int/non-double objects, as we can use an int or double literal (or a constexpr object) initialization value.
+
+Since constexpr is done by the compiler this allows us to not need suffixes in most cases
+
+
+
+One caveat worth mentioning: initializing a narrower or lesser ranked floating point type with a constexpr value is allowed as long as the value is in range of the destination type, even if the destination type doesn’t have enough precision to precisely store the value!
+

@@ -1,0 +1,49 @@
+9.1 Introduction to testing your code
+
+If totally linear program, then if it runs and works than you are done.
+
+
+Scope Creep > adding new capabilities that were originally not planned for
+
+Software testing is determining whether or not the software actually works as expected.
+
+The Testing Challenge
+How to test properly? Do you need to test all cases or just the kinds of cases that approximate everything.
+
+Test your programs in small pieces.
+
+
+Consider an auto manufacturer that is building a custom conceept car.
+
+Which do they do:
+A) build and test each are component before installing it, then integrate it into the car and retest it to make sure the integration works
+B) build the car in one go and then test the whole thing first time right at the end
+
+If any of the car parts were to not work as expeced, the mechanic would have to diagnore the netire car to determine what was wrong, the issue can be anywhere. A symptopm might have many causes
+This leads to a lot of wasted time trying to idenify exactly where the problems are and it may cause ripple effects.
+
+In case a if the company tests as they go, if any component is bad right out of the box, they'll know immediately and can fix/replace it. We can find issues that are discoved as early as possible, while ethey are small problems that can be easily fixed.
+This analogy holds true for programs as well, new programmers dont realize it. 
+
+
+Testing a small part of ur code is called unit testing.
+
+There is more value in testing individual functions or classes before integrating tehm into the rest of the program.
+
+Informal testing:
+You can also write some code to test the unit that was just added, then erease the test once the test passes.
+
+Preserving your tests:
+Although writing temporary tests is a quick and easy way to test some code, it doesn't eaccount for the fact that at some point you may want to test that same code again later. Perhaps you modified a function to add a new capability and want to make sure you didn't break anything that was already working. It would be smart to preserve your tests so they can run in the future.
+
+
+Automating test functions:
+We can write a test function that contains tests and expected answers and compares them so we don't ahve ot.
+
+You can use asser which will cause the program to abort with an erro rmessage if any test fails.
+
+Unit Testing Frameworks:
+Because writing functions to excercise other functions is so common and useful, there are frameworks for this.
+
+Integration testing:
+Once each of your units are tested in isolation they can be integrated into your program and retested to make sure they were integrated properly, this is called an integration test, and these are more complicated.

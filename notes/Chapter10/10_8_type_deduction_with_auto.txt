@@ -1,0 +1,63 @@
+10.8 — Type deduction for objects using the auto keyword
+
+
+Type deduction is a feature that allows the compiler to figre out the type from the initializeres
+
+int main()
+{
+    auto d { 5.0 }; // 5.0 is a double literal, so d will be deduced as a double
+    auto i { 1 + 2 }; // 1 + 2 evaluates to an int, so i will be deduced as an int
+    auto x { i }; // i is an int, so x will be deduced as an int
+
+    return 0;
+}
+
+
+
+Prior to C++17, auto d{ 5.0 }; would deduce d to be of type std::initializer_list<double> rather than double. This was fixed in C++17, and many compilers (such as gcc and Clang) have back-ported this change to previous language standards.
+
+If you are using C++14 or older, and the above example doesn’t compile on your compiler, use copy initialization with auto instead (auto d = 5.0).
+
+
+Since function calls are valid expression, you can even use it when the initializer is a non void function called
+
+
+Type deduction must have something to deduce from
+
+
+Type deduction will not work for objects that either do not have initializers or have empty initializers. It also will not work when the initializer has type void (or any other incomplete type). Thus, the following is not valid:
+
+Although using type deduction for fundamental data types only saves a few (if any) keystrokes, in future lessons we will see examples where the types get complex and lengthy (and in some cases, can be hard to figure out). In those cases, using auto can save a lot of typing (and typos).
+
+Type deduction drops const from the deduced type
+
+In most cases, type deduction will drop the const from deduced types. For example:
+
+Type deduction for string literals
+
+auto s { "Hello, world" }; // s will be type const char*, not std::string
+
+
+Type deduction and constexpr
+
+Because constexpr is not part of the type system, it cannot be deduced as part of type deduction. However, a constexpr variable is implicitly const, and this const will be dropped during type deduction (and can be readded if desired):
+
+Type deduction benefits and downsides
+
+Type deduction is not only convenient, but also has a number of other benefits.
+
+First, if two or more variables are defined on sequential lines, the names of the variables will be lined up, helping to increase readability:
+
+Second, type deduction only works on variables that have initializers, so if you are in the habit of using type deduction, it can help avoid unintentionally uninitialized variables:
+
+Third, you are guaranteed that there will be no unintended performance-impacting conversions:
+
+Type deduction also has a few downsides.
+
+First, type deduction obscures an object’s type information in the code. Although a good IDE should be able to show you the deduced type (e.g. when hovering a variable), it’s still a bit easier to make type-based mistakes when using type deduction.
+
+Second, if the type of an initializer changes, the type of a variable using type deduction will also change, perhaps unexpectedly. Consider:
+
+auto sum { add(5, 6) + gravity };
+Overall, the modern consensus is that type deduction is generally safe to use for objects, and that doing so can help make your code more readable by de-emphasizing type information so the logic of your code stands out better.
+

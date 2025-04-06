@@ -1,0 +1,51 @@
+10.6 Explicit Type Conversion Casting and static_Cast
+
+Type casting:
+
+C++ supports 5 differen types of casts:
+
+static_cast - Performs compile-time type conversions between related types.	
+dynamic_cast - Performs runtime type conversions on pointers or references in an polymorphic (inheritance) hierarchy	
+const_cast - adds or removes const
+reinterpret_cast - Reinterprets the bit-level representation of one type as if it were another type	
+C-style cases - Performs some combination of static_cast, const_cast, or reinterpret_cast.
+
+
+const and reinterpet should be avoided
+
+C style cast: done via operator()
+
+with the name of the type to placed inside the parenthsesis
+
+It also has a functioon stylec assrt
+
+- althoug C style cast appears to be a single cast, it can actually perform a variety of different conversions, and it doesn tnot make it celar
+
+static_cast should be used to cast most values
+
+static cast return a temporary object with the returned one
+
+we get a compilation error if not valid cast
+
+You can also use static_Cast to make narrowing conversions explicit
+
+
+Casting vs initalizing a temporary object
+
+
+Casting vs initializing a temporary object
+
+Let’s say we have some variable x that we need to convert to an int. There are two conventional ways we can do this:
+
+static_cast<int>(x), which returns a temporary int object direct-initialized with x.
+int { x }, which creates a temporary int object direct-list-initialized with x.
+We should avoid int ( x ), which is a C-style cast. This will return a temporary int direct-initialized with the value of x (like we’d expect from the syntax), but it also has the other downsides mentioned in the C-style cast section (like allowing the possibility of performing a dangerous conversion).
+
+there are three notable differences:
+- int {x} uses list initalizaiton which dissalows narroing convresions, but when using a cast it allows it
+- static_Cast makes it celar
+- direct_list init only allow single word type names like int { x } and not usigned int { x }
+
+
+easiest way around this is using a single word type alias: using uint = unsigned int;
+

@@ -1,0 +1,74 @@
+9.4 Detecting and handling errors
+
+In lesson 9.3, we covered many types of common C++ semantic errors that new C++ programers run into with the langauge.
+
+If the error is the result of a misused language feature or logic error, the error can simply be corrected.
+
+But most errors in a program don't occur as the result of an inadvertantly misusing language feature rather, most errors occur due to faulty assumptions made by the programmer and/or lack of oprpoer error detection/handling
+
+For example, in a function designed to look up a grade for a student, you might have assumed:
+
+- a student being looked will eicist
+- all student names will be unique
+- the class uses letter grading instead of pass fails
+
+What if any of these assumptions aren't true, the program will crash
+
+There are three places where errors occur:
+
+- When a function returns, the programmer assumed the function call was sucessful when it wasn't
+- When a program receives input, the programmer assumes the input was in the correct format
+- When a function has been called, the programm may have assumed the arguements would be semanitcally valid when they were not
+
+Many programmeres write code and only test the happy path, only cases when there are no errors,
+
+you should be planning for sad paths:
+this is defensive programming: this is trying to anticipate all the ways software can be misused
+
+Handling errors in functions:
+ 4 strategies:
+ - handle the error in the function
+ - pass the error back to the caller to deal with
+ - halt the program
+- throw an exception
+
+
+Handling the error within the function:
+
+Best strategy is to recover from the error in the same function in which the error occured, so the error can be contained and doesn't affect other code.
+
+you can retry or cancel the operation
+
+Passing Errors to the Caller:
+
+we can change the return type from void to bool
+
+we can also return a special value or a sentinal value
+
+Fatal Error:
+this is an error so bad the rest of the program can't work
+this is non-recoverable error, in such cases the best thing is to return a non zero status code, you can also std::exit()
+
+Exceptions
+
+
+The basic idea is when an error occurs, an exception is thrown, and if it isn't caught it keeps going out of the function
+
+When to use std::cout vs std::cerr vs logging
+
+
+-interactive applications: users will ineract with after running
+-non interactive applications; applications that do not require user interaction
+
+two types of non interactive apps;
+
+-tools are launched to produce some immediate result, this could be a utility that searches text for lines that match some pattern
+-services are non -interactive apps that produce something in the background
+
+std::cout - user facing text
+
+std:cerr for logfile for status and diagnostic info that isn't cool to users
+
+std::cer for error output only
+
+for application type that is transaction in nature, use a logfile for a transactional log of events

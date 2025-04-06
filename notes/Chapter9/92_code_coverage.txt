@@ -1,0 +1,29 @@
+9.2 Code Coverage
+
+Code coverage:
+the term code coverage is described how much of the source code of a program is executed while testing. These are many different metrics used for code coverage,
+
+Statement coverage:
+The term statement coverage refers to the percenteage of statements in your code that have been excercised by testing routines.
+
+While aiming for 100% statement coverage is good, its often not enough to ensure correctness.
+
+Branch Coverage:
+Branch coverage refers to the percentage of branches that haev been executed, each possible branch counted seperately, an if statement has two branches, a branch that executes when the condiiton is true, and a branch that executes when the condition is false. A switch statement can have many branches.
+Aim for 100% branch coverage of your code
+
+Loop coverage:
+that says if you have a loop in your code, you should ensure it works properly when it iterates 0 times, 1 time, and 2 times. if it works correctly for the 2 iteration case, it should work correctly for all iterations greater than 2.
+
+Testing different categories of input:
+You should consider what happens with different categories of input
+If i wrote a function to produce the square root of integer, what if i tried with a positive integer, 0 and a negative integer
+
+For integers, make sure you’ve considered how your function handles negative values, zero, and positive values. You should also check for overflow if that’s relevant.
+
+For floating point nnumbers, make sure you've considred how your function handles values that have precision issues.
+
+For strings make sure it handles empty string, alphanumeric string, strings that have whitespace
+
+If your function takes a pointer, make sure it works will nullptr.
+

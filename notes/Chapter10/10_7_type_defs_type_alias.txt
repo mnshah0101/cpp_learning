@@ -1,0 +1,74 @@
+10.7 — Typedefs and type aliases
+
+in C++ using is a kewyord that creates an alias for an existing data type
+
+When the compiler encounters a type alias name, it will substitute in the aliased type. For example:
+
+
+
+Naming type aliases:
+The convenction from C was to use the _t suffix but now we use the capital letter with no suffix
+
+Type aliases are not distinct type:
+
+An anlias does not define a new distinct type, just introduces a new identifier for an existing type
+
+because the compiler does not prevent these kind of semantic errors for type alises, we say alises are not type safe
+int main()
+{
+    using Miles = long; // define Miles as an alias for type long
+    using Speed = long; // define Speed as an alias for type long
+
+    Miles distance { 5 }; // distance is actually just a long
+    Speed mhz  { 3200 };  // mhz is actually just a long
+
+    // The following is syntactically valid (but semantically meaningless)
+    distance = mhz;
+
+    return 0;
+}
+
+Scope of a type alias
+
+
+type alises identifier are scoped in the block
+
+
+Typedefs:
+
+typedef is an older way of creating an alias to a type;
+
+typedef long Miles
+type defs have a few syntaical issues, but have been replaced by type aliases since they can get ugly in long types
+
+
+The primary use for a type alian is to hide platform specific details
+
+
+#ifdef INT_2_BYTES
+using int8_t = char;
+using int16_t = int;
+using int32_t = long;
+#else
+using int8_t = char;
+using int16_t = short;
+using int32_t = int;
+#endif
+
+
+This is also why when you print an 8-bit fixed-width integer using std::cout, you’re likely to get a character value. For example:
+
+
+The fixed-width integer types (such as std::int16_t and std::uint32_t) and the size_t type (both covered in lesson 4.6 -- Fixed-width integers and size_t) are actually just type aliases to various fundamental types.
+
+
+
+
+Using type aliases to make complex types easier to read
+
+
+
+Using type aliases to document the meaning of a value
+
+using TestScore = int;
+TestScore gradeTest();

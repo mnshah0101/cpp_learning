@@ -1,0 +1,52 @@
+9.6 Assert and static_assert
+
+std::abort gives us option to start debugging where the program aborted
+
+Precondition is any condition that may be true before the execition of somee code
+
+This is best for top of a function with early return
+
+-- this is called the bouncer pattern
+
+An invariant is a condition that must be true while some section of code is executing, this is used often wtih loops, while a loop body will only execute as long as the invaraint is true
+
+A post condition is something that must be true after some section of code.
+
+Assertions:
+an assertion is an expression that will be true unless bug inthe program, a false assertment displays an error message and the program is terminated with std::abort
+
+assertions are implmented with the assert preprocessor macro
+
+assert(gravity > 0.0); // The object won't reach the ground unless there is positive gravity.
+
+
+This is one of the few preprocessor macros we use (this lives in the cassert header) 
+
+Making assert statements more description:
+
+add a string literal joined by a logical and:
+
+the string literal is included in the assrt message
+
+
+Using assertions for unimplemented features
+
+Assertions are also sometimes used to document cases that were not implemented because they were not needed at the time the programmer wrote the code:
+
+
+NDEBUG
+
+If NDEBUG is defined, asserts turn Off
+
+static_assert: this is an assert checked at compile time
+this causes compiler error if not asserted true
+
+there is no runtime cost to a static_assert
+
+asserts vs error handling:
+
+assertions detect error during development
+
+error handling is to handle cases that could happen in a release build, these can be recoverable (program can keep running) or unrecoverable issues (program cannot keep running)
+
+assert should have no side effects and abort terminates program immiediately without clean up

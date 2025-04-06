@@ -1,0 +1,61 @@
+10.1 — Implicit type conversion
+
+
+Process of converting from one type to another is type conversion
+Implicit type convversion is by the compuler when one datat type is required
+
+Explicit conversion is done by cast operator: static_cast
+
+Conversions dont chnage the data, instead the conversion process uses the data as input, and produces the converted result
+
+The converison process produces a temporary object of the target type that holds the conversion
+
+Why conversions are needed:
+
+The value of object is stored as a sequence of bits, and the datat type of the object tells the compiler how to interepret those bits in meanfunful falues
+
+Different data types represent the same value differently,
+for example the integer value 3 might be stored as 0000 0000 0000 0000 0000 0000 0000 0011, whereas floating point value 3.0 might be stored as binary 0100 0000 0100 0000 0000 0000 0000 0000.
+
+So what happens in float f{3};
+in this case, the compiler cant copy the bits used to represent ints value 3 into the memory allocated for float f, who knows what value of float wed end up with
+Instead 3 needs to be converted to floating point value, which can then be stored in the memory allocated for f.
+
+
+WHen implicity type vonersion happens:
+implicit - automatic type conversion or coercion
+ when this is performed by the compiler, it is when an expression of some type is supplied in a context where another one is expected
+
+ for example double d{3}; //int value implicitly turned into type double
+
+ d = 6; //int value 6 implicityly converted to type double
+
+ When the type of return value is different from the functions return type
+
+ also with certain binary operators like / (division)
+
+
+
+Standard conversions:
+
+There are 5 different standard conversions:
+Numeric Promotions - small integral type to int
+Numeric Conversions - Other integral and floating point conversions that aren’t promotions.	
+Qualification Conversions - conversions that add or remove const/vol
+Value transformations - Conversions that change the value category of an expression	
+Pointer transofrmationsa - Conversions from std::nullptr to pointer types, or pointer types to other pointer types	
+
+int to float is numeric conversion
+
+Type conversion can fail:
+when a type conversion is involed, the compiler will determine if it can be compiled
+If a valid conversion can be found, then the compiler will produce a new value of the desired type
+
+if the compuler cant find an acceptable vinersion, the it will fail with a compile error
+
+They can do this for any reason such as it doesn't know how to do it
+ int x {"14"} would fail
+
+ int x {3.5} this disallowde
+
+ 

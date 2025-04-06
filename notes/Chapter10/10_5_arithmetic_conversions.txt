@@ -1,0 +1,54 @@
+10.5 — Arithmetic conversions
+
+
+usual arithmetic conversions - matching type produced id the common type
+
+
+the following require opdands of the same type:
+
+The following operators require their operands to be of the same type:
+
+The binary arithmetic operators: +, -, *, /, %
+The binary relational operators: <, >, <=, >=, ==, !=
+The binary bitwise arithmetic operators: &, ^, |
+The conditional operator ?: (excluding the condition, which is expected to be of type bool)
+
+
+THe usual conversion rules are somewhat compelx:
+
+the compiler has a rank that looks something like this:
+long double (highest rank)
+double
+float
+long long
+long
+int (lowest rank)
+
+
+Tghe following rules are applied:
+
+Step 1:
+
+If one operand is an integral type and the other a floating point type, the integral operand is converted to the type of the floating point operand (no integral promotion takes place).
+Otherwise, any integral operands are numerically promoted (see 10.2 -- Floating-point and integral promotion).
+
+Step 2:
+
+After promotion, if one operand is signed and the other unsigned, special rules apply (see below)
+Otherwise, the operand with lower rank is converted to the type of the operand with higher rank.
+
+
+The special matching rules for integral operands with different signs:
+
+If the rank of the unsigned operand is greater than or equal to the rank of the signed operand, the signed operand is converted to the type of the unsigned operand.
+If the type of the signed operand can represent all the values of the type of the unsigned operand, the type of the unsigned operand is converted to the type of the signed operand.
+Otherwise both operands are converted to the corresponding unsigned type of the signed operand.
+
+
+Signed and unsigned issues:
+avoid using unsighed integers, we get difficult to read issues
+std::common_type and std::common_type_t
+
+In future lessons, we’ll encounter cases where it is useful to know what the common type of two type is. std::common_type and the useful type alias std::common_type_t (both defined in the <type_traits> header) can be used for just this purpose.
+
+For example, std::common_type_t<int, double> returns the common type of int and double, and std::common_type_t<unsigned int, long> returns the common type of unsigned int and long.

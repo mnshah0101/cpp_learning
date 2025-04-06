@@ -1,0 +1,50 @@
+9.3 Common Semantic Errors in C++
+
+in Lesson 3.1 Syntax and semantic errors we covered synatax errors and semantic errors, the compiler will generally not catch semantic errors
+
+They can cause most of the symptions of undefined behavior, causing wrong results, erratic behvaior, corrupting data, or causing the program to crash.
+
+
+
+Common types of semantic errors:
+
+
+Conditional Logic Error:
+
+A conditional logic error occurs when a programmer incorrectly codes the logic of a conditioanl statement or a loop condition.
+
+Infinite loops:
+When you don't increment or decrement
+
+Off-by-one errors:
+this occurs when a loop executres one too many or one too few times
+
+Incorrect Operator Precedence:
+this happens when order of operators isn't correct.
+
+Precision issues with floating point types:
+
+Lack of precision causes numbers to be rounded slightly,
+the operator == and the operator != can be problematic 
+
+Integer Division:
+Floating point division and integer point divison can be mixed up
+
+Accidental null statements:
+null staements are statements that do nothing
+a null statement is if(c=='y');
+
+Not using a compound statement when one is required:
+Another variant of the above program that always blows up the worldd:
+this is a dnagling else
+
+
+Using assignmnt instead of equality: 
+
+using = instead of ==
+
+Forgetting to use the function call operator when calling a function
+this happens when we don't use ()
+
+
+

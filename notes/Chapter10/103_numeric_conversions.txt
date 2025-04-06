@@ -1,0 +1,31 @@
+10.3 — Numeric conversions
+
+
+C++ supports numeric conversions
+
+There are 5 basic types:
+
+1) Integral to another integral
+2) Floating point to another floating point
+3) converting a floating point to any integral type
+4) Converting integral to floating type
+5) converting an integral type or floating point to a bool
+
+Safe vs Unsafe Conversions:
+Unsafe conversion is one where atleast one value of the source type cannot be converted validly.
+
+Three general categories:
+- Value preserving conversions are safe numeric where the destination type can exactly represent all possible values in the source type. can always be converted backs
+- Reinterpretive conversions are unsafe numeric conversions where the converted value may be different than source value, but no data is list, signed/unsighed conversions fall into this category: signed to unsighned, they can be turned back to the same value, even if original conversion loses value
+- Lossy conversions: are unsafe numeric conversions wehre data is lost
+
+
+unsafe conversions should be avided, but sometimes we dont mind some data being lost such as int to bool
+
+Safe to use:
+- will get unexpected results when converting into a type whos range doesnt support the value
+- remembering overflow values
+- converting from a larger integral to a smaller type from the same family
+
+- float to integral, fractional values are lost
+
