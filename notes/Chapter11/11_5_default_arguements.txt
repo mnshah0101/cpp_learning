@@ -1,0 +1,63 @@
+11.5 — Default arguments
+
+
+A default arguement is adefault valud provided for a function parameter
+
+When making a function call, the caller can optionally provide an argument for any function parameter that has a default argument. If the caller provides an argument, the value of the argument in the function call is used. If the caller does not provide an argument, the value of the default argument is used.
+
+
+
+Default arguments are inserted by the compiler at site of the function call.
+
+When to use:
+you can use it when a function needs a value that has a reasonable default value which you want the caller to be able to override
+They are also called optional parameters sometimes
+
+
+
+Default arguments are also useful in cases where we need to add a new parameter to an existing function. If we add a new parameter without a default argument, it will break all existing function calls (which aren’t supplying an argument for that parameter). This can result in a lot of updating of existing function calls (and may not even be possible if you don’t own the calling code). However, if we add a new parameter with a default argument instead, all existing function calls will still work (as they will use the default argument for the parameter), while still letting new calls to the function specify an explicit argument if desired.
+
+A function can have multiple parameters with default arguments:
+
+C++ does not (as of C++23) support a function call syntax such as print(,,3) (as a way to provide an explicit value for z while using the default arguments for x and y. This has three major consequences:
+
+In a function call, any explicitly provided arguments must be the leftmost arguments (arguments with defaults cannot be skipped).
+
+
+Default arguments can not be redeclared, and must be declared before use
+
+
+
+Once declared, a default argument can not be redeclared in the same translation unit. That means for a function with a forward declaration and a function definition, the default argument can be declared in either the forward declaration or the function definition, but not both.
+
+You only do default for definition or the declaration, not both
+The default arguement must be declared in the translation unit before it can be used.
+
+
+The best practice is to declare the default argument in the forward declaration and not in the function definition, as the forward declaration is more likely to be seen by other files and included before use (particularly if it’s in a header file).
+
+Default arguments and function overloading
+
+Functions with default arguments may be overloaded. For example, the following is allowed:
+
+Default arguments can lead to ambiguous matches
+
+void foo(int x = 0)
+{
+}
+
+void foo(double d = 0.0)
+{
+}
+
+int main()
+{
+    foo(); // ambiguous function call
+
+    return 0;
+}
+
+if both are default we can get ambigious
+
+Default arguments don’t work for functions called through function pointers Advanced
+

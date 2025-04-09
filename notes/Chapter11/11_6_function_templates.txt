@@ -1,0 +1,50 @@
+11.6 — Function templates
+
+
+Instead of making two different functions for different var types, we can create a template (almost like a generic in Java)
+
+
+Introduction to C++ templates:
+
+Instead of manually creating a bunch of mostly-identicail functions or classes, we create one simple template.
+A template describes what a function or class looks like, unlike a normla definition in a template we can use one or more placeholder types
+A placeholder type represents some type that is not known when the placeholder is defined but is when the placeholder is used.
+
+The compiler can use a single template to generate a family of related functions or classes, each using a different set of actual types.
+
+
+Because the actual types aren’t determined until the template is used in a program (not when the template is written), the author of the template doesn’t have to try to anticipate all of the actual types that might be used. This means template code can be used with types that didn’t even exist when the template was written! We’ll see how this comes in handy later, when we start exploring the C++ standard library, which is absolutely full of template code!
+
+Templates can work with types that didn’t even exist when the template was written. This helps make template code both flexible and future proof!
+
+A function template is a functiom-like definition that is used to generate one or more overloaded functions, each with a different set of actual types.
+This is what will allow us to create functions that can work with many different types.
+
+The initial function template that is used to generate other functions is called the primary template and the functions generated from the primary template are called instantiated functions
+When we create primary function template, we use placeholder types, for any paramter types, return types, or types used in the function body that we want to be specified later, by the user of the template.
+C++ supports 3 different kinds of template parameters:
+
+Type template parameters (where the template parameter represents a type).
+Non-type template parameters (where the template parameter represents a constexpr value).
+Template template parameters (where the template parameter represents a template).
+
+creating a max() function template
+
+template <typename T>
+T max(T x, T ){
+    return (x < y) ? y : x;
+}
+
+
+In our template parameter declaration we start with the keyword template, which tell the compiler that we're creating a template.
+Next, we specify all of the template parameters that our template will use inside angled brackets <> for each type template parameter, we use the keyword typename or calss, followed my the name of the type template parameter
+
+Naming template parameters:
+
+we dont need to give a complex name
+If a type template parameter has a non-obvious usage or specific requirements that must be met, there are two common conventions for such names:
+
+- Starting with a capital letter (e.g. Allocator). The standard library uses this naming convention.
+- Prefixed with a T, then starting with a capital letter (e.g. TAllocator). This makes it easier to see that the type is a type template parameter.
+Use a single capital letter starting with T (e.g. T, U, V, etc…) to name type template parameters that are used in trivial or obvious ways and represent “any reasonable type”.
+

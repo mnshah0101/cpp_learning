@@ -1,0 +1,27 @@
+11.2 — Function overload differentiation
+
+
+How overloaded functions are differntiated:
+
+number of params and type of params
+
+As an example, a const member function can be differentiated from an otherwise identical non-const member function (even if they share the same set of parameters).
+
+const qualifiers cant be used in params to overload
+
+
+Overloading based on number of parameters:
+An overloaded function is differentiated so long as each overloaded function has a different number of params
+
+It can also do it as long as list of parameter types is different
+
+The return type of a function is not considered for differentiation
+
+this will create an error, as it can't overload
+
+Type signautre:
+this is desfined as the parts of the function header that are used for differentiation, this is the function name, number of parameters, parameter type, and the function level qualifiers, it doesnt include the return type
+
+Name Mangling:
+
+Whena  compiler compiles a function it perforns name mangling, which means the compiled name of the function is altered based on various criteria such as number and type of params so thatt he link has unique names to work wiht. No standard for this so different compilers do it differently.

@@ -1,0 +1,9 @@
+11.4 — Deleting functions
+
+
+In cases where we have a function that we don't want callable we can define that function deleted with the = delete specifier
+
+You can do a function template likely
+
+template <typename T>
+void printInt(T x) = delete;

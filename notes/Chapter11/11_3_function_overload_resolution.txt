@@ -1,0 +1,52 @@
+11.3 — Function overload resolution and ambiguous matches
+
+
+When a function call is made the compiler must ensure the matching function declaration can be found
+
+
+With non -overloaded functions there is only one function that can match, With overloaded function, there are many that match
+
+This process of matching is called overload resolution
+
+In simple cases where the type of the function arguments and type of the function parameters match exactly, this is (usually) straightforward:
+
+
+But what happens when they dont exactly match.
+
+
+What is the best conversion to make?
+
+Resolving Overlodad function calls:
+- at each step the compiler applies a bunch of type conversions to the arguments in the function call,
+For each cnversion the compiler cecks if the overlodade functions are now a match
+- No matching functions were found- - compiler moves to next step
+- Pne was found, subsequent steps are not executed
+- Multiple were found, the compiler will issue an ambigious match compile error.
+
+
+Arguement matching step:
+
+
+- Step 1) compiler tries to find an exact match, this happens in two steps: first the compiler will see if there is an overloaded function where the type of arguments in the function call exactly macthes the type of parameters int he overloaded functions
+ Second the compiler applies specific trivial conversion and sees if any match
+- Step 2) If no match is found the compiler tries to find a match by applying numeric promotions: narrow integral and floating point types are promoted to wider types so they process better, if found then it is resolved, char can become int
+- Step 3) If no match is found via numeric promotion, the compiler tries to find a match by applying numeric conversions (10.3 -- Numeric conversions) to the arguments.
+- Step 4) If no match is found, the compiler tries to match using use defined conversions
+- Step 5) If no match is found via user-defined conversion, the compiler will look for a matching function that uses ellipsis.
+- Step 6) If no matches have been found by this point, the compiler gives up and will issue a compile error about not being able to find a matching function.
+
+An ambiguous match occurs when the compiler finds two or more functions that can be made to match in the same step. When this occurs, the compiler will stop matching and issue a compile error stating that it has found an ambiguous function call.
+
+If the compiler finds multiple matches in a given step, an ambiguous function call will result. This means no match from a given step is considered to be better than any other match from the same step.
+
+Default arguments can also cause ambiguous matches. We cover such cases in lesson 11.5 -- Default arguments.
+
+Resolving:
+- Best way is to define a new overloaded function that takes params of eaxct type you want and it till find an exact match
+- Alternative, cast then call
+
+
+Matching for functions with multipe arguements:
+- the compiler applies to each argument in tern, the function chosen is the one where each one matches atleast as well as all other function, with atleast one argement matching better than all other functions
+
+

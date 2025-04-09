@@ -1,0 +1,69 @@
+11.8 Function templates with multiple template types
+
+#include <iostream>
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max(2, 3.5) << '\n';  // compile error
+
+    return 0;
+}
+This doesnt compile
+
+We are passing arguements of two different types
+
+type conversion is done only when resolving function overloads, not when performing template arguement deducions
+
+
+First solution:
+put burden on caller to convert the arguements to matching types
+
+Provide an explicity type template arguement:
+if we had written a non-template max(double, double) then we can call max(int, double) and let the implicity type conversion rules allow it
+
+what if we did max<double>(2, 3.5) > becomes double double
+
+Function templates with multiple template type parameters
+
+
+What if we did two different types:
+
+#include <iostream>
+
+template <typename T, typename U> // We're using two template type parameters named T and U
+T max(T x, U y) // x can resolve to type T, and y can resolve to type U
+{
+    return (x < y) ? y : x; // uh oh, we have a narrowing conversion problem here
+}
+
+int main()
+{
+    std::cout << max(2, 3.5) << '\n'; // resolves to max<int, double>
+
+    return 0;
+}
+
+
+since the return type is int, it makes it an int
+
+Abbreviated function templates:
+C++20 introduces a new use of the auto keyword: When the auto keyword is used as a parameter type in a normal function, the compiler will automatically convert the function into a function template with each auto parameter becoming an independent template type parameter. This method for creating a function template is called an abbreviated function template.
+
+this is an abbreviated function template.
+
+Feel free to use abbreviated function templates with a single auto parameter, or where each auto parameter should be an independent type (and your language standard is set to C++20 or newer).
+
+Function templates may be overloaded
+
+Just like functions may be overloaded, function templates may also be overloaded. Such overloads can have a different number of template types and/or a different number or type of function parameters:
+
+The rules for determining which of multiple matching function templates should be preferred are called “partial ordering of function templates”. In short, whichever function template is more restrictive/specialized will be preferred. add<T>(T, T) is the more restrictive function template in this case (since it only has one template parameter), so it is preferred.
+
+ More specific will be used
+(less generics better)

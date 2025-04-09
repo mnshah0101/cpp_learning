@@ -1,0 +1,18 @@
+Intro to function Overloading
+
+
+Function overloading allows us to create multiple functions with the sanme name so as long as they have different paraeter types
+
+Compiler tries to match the function to the approopriate function call.
+This is called overload resolution
+
+Making it compiler- Each overloaded function has to be differentiated
+- Each call to an overloaded function has to resolve to an overloaded function.
+
+
+If it cannot be resolved than it creates a compile error.
+
+
+This gives a great way to reduce compplexity by reducing the number of function name you need to remember.
+
+

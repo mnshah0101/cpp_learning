@@ -1,0 +1,42 @@
+11.10 — Using function templates in multiple files
+
+
+The most conventional way to address this issue is to put all your template code in a header (.h) file instead of a source (.cpp) file:
+
+You may be wondering why this doesn’t cause a violation of the one-definition rule (ODR). The ODR says that types, templates, inline functions, and inline variables are allowed to have identical definitions in different files. So there is no problem if the template definition is copied into multiple files (as long as each definition is identical).
+
+But what about the instantiated functions themselves? If a function is instantiated in multiple files, how does that not cause a violation of the ODR? The answer is that functions implicitly instantiated from templates are implicitly inline. And as you know, inline functions can be defined in multiple files, so long as the definition is identical in each.
+
+In the above example, both main.cpp and foo.cpp #include "max.h" so the code in both files can make use of the max<T>(T, T) function template.
+
+#ifndef MAX_H
+#define MAX_H
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+#endif
+
+#include "max.h" // import template definition for max<T>(T, T)
+#include <iostream>
+
+void foo()
+{
+	std::cout << max(3, 2) << '\n';
+}
+
+#include "max.h" // import template definition for max<T>(T, T)
+#include <iostream>
+
+void foo(); // forward declaration for function foo
+
+int main()
+{
+    std::cout << max(3, 5) << '\n';
+    foo();
+
+    return 0;
+}
