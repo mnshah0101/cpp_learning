@@ -1,0 +1,87 @@
+
+When code is gnereated for a definition, a piece of memory from RAM is assigned to object
+We don't have to worry about what specific memorry address are assigned, 
+
+
+We just refer to the var by its given identifier  and the compiler translates into the appropritaely assigned memory address, the compiler takes care of all the addressing
+
+
+The address of operator (&) -
+
+The adress of operator (&) tells us the memory address of its operands
+
+The dereference oeprator (*):
+
+The most useful thing we can do with an address is access the value stored at that adressed,
+ the dereference operator returns the value at that place in memory:
+
+ *(&x) tells us the value
+
+
+Pointer:
+
+A pointer is an object that holds a memory address as its value, this allows us store the addres sof some other obejct to use
+
+A type that specifies a point is called a pointer type, they are declared using asteric (like reference is with ampersand)
+
+
+These are called raw pointers or dumb pointers
+
+A type that specifies a point is called a pointer type
+
+we can define a variable with a pointer type
+
+int *ptr;
+
+Pointer init:
+
+like normal vars pointers are not init by default
+
+a pointer that has not been initalized is called a wild pointer
+
+wild pointers contain garbage addresses, and dereferncing results in undefined behvaior
+
+
+Pointer has to match the type of the object being pointed to
+
+Pointers and assignment:
+
+We can use assignment with pointers in two different ways
+
+1. To change what the pointer is pointing at
+2. To chnage the value being pointed at
+
+
+ptr = &x
+and *ptr = 4;
+
+Pointers behave like lvalue references:
+
+They both provider ways to indirectly acess another object,
+primary difference is we need to explicity get address to point at and dereference
+
+Other differences:
+- references must be init
+- reference are not objcets, pointers are
+- references cannot be reseated, pointers can be
+- references must always be bound to an object, pointers can point to nothing
+- references are safe, pointers are inherenently dangerous
+
+
+Adress of returns a pointer
+
+
+the size of pointers:
+
+the size of a pointer is dependent upon the architecture the executable is compiled for, a 32-bit executable uses a 32 bit memory addresses - consequently a pointer on a 32 bit machine is 32 bits, this is all true regardless of the sixe of the object being pointed to
+
+The size of the pointer is always the same, because the pointer is just a memory address, the number of bits neded to access a memory address is constant
+
+
+Dangling pointeres:
+
+A dangling pointer is a pointer that is holding the address of an object that is no longer valid
+Dereferncing a dangling ponter will lead to undefined behvaior
+Any operations on an invalid pointer has implementation defined behvaior
+
+

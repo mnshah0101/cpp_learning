@@ -1,0 +1,99 @@
+12.3 — Lvalue references
+
+
+A reference is an alias for an existing object
+We can use a reference to read or modify the object being referenced
+
+
+
+A reference is essentially identiical to the object being referenced
+
+
+Modern C++ contains two types of references: lvalue references, and rvalue references. In this chapter, we’ll discuss lvalue references.
+
+L value reference types:
+An l value reference (or just a reference) is an alias for an exiting l value
+
+
+
+
+Just like the type of an object determines what kind of value it can hold, the type of a reference tells what type of object it can reference.
+Lvalue reference types can be identified by a use of single apersand
+
+int // a noormal int types
+int& // an l value reference to an int object
+
+we can create a new reference, and it is identiical
+
+
+A type that specifies a reference is called a reference type. The type that can be referenced is called the referenced type
+
+Two kind of lvalue refernecs:
+- a lvalue reference to a const or non const lvalue reference
+
+we'll focus on non const right now
+
+
+L value reference variables:
+One of the few things we can do with an lvalue reference type is to create an lvalue reference variable.
+
+An lvalue reference variable is a variable that acts as a refrence to an lvalvue.
+
+To create an lvalue reference variable we just define a new variable with an lvalue reference type
+
+int x {5};
+int& ref {x};
+
+
+From the compilers perspective, it doesn't matter what the ampersand is "attached" to the type name int& ref  
+
+ you can do int& or int &ref, but when defining do next to type
+
+-ampersand doesnt mean address of it means rvalue refernce to
+
+
+we can also use the non-const reference to modify the value of the object being referenced
+
+Reference indicates
+Much like constants all references must be initalized, and its initalization is called reference initialization
+
+When a reference is inialized wtih an object, it is bound to that object or function
+This bound is called reference bounding, the object being referenced is the referent.
+
+Non const l values can only be bound to modifiable lvalues
+
+
+L value references to void are disallowed
+
+
+A reference will only bind to an object matching its referenced type
+
+In most cases, a reference will only beind to an object matching its referenced type
+It will try to convert the object to the referenced type and then bind the reference to that. Since conversions will result in an r-value this won't work
+
+Refrence can't be reseated:
+Once init, a reference cannot be reseated or changed to another object
+When a reference is evaluated in an expression, it resolves to the object its referencing, so ref = y doesnt change ref to now reference y, because ref is an alias for x, it evaluates as if written x = you
+
+Reference variables follow the same scoping and duration rules that normal variables do.
+
+Refernces and referents have independent lifeties
+
+A reference can be destroyed before the objcet it is referencing
+The object being referenced can be destryoed ibefore the reference
+
+Dangling reference:
+
+- When the object is destroyed and the reference is not destroyed
+
+Fairly easy to avoid
+
+
+References arent objectsL
+references are not objects, they are not required to exist or occupy storage, if possible the compiler will optimize references away by replacing all ocurruces of a reference with the referent, however this isnt always possible,and in such cases references may require storage
+
+std::reference_wrapper providdes a solution when you need an object
+
+
+
+

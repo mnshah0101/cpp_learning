@@ -1,0 +1,64 @@
+12.2 — Value categories (lvalues and rvalues)
+
+
+All expressions have two properties: type and value category
+
+The type of an expression is equivalent to the type of the value, object, or function that results from the evaluated expression. For example:
+
+
+ auto v1 { 12 / 4 }; // int / int => int
+    auto v2 { 12.0 / 4 }; // double / int => double
+
+the compiler will determine at compile time that int/int becomes int
+
+expression type must be determinable at compile time (otherwise type checking and deducation wouldn't work)
+
+value may be determined compile or run time
+
+
+Value Category of expression:
+
+
+x = 5; // valid: we can assign 5 to x
+5 = x; // error: can not assign value of x to literal value 5
+
+how does the compiler know what is valid, what can appear on what side of the assignment operator
+
+
+The answer lies in the second property of expressions: the value category. The value category of an expression (or subexpression) indicates whether an expression resolves to a value, a function, or an object of some kind.
+
+Prior to C++11, there were only two possible value categories: lvalue and rvalue.
+
+
+In C++11, three additional value categories (glvalue, prvalue, and xvalue) were added to support a new feature called move semantics.
+
+
+
+Lvalue and rvalue expressions:
+an lvalue is an expression that evals to an idetntifiable object or function (locator value or left value)
+The term identity is used by the C++ standard but it is not well defined. An entity that has an identity can be differentiated from other similar entities.
+
+Entities with identities can be accessed via an identifier, refernce, or pointer and have a longer lifetime thatn a single expression or statement
+
+
+Two subtypes:
+modifiable lvalue and non modifyable
+
+
+an r value is an expression that is not an l value, such as literals, and return value of functions that operators that return by valueR values are identifiable, so they have to be used immiediately, an only exist within scope of the expression
+
+
+operators expect operands to be rvalues, unless specifier, for example operator+ expects r value
+
+
+Lvalue to rvalue conversion, in cases where an r value is expected but an l value is provided, the lvalue will underdo conversion, which basically means the lvalue is evaluated
+
+How to differentiate:
+- Lvalue expressions are those that evaluate to functions or idenfigitable objects
+- Rvalue expression are those that eval to values
+
+
+prefix returns lvalue and postfix returns rvalue!
+
+++x - returns l value (once already applied)
+x++ - returns r value (copied before applied, then applied)

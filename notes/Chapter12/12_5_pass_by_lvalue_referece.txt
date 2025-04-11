@@ -1,0 +1,50 @@
+12.6 Pass by lvalue reference
+Why create a reference?
+
+
+we discussed pass by value, where an arguement passed to a fucntion is  copied into the functions paramater
+
+
+This means we make a copy of the arguements value and then briefly ise it and then destroy it.
+
+Some objects are expensive to copy
+Most of the types provided are class types
+Class types are expecisive to copy and we want to avoid making compilers
+
+This is where pass by reference comes in:
+
+One way to avoid making an expensive copy of an arguement is to use pass by reference, instead of pass by value
+
+When using pass by refrence we declare a function parameter as a reference type, when the function is called, each reference parameter is bound to the appropriate arguement, there is no copy to be mean
+
+
+
+#include <iostream>
+#include <string>
+
+void printValue(std::string& y) // type changed to std::string&
+{
+    std::cout << y << '\n';
+} // y is destroyed here
+
+int main()
+{
+    std::string x { "Hello, world!" };
+
+    printValue(x); // x is now passed by reference into reference parameter y (inexpensive)
+
+    return 0;
+}
+
+
+
+the program demonstrates that a value parameter is a seperate object from the arguement, while a reference parameter is treated as if it were the arguement
+
+
+We can see that the argument has a different address than the value parameter, meaning the value parameter is a different object. Since they have separate memory addresses, in order for the value parameter to have the same value as the argument, the argument’s value must be copied into memory held by the value parameter.
+
+
+Pass by reference allows us to change the value of an arguement
+When an object is passed by vaue, the function can make changes to the parameter
+
+Pass by reference can only accept modifiable lvalue arguements

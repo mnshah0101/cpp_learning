@@ -1,0 +1,26 @@
+12.9 — Pointers and const
+
+
+
+With non const pointer we cna chnage both what the pointer is pointing at and what the value at the address is
+
+
+Pointer to const value
+
+a pointer to a ocnst value is a pointer that points to a const value
+use the const keyowrd before the pointers data type
+A const pointer can point to a non const variable too, it just treats it as constant
+
+Const pointers:
+we can also make a pointer itself const,
+
+you can do this by using const after the * keyowrd
+
+
+
+Const pointer to a const value
+
+Finally, it is possible to declare a const pointer to a const value by using the const keyword both before the type and after the asterisk:
+
+Pointer and const recap:
+

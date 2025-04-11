@@ -1,0 +1,41 @@
+NAlex  February 5, 2025
+
+
+Null Pointers
+
+
+Besides a memory address there is another value a pointer can hold: a null value
+
+It means that it its not pointing to anything
+
+The easiest way is to use value init with {}
+
+Value initialize your pointers (to be null pointers) if you are not initializing them with the address of a valid object.
+
+
+The nullptr keyword
+
+nullptr is a null pointer keyword
+
+Dereferencing a null pointer results in undefined behavior
+
+Checking for null pointers
+
+Use nullptr to avoid dangling pointers
+
+We can easily avoid dereferencing a null pointer by using a conditional to ensure a pointer is non-null before trying to dereference it:
+
+But what about dangling pointers? Because there is no way to detect whether a pointer is dangling, we need to avoid having any dangling pointers in our program in the first place. We do that by ensuring that any pointer that is not pointing at a valid object is set to nullptr.
+
+Pointers that are dangled are not nulled automatically, we need to set them to nullptr
+
+Legacy null pointer literals: 0 and NULL
+
+0 and NULL are the old oens
+
+Favor references over pointers whenever possible
+
+since they are dangerous, we should favor them
+
+Since references can’t be bound to null, we don’t have to worry about null references. And because references must be bound to a valid object upon creation and then can not be reseated, dangling references are harder to create.
+

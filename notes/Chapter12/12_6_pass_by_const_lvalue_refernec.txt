@@ -1,0 +1,74 @@
+12.6 — Pass by const lvalue reference
+
+
+Unlike a refernce to non-const, a reference to const can bind o modifiable lvalues, non-modifiable lvalues, and rvalues. 
+
+
+
+Passing by const reference offers the same primary benefit as pass by non-const reference (avoiding making a copy of the argument), while also guaranteeing that the function can not change the value being referenced.
+
+Favor passing by const reference over passing by non-const reference unless you have a specific reason to do otherwise (e.g. the function needs to change the value of an argument).
+
+
+Now we can understand the motivation for allowing const lvalue references to bind to rvalues: without that capability, there would be no way to pass literals (or other rvalues) to functions that used pass by reference!
+
+conversion leads to expensive copy being modifiable
+
+ensure the type of the arguement matches the type of the reference
+
+
+Mixing pass by value and pass by reference:
+
+A function with multiple parameters can determine whether each parameter is passed by value or passed by reference individually
+
+#include <string>
+
+void foo(int a, int& b, const std::string& c)
+{
+}
+
+int main()
+{
+    int x { 5 };
+    const std::string s { "Hello, world!" };
+
+    foo(5, x, s);
+
+    return 0;
+}
+
+as a recap>
+have to match the type as it wont make conversions with non-const
+
+
+When to use pass by value vs pass by reference:
+Fundamental types and enumerated types are cheap to copy, so they are typically passed by value.
+Class types can be expensive to copy (sometimes significantly so), so they are typically passed by const reference.
+
+
+two things to consider when initalizing a function param:
+size of object
+addidtioanl set up costs ( opening files or dbs )
+
+then we need to consider the cos tof using the function parameter, a reference can fit into a CPU register, rather than into RAM
+
+
+each time a value is passed we get single CPU register or RAM, whereas reference is two
+
+For objects that are cheap to copy, the cost of copying is similar to the cost of binding, but accessing the objects is faster and the compiler is likely to be able to optimize better.
+For objects that are expensive to copy, the cost of the copy dominates other performance considerations.
+
+
+For function parameters prever std::string_view over const std::string& in most cases
+it can handle a wider range of arguements effeicnieitly, as the caller can pass a substring
+
+There are a few cases where using a const std::string& parameter may be more appropriate:
+
+If you’re using C++14 or older, std::string_view isn’t available.
+If your function needs to call some other function that takes a C-style string or std::string parameter, then const std::string& may be a better choice, as std::string_view is not guaranteed to be null-terminated (something that C-style string functions expect) and does not efficiently convert back to a std::string.
+
+
+std::string_view is not gauranteed to be null terminated
+
+Why std::string_view parameters are more efficient than const std::string& Advanced
+
