@@ -1,0 +1,40 @@
+12.15 — std::optional
+
+what error value do we return?
+
+std::optional implements an optional value
+
+it can have value of type t or not
+
+
+Behavior	Pointer	std::optional
+Hold no value	initialize/assign {} or std::nullptr	initialize/assign {} or std::nullopt
+Hold a value	initialize/assign an address	initialize/assign a value
+Check if has value	implicit conversion to bool	implicit conversion to bool or has_value()
+Get value	dereference	dereference or value()
+
+pointer has reference semantics while std::optional has value semantics
+
+Pros and Cons of returning std::optional
+
+
+Using std::optional effectively documents that a function may return a value or not.
+We don’t have to remember which value is being returned as a sentinel.
+The syntax for using std::optional is convenient and intuitive.
+
+We have to make sure the std::optional contains a value before getting the value. If we dereference a std::optional that does not contain a value, we get undefined behavior.
+std::optional does not provide a way to pass back information about why the function failed.
+
+
+Using std::optional as an optional function parameter
+
+- easy way to accept optional parameter
+
+It effectively documents that the parameter is optional.
+We can pass in an rvalue (since std::optional will make a copy).
+However, because std::optional makes a copy of its argument, this becomes problematic when T is an expensive-to-copy type (like std::string). With normal function parameters, we worked around this by making the parameter a const lvalue reference, so that a copy would not be made. Unfortunately, as of C++23 std::optional does not support references.
+
+
+Therefore, we recommend using std::optional<T> as an optional parameter only when T would normally be passed by value. Otherwise, use const T*.
+
+

@@ -1,0 +1,57 @@
+12.13 — In and out parameters
+
+
+In parameters:
+In most cases, a function parameter is used only to receive an input from the caller. Parameters that are used only for receiving input from the caller are sometimes called in parameters.
+
+
+Out parameters:
+
+A function argument passed by non-const reference (or by pointer-to-non-const) allows the function to modify the value of an object passed as an argument. This provides a way for a function to return data back to the caller in cases where using a return value is not sufficient for some reason.
+
+A function parameter that is used only for the purpose of returning information back to the caller is called an out parameter.
+This can be if we want to return many things at once
+
+output are usually the most right most ones
+
+
+First, the caller must instantiate (and initialize) objects and pass them as arguments, even if it doesn’t intend to use them. These objects must be able to be assigned to, which means they can’t be made const.
+
+Second, because the caller must pass in objects, these values can’t be used as temporaries, or easily used in a single expression.
+
+
+
+Out-parameters by reference don’t make it obvious the arguments will be modified
+
+Best practice
+
+Avoid out-parameters (except in the rare case where no better options exist).
+
+Prefer pass by reference for non-optional out-parameters.
+
+
+In/out parameters
+
+In rare cases, a function will actually use the value of an out-parameter before overwriting its value. Such a parameter is called an in-out parameter. In-out-parameters work identically to out-parameters and have all the same challenges.
+
+When to pass by non-const reference
+
+If you’re going to pass by reference in order to avoid making a copy of the argument, you should almost always pass by const reference.
+However, there are two primary cases where pass by non-const reference may be the better choice.
+
+First, use pass by non-const reference when a parameter is an in-out-parameter. Since we’re already passing in the object we need back out, it’s often more straightforward and performant to just modify that object.
+
+Second, use pass by non-const reference when a function would otherwise return an object by value to the caller, but making a copy of that object is extremely expensive. Especially if the function is called many times in a performance-critical section of code.
+
+void generateExpensiveFoo(Foo& out)
+{
+    // modify out
+}
+
+int main()
+{
+    Foo foo{};
+    generateExpensiveFoo(foo); // foo modified after this call
+
+    return 0;
+}

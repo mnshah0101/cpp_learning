@@ -1,0 +1,29 @@
+12.11 — Pass by address (part 2)
+
+
+
+Pass by address for “optional” arguments
+
+One of the more common uses for pass by address is to allow a function to accept an “optional” argument. This is easier to illustrate by example than to describe:
+
+nullptr means we dont want anything
+
+However, in many cases, function overloading is a better alternative to achieve the same result:
+
+
+Changing what a pointer parameter points at only changes the parameter copy
+
+So what if we want to allow a function to change what a pointer argument points to?
+
+
+
+
+Pass by address… by reference?
+
+Yup, it’s a thing. Just like we can pass a normal variable by reference, we can also pass pointers by reference. Here’s the same program as above with ptr2 changed to be a reference to an address:
+
+Because refptr is now a reference to a pointer, when ptr is passed as an argument, refptr is bound to ptr. This means any changes to refptr are made to ptr.
+
+references are usually just pass by address with pointers
+
+this really is just pass by value (address) so everything is just pass by value

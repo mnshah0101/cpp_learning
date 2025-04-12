@@ -1,0 +1,52 @@
+12.14 — Type deduction with pointers, references, and const
+
+
+
+type deducation drops const
+
+const/const expr can be reapplied by adding the const
+
+Type deduction drops references
+
+ type deduction will also drop references:  you can reapply the reference at the point of definition:
+
+ Top-level const and low-level const
+ - top-level const is a const qualifier that applies to an object itself
+ - low-level const is a const qualifier that applies to the object being referenced or pointed to
+
+
+ int* const ptr; // this const applies to ptr, so it is top-level
+const int* ptr; // this const applies to the object being pointed to, so it is low-level
+
+
+Type deduction and const references
+If the initializer is a reference to const, the reference is dropped first (and then reapplied if applicable), and then any top-level const is dropped from the result.
+
+Type deduction and const references
+
+If the initializer is a reference to const, the reference is dropped first (and then reapplied if applicable), and then any top-level const is dropped from the result.
+
+if the reference is reapplied, then the low level const is not dropped (its part of the reference)
+
+
+If you want a const reference, reapply the const qualifier even when it’s not strictly necessary, as it makes your intent clear and helps prevent mistakes.
+
+What about constexpr references?
+
+Constexpr is not part of an expression’s type, so it is not deduced by auto.
+
+Unlike references, type deduction does not drop pointers:
+
+
+
+We can also use an asterisk in conjunction with pointer type deduction (auto*) to make it clearer that the deduced type is a pointer: - this makese sense since the reference really does just represent the object it does
+
+top level is dropped with auto
+
+
+. A const on the left means “make the deduced pointer a pointer to const”, whereas a const on the right means “make the deduced pointer type a const pointer
+
+If you want a const pointer, pointer to const, or const pointer to const, reapply the const qualifier(s) even when it’s not strictly necessary, as it makes your intent clear and helps prevent mistakes.
+
+
+

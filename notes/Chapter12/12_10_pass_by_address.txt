@@ -1,0 +1,28 @@
+12.10 — Pass by address
+
+
+Pass by address
+
+
+
+With pass by address the pointer supplied is copied into the window as the parameter.
+
+When we pass an arguement with operator& we say pass by address
+
+
+Pass by address allows the function to modify the argument’s value
+
+Prefer pointer-to-const function parameters over pointer-to-non-const function parameters, unless the function needs to modify the object passed in.
+Do not make function parameters const pointers unless there is some specific reason to do so.
+
+When passing a parameter by address, care should be taken to ensure the pointer is not a null pointer before you dereference the value. One way to do that is to use a conditional statement:
+
+ test whether the function parameter is null as a precondition and handle it immediately
+
+ Prefer pass by (const) reference
+
+since pass by address must have an address only objects are allowed
+
+Second, the syntax for pass by reference is natural, as we can just pass in literals or objects. With pass by address, our code ends up littered with ampersands (&) and asterisks (*).
+
+
