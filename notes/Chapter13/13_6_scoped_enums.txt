@@ -1,0 +1,35 @@
+13.6 — Scoped enumerations (enum classes)
+
+
+unscoped enums are not type safe for example, if you compare from two diff enumearators they compar ebased on integer value
+
+Scoped enum:
+
+scoped enums work similar to unscopeed, except they dont convert toingeters and only placed into scope region of the enumerations
+
+we use enum class and we reference by :: scope resolution operator
+
+
+class is overloaded and means diff things based on context
+
+
+Scoped enums define their own scope regions
+
+scoped enums act like a namepscae for their enumearators
+
+
+Scoped enumerations don’t implicitly convert to integers: but you can compare since they are part of the same scoped enum
+
+can cast with static_Cast, or std:to_underlying
+
+
+
+
+Easing the conversion of scoped enumerators to integers (advanced) 
+
+- useful hack is to overload oaptor + to perform things,so you can put it in from to turn into the scope
+
+
+using enum:
+imports all of the enumerators from an enum unto the scope, which basically makes the scoped enum into an unscoped
+

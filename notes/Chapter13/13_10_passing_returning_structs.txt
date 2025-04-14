@@ -1,0 +1,38 @@
+13.10 — Passing and returning structs
+
+
+
+Passing structs by reference:
+
+We can pass the entire struct to a function by reference to avoid making copies
+
+Passing temporary structs:
+
+
+we can do 
+ printEmployee(Employee { 14, 32, 24.15 });
+
+  printEmployee({ 15, 28, 18.27 });
+
+  this gets casted into an Employee
+
+  temporary objects are created and destroyed at thee nd fo the full expression
+
+
+  when a temporary object used as function arguement, it will only allow places where pass by value and const reference exists
+
+
+  Returning structs
+
+Point3d getZeroPoint()
+{
+    return Point3d { 0.0, 0.0, 0.0 }; // return an unnamed Point3d
+}
+we cant return reference
+
+
+in case where the function has a returm type we can omit the type in ther eturn statement, except we usually should
+
+Structs are an important building block
+
+structs are useful in of them selves, classes build on structs

@@ -1,0 +1,78 @@
+13.8 — Struct aggregate initialization
+
+
+Data members are not init by default
+
+An aggregate data type is something that contains multiple data types
+in C++ it is a C-style array, or class type that has
+- no user declared constructors
+- no private/procted non static data members
+- no virtual dunctions
+
+
+
+std::array is an aggregate
+- structs with only data members are aggregates
+
+
+Aggregate Init of a struct
+
+
+2 forms of aggregate init
+
+copy list used braced list, or list init using braced list
+
+each does a memberwise init, which means it does in order
+
+
+Prefer the (non-copy) braced list form when initializing aggregates.
+
+
+
+In C++20, we can also initialize (some) aggregates using a parenthesized list of values:
+
+We recommend avoiding this last form as much as possible, as it doesn’t currently work with aggregates that utilize brace elision (notably std::array).
+
+
+Missing initializers in an initilazer list
+
+If aggregate is initiliazed but the number of init values: is fewer then each member without explicit init is initialized as follows
+- if default member initializer, that is used
+- otherwise, member is copy init from empty init list, in mocst cases this is vakue init or default constructors
+
+
+overloading operator<< to print a struct
+
+std::ostream& operator<<(std::ostream& out, const Employee& e)
+{
+    out << e.id << ' ' << e.age << ' ' << e.wage;
+    return out;
+}
+
+
+const structs:
+variables can also be const, but have to be init
+
+
+designated init:
+init are applied in order of declaration
+designated init allows you to definew hich init value map to whitch members
+f1 { .a{1}, .c{3}}
+
+nice since they have self-declaration
+can also add to bottom of aggregate so inits dont shift
+
+
+
+assignment w init list:
+this is fine for single members, but not great when we update many members
+
+you can assign values with init list too
+
+Assignment with designated initializers C++20: can also do that
+
+
+
+Initializing a struct with another struct of the same type
+
+can also do direct list init with that

@@ -1,0 +1,79 @@
+13.11 — Struct miscellany
+
+
+We can nest structs within themselves and they can also have datamembers that are other structs
+
+struct Company
+{
+    struct Employee // accessed via Company::Employee
+    {
+        int id{};
+        int age{};
+        double wage{};
+    };
+
+    int numberOfEmployees{};
+    Employee CEO{}; // Employee is a struct within the Company struct
+};
+
+Company::Employee
+This is more often done with classes
+
+Structs that are owners should have datamembers that are owners
+
+Owners manage their own data and control when it is destroyed, where viewers view someone elses data
+
+In most cases, structs should be owners of data they conntain
+
+few benefits
+- data members will be valid for as long as the struct is
+- value wont change unexpectedly
+
+If a struct has a data member that is a viewer, the object being viewed could be destroyed and the struct will have a dangling member
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+struct Owner
+{
+    std::string name{}; // std::string is an owner
+};
+
+struct Viewer
+{
+    std::string_view name {}; // std::string_view is a viewer
+};
+
+// getName() returns the user-entered string as a temporary std::string
+// This temporary std::string will be destroyed at the end of the full expression
+// containing the function call.
+std::string getName()
+{
+    std::cout << "Enter a name: ";
+    std::string name{};
+    std::cin >> name;
+    return name;
+}
+
+int main()
+{
+    Owner o { getName() };  // The return value of getName() is destroyed just after initialization
+    std::cout << "The owners name is " << o.name << '\n';  // ok
+
+    Viewer v { getName() }; // The return value of getName() is destroyed just after initialization
+    std::cout << "The viewers name is " << v.name << '\n'; // undefined behavior
+
+    return 0;
+}
+in this code: the string is destroyed at the end of the initialization and then the string view is destroyed
+
+Struct Size:
+
+the struct size is the sum of all of its members usually
+the struct size will be at least as large of the variables, but compiler adders gaps for padding
+
+it is usually bite aligned, so that each struct is a multiple of 4
+
+
+you can minimize padding to define in decreasing order of size

@@ -1,0 +1,101 @@
+13.13 — Class templates
+
+
+Aggregate types have similar challenge
+- lets say we want a aggregate type that can  hold many kinds of values
+
+Class templates:
+
+template definition for a class type
+
+template <typename T>
+struct pair
+{
+    T first{};
+    T second{};
+}
+
+so what we can do is
+Pair<double> p3{7.8, 9.3}
+
+Using our class template in a function
+
+constexpr int max(Pair<int> p)
+
+While this compiles, it doesn’t solve the redundancy problem. What we really want is a function that can take a pair of any type. In other words, we want a function that takes a parameter of type Pair<T>, where T is a template type parameter. And that means we need a function template for this job!
+
+we can do a function template
+
+template <typename T>
+constexpr T max(Pair<T> p)
+{
+    return (p.first < p.second ? p.second : p.first);
+}
+
+Class templates with template type and non template type members
+
+template <typename T>
+struct Foo
+{
+    T first{};    // first will have whatever type T is replaced with
+    int second{}; // second will always have type int, regardless of what type T is
+};
+
+multiple >
+template <typename T, typename U>
+struct Pair
+{
+    T first{};
+    U second{};
+};
+
+Making a function template work with more than one class type
+
+template <typename T, typename U>
+void print(Pair<T, U> p)
+{
+    std::cout << '[' << p.first << ", " << p.second << ']';
+}
+
+
+template <typename T>
+void print(T p) // type template parameter will match anything
+{
+    std::cout << '[' << p.first << ", " << p.second << ']'; // will only compile if type has first and second members
+}
+
+sice working with pairs of data is common, C++ providesd a std::pair
+
+std::pair<int, double> pair{1,2.3}
+
+
+CTAD is only performed if no template argument list is present. Therefore, both of the following are errors:
+
+we can use literal suffix to change deduced type - 3.5f
+
+CTAD dedection guides
+
+here is a deduction guides, only for C++17
+Pair(T,U) -> Pair<T,U>
+
+C++20 added the ability for the compiler to automatically generate deduction guides for aggregates, so deduction guides should only need to be provided for C++17 compatibility.
+
+Type template parameters with default values:
+
+template <typename T=int, typename U=int> // default T and U to type int
+struct Pair
+{
+    T first{};
+    U second{};
+};
+
+CTAD doesn’t work with non-static member initialization
+
+When initializing the member of a class type using non-static member initialization, CTAD will not work in this context. All template arguments must be explicitly specified:
+
+all template arguements must be explicityly specified
+
+CTAD doesnt work with function parameters
+- it can only deduce type of tempalte arguements, not template paramerters
+
+so for void print(std::pair p) > wouldnt work

@@ -1,0 +1,23 @@
+13.4 — Converting an enumeration to and from a string
+
+
+Getting name of enum:
+
+write a function that takes int and returns enum
+
+- one way is with switch
+
+- since c sytle strings exist for the entire program, its okay to return std::string_view on them
+
+make this function constexprt
+
+second way is to use an array
+
+
+Unscoped enumerator input
+
+- we can do a static_cast to get from int to enumerator
+
+string compare, and make a function for that
+
+

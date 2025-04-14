@@ -1,0 +1,30 @@
+13.9 — Default member initialization
+
+
+non-static member init:
+default member initalizer
+
+
+struct Something
+{
+    int x; no init value
+    int y {}; //value init default
+    int z {2}; //explicity default value
+}
+
+Using default member initializers (or other mechanisms that we’ll cover later), structs and classes can self-initialize even when no explicit initializers are provided!
+
+explicit init takes precedence over default values
+
+
+Missinng iniitilzaers when default values exits: rightmost can be left blank
+always provide default values
+
+
+Default init vs value init for aggregates:
+Fraction f1;          // f1.numerator value initialized to 0, f1.denominator defaulted to 1
+Fraction f2 {};       // f2.numerator value initialized to 0, f2.denominator defaulted to 1
+value init is safer since any members with no default values are value init
+its also consistent with how we init other types
+
+

@@ -1,0 +1,28 @@
+13.7 — Introduction to structs, members, and member selection
+
+A struct is a program defined datat type that allows us to bundle multiple values together
+
+
+A struct is a class type (as are classes and unions). As such, anything that applies to class types applies to structs.
+
+
+struct Employee
+{
+    int id {};
+    int age{};
+    double wage{};
+}
+
+A struct is a class type (as are classes and unions). As such, anything that applies to class types applies to structs.
+
+members are called data memberes
+
+empty braces ensures they are value initalizated
+
+to use a type we define a variable type Employee
+
+Accessing memberes
+ Employee joe {};
+    joe.id = 14;
+    joe.age = 32;
+    joe.wage = 60000.0;

@@ -1,0 +1,18 @@
+13.12 — Member selection with pointers and references
+
+you can use member selection operator to selecet a member from a struct object
+
+Member selection cant be used directly with a pointer to a a struct
+
+since we have to dereference we can do
+(*ptr).field
+this is a bit ugly, so we can use -> (arrow operator)
+
+Chaining -> operator:
+
+it can be chained if the member is a pointer to a class type
+
+Mixing points and non pointers to members
+
+the member selection oeprator is always applied to the currently selected valirable, if you have a mix of pointers and normal, you can see member selections where . and -> are both used in sequence
+

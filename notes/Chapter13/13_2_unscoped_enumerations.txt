@@ -1,0 +1,85 @@
+13.2 — Unscoped enumerations
+
+
+Enumerations:
+thi is a compound data type whos value are restricted to a set of symbolic named constants (enumerators)
+
+C++ supports two kinds:
+unscope and scoped
+
+Each enumaration has to be fully defined before using since it is a program defined type
+
+Unscope enumerators are defined via the enum keyowrd
+
+
+
+enum Color 
+{
+    red,
+    green,
+    blue
+}
+
+most common to do one enum per line, ends w semicolon
+Enumerators are implicitly constexpr.
+
+
+
+By convention, the names of enumerated types start with a capital letter (as do all program-defined types).
+
+Enumerators must be given names
+Name your enumerated types starting with a capital letter. Name your enumerators starting with a lower case letter.
+
+Enumerated types are distinct types
+
+these are distrinct types
+
+since they are description they are good for code doc and readability
+many languages use enums to define booleans, and since they are small you can return them by value
+
+Unscoped enums are named such since they put their enumrator names into the same scope as the enumeration definition itself, as opposed to to putting inside the scope region
+
+so like 
+enum Color {
+    red,
+    green,
+    blue
+}
+
+red, green, blue put into same scope as Color
+this pollutes the global scope
+One consequence of this is that an enumerator name can’t be used in multiple enumerations within the same scope:
+
+Unscoped enumerations also provide a named scope region for their enumerators (much like a namespace acts as a named scope region for the names declared within). This means we can access the enumerators of an unscoped enumeration as follows:
+
+Most often, unscoped enumerators are accessed without using the scope resolution operator.
+
+Avoiding enumerator naming collisions:
+One option is to prefix each enumerator with the name of the enumeration itself:
+
+
+A better option is to put the enumerated type inside something that provides a separate scope region, such as a namespace:
+
+so doing
+
+namespace Color
+{
+    enum Color {
+        red,
+        green,
+        blue
+    }
+}
+
+
+Alternatively, if an enumeration is only used within the body of a single function, the enumeration should be defined inside the function. This limits the scope of the enumeration and its enumerators to just that function. The enumerators of such an enumeration will shadow identically named enumerators defined in the global scope.
+
+
+
+
+
+
+Comparing against enumerators
+
+
+we can use == and != oeprators between enumerators

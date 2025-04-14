@@ -1,0 +1,66 @@
+13.3 — Unscoped enumerator integral conversions
+
+
+
+Enumerators have values of integral type
+
+Each enumerator is associated with an integer based on its position in the enumerator list
+
+
+It is possible to explicitly define the value of enumerators. These integral values can be positive or negative, and can share the same value as other enumerators. Any non-defined enumerators are given a value one greater than the previous enumerator.
+
+we can definy by
+
+enum Animal
+{
+    cast = -4,
+    dog,
+    pig,
+    horse =5;
+    giraffe = 5;
+}
+
+horse and giraffe are equal and interchangable
+
+
+
+
+Value init and enumeartion:
+if it is zero initialized, then we give it the 0 value even if nothing corresponding
+This has two semantic consequences:
+
+Value init defaults enum to the meaning of that enumerator
+If no enumerator with value 0, we can easily create an invalid/unkown statement
+
+Make the enumerator representing 0 the one that is the best default meaning for your enumeration. If no good default meaning exists, consider adding an “invalid” or “unknown” enumerator that has value 0, so that state is explicitly documented and can be explicitly handled where appropriate.
+
+Unscoped enumerations will implicitly convert to integral values
+
+They are not an integral type, but they will convert implicity to an integral type, since they are compile time constants
+
+Enum size:
+the enumerators are integral value
+it does not specify, but the base type is usually int
+it is possible ot specify as long as its integral
+
+enum Color : std::int8_t
+{
+    black,
+    red,
+    blue
+}
+
+Specify the base type of an enumeration only when necessary.
+
+Integer to unscoped enumerator conversion
+
+Cannot convert integer to uncsope enum
+
+You can do with static_Cast, as it is safe that is in the range of the integral type, outside the range will be undefined
+Second, as of C++17, if an unscoped enumeration has an explicitly specified base, then the compiler will allow you to list initialize an unscoped enumeration using an integral value:
+
+
+
+Pet pet {2}; will work
+
+

@@ -1,0 +1,50 @@
+13.1 — Introduction to program-defined (user-defined) types
+
+Compoind types (like functions or pointers references and arrays) and simple types already known by the compiler
+
+
+Aliases allow us to definee new ways to reference types
+
+What are user defined/program defined types
+
+
+Lets say for fraction, we want a custom type that stores numerator and denominator
+
+
+There are twwo different cateogries of compound types:
+
+- enumerated types
+- class types
+
+
+Defining program-defined types
+
+
+the definiition for a new type is called a type defnition it must have a name and definition
+
+
+functions are compound types mot user defined even though they have definition and name
+struct Fraction {
+    int numerator {};
+    int denominator {};
+}
+
+
+we use capital letter with no suffix
+
+they are defined in the header file and included in any code that needs it
+
+
+Tyep definitions are kind of exempt from the ODF
+
+: a given type is allowed to be defined in multiple code files.
+
+. First, you can still only have one type definition per code file (this usually isn’t a problem since header guards will prevent this). Second, all of the type definitions for a given type must be identical, otherwise undefined behavior will result.
+
+
+user defined vs program defined
+
+anything that is defined by you, the std library or implementation is user defined
+
+program defined is a class or enumerated type, a subset of user defined
+

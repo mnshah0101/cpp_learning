@@ -1,0 +1,45 @@
+13.5 — Introduction to overloading the I/O operators
+
+
+Intro to operator overloading
+Operator overloading lets us defined overloads of exisitn goperators
+
+
+basic operator overloading is straightforward:
+- define a function using the name of the operator as the function sname
+- add paramaeter of approproiate type, one must be user defined or compiler will error
+- set return type to whatever makes esense
+- use return statement
+
+when operator seen, the compiler will see if overloaded exist
+
+Ovverloading operator << to print an enum
+
+lets impelment an operator<<
+
+std::ostream& operator <<(std::ostream&, Color Color){
+    out << getColorName(color);
+    return out;
+}
+
+
+overloading operator>> to input an enum:
+
+std::istream& operator>>(std::istream&, Pet pet){
+    std:: string s{};
+    in >> s;
+
+    std::optional<Pet> match { getPetFromString(s) };
+
+    if (match){
+        pet = *match;
+        return in
+    }
+
+    in.setstate(std::ios_base::failbit);
+
+    return in;
+
+
+
+}
