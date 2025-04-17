@@ -1,0 +1,66 @@
+14.13 — Temporary class objects
+
+
+temporary class objects
+
+instead of saving to a variable what if we just wanted to use the expression
+
+
+temporary object or anonymous object or unnamed object is an object that has no name and only exists for the duration of a single expression
+
+
+- you can pass a variable, consturct temp, or implicity convert some list to that
+
+you can create temporary with direct and list
+Foo(1,2)
+
+direct init is different with a named var than a non named var
+
+Foo bar{}; // definition of variable bar, value-initialized
+Foo bar(); // declaration of function bar that has no parameters and returns a Foo (inconsistent with `Foo bar{}` and `Foo()`)
+
+but Foo() is default init
+
+Foo(1);    // Function-style cast of literal 1, returns temporary Foo (similar to `Foo { 1 }`)
+Foo(bar);  // Defines variable bar of type Foo (inconsistent with `Foo { bar }` and `Foo(1)`)
+
+identifical to Foo(bar);
+-parenthsis allows to group, so this is what that doesnt
+
+Foo * bar() ; function name bar()
+Foo (*bar)();  - groups it
+
+Foo (* bar()); //same as Foo * bar() 
+
+Parenthesis are complex because they are so overloaded
+
+
+Temporary objects and return by value
+
+- temporary object is created and returned by value and can be copied
+
+temporary class is an r value
+
+static_cast vs scplicity sintantiation
+
+static_cast<> returns a temporary that is direct initalized
+
+
+ printString( static_cast<std::string>(sv) ); // Case 1: static_cast returns a temporary 
+
+ printString( std::string { sv } );    
+
+  printString( std::string ( sv ) );   
+
+  prefer static cast when converting to a fundamental type and a list init temporary when converting to a class type
+
+prefere creating a new object 
+- we want list init or provide additional arguments to facilitate the conversion
+
+different init 
+- direct is with ()
+- list is with {value}
+- value init (zero) is blank Parenthesis
+- copy is with copy
+- aggregate is aggregate init
+- default i snothing

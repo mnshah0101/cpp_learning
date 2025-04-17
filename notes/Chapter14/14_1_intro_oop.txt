@@ -1,0 +1,24 @@
+14.1 — Introduction to object-oriented programming
+
+
+Procedural programming:
+
+create procedures that do something (functions)
+
+they implement our program logic, we pass data objects to these functions
+functions and are are seperate entities, the programmer is responsible for combining the produce desired results
+
+
+Everything is an object, 
+1) some number of associated properties and some behavoris
+
+OOP:
+- contains both properties and well defined behaviors
+- objects are eaier to modularize, makes our programs easier to write and understand
+
+OOP brings other benefits:
+- making code modular and non redundant makes maintance and enhacning code easier
+
+Term object:
+- the term object is overloaded a bit, in traditional programming object is a piece of memory that stores values
+

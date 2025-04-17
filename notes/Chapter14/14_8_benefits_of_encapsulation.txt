@@ -1,0 +1,69 @@
+14.8 — The benefits of data hiding (encapsulation)
+
+- one reason is we dont care about how it works
+- speration of interface and implenentation
+
+
+Implementation and interfaces in class types
+
+- interface is how a user will interact with the objects of a class type
+- public interface
+- this is a ocntract between autheor and user of a class
+
+implementation is the code
+
+
+Data hiding:
+enforces seperation
+
+encapsulation 
+- enclosing or or more tiems in a container
+- bundling of data and functions for operation on instances of that data
+
+In this tutorial series, we’ll assume all encapsulated classes implement data hiding.
+
+
+
+Data hiding make classes easier to use, and reduces complexity
+
+- use string_view as example, we dont care how it works
+
+Data hiding allows us to maintain invariants
+
+Data hiding allows us to do better error detection (and handling)
+- if user had access they could set to invalid values
+
+
+Data hiding makes it possible to change implementation details without breaking existing programs
+- people dont rely on the exact code
+Analogously, if gnomes snuck into your house at night and replaced the internals of your TV remote with a different (but compatible) technology, you probably wouldn’t even notice!
+
+
+Classes with interfaces are easier to debug
+- only few points of changing
+
+Prefer non-member functions to member functions 
+- smaller classes, enforces encapsulation, do not need to change when changing inside, reuable outside class
+
+
+The order of class member declaration
+
+two schools of thought:
+List your private members first, and then list your public member functions. This follows the traditional style of declare-before-use. Anybody looking at your class code will see how you’ve defined your data members before they are used, which can make reading through and understanding implementation details easier.
+
+
+List your public members first, and put your private members down at the bottom. Because someone who uses your class is interested in the public interface, putting your public members first makes the information they need up top, and puts the implementation details (which are least important) last.
+
+
+
+In modern C++, the second method (public members go first) is more commonly recommended, especially for code that will be shared with other developers.
+
+The following order is recommended by the Google C++ style guide:
+
+Types and type aliases (typedef, using, enum, nested structs and classes, and friend types)
+Static constants
+Factory functions
+Constructors and assignment operators
+Destructor
+All other functions (static and non-static member functions, and friend functions)
+Data members (static and non-static)

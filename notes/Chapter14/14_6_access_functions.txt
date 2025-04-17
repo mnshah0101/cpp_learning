@@ -1,0 +1,12 @@
+14.6 — Access functions
+
+
+Access functions are trivial members functions to interact with private member variables
+Come in getters and setters
+(mutators and accessors)
+
+getters should return by value (read only data)
+
+If your class has no invaraints and requires a lot of access functions, consider a struct
+- prefer implementing behvaoirs instead of actions/seetters
+- prefer acecess function only when reasonable

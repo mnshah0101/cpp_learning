@@ -1,0 +1,67 @@
+14.15 — Class initialization and copy elision
+
+
+We talked about 6 basic types of init
+
+int a; //no default
+int b = 5; //init after equals sign (copy)
+int c(6); //direct
+int d{7}; //direct list
+int e = {8}; //copy list init
+int f {}; //init is empty braces
+
+All of these init types are valid for object with class types
+In modern C++, copy initialization, direct initialization, and list initialization essentially do the same thing -- they initialize an object.
+
+
+for all types of init:
+- when init a class type, the set of constructors for that class are examined, and overload resolution is used to determine the best matching constructor, this may involve implicit converisons
+- when non class type the implicit conversion rules are used to determine whether an implicit conversion exists.
+
+When returning by value it creates a copy of the copy:
+
+so can we get rid of unncessary copies:
+
+
+Something s { Something { 5 } }; // focus on this line
+
+
+Copy elipson:
+
+since the compiler is free to rewrite statements to optimize them, one might wonder if the compiler can optimize away the unncessary copy and treat Something s {Something {5}};
+
+the constructer has been elided when it removes these
+
+copy elision is excempt from the as if rule:
+copy elison is allowed to elide the copy constructor even if the copy constructor has side effects
+
+this is why copy constructor should have no side effects
+
+
+Copy elision in pass by value and return by value
+
+when returning by value it will elide some of these
+
+
+Mandatory copy elison:
+it used to be otptional but in C++17 it became Mandatory
+
+in optional cases, an accessible copy constructor must be available, even if the actual call to the copy is deleted
+in mandatory elison cases, an accesible copy constructor need be available
+
+copy elison > when mandatory copy, it doesnt have to be accesible
+
+so 
+
+struct NoCopy {
+    NoCopy() = default;
+    NoCopy(const NoCopy&) = delete;  // Deleted copy constructor
+};
+
+NoCopy make() {
+    return NoCopy();  // ✅ OK in C++17 due to mandatory copy elision
+}
+
+NoCopy x = make();     // ✅ Still OK
+
+this is fine since the copy still happens

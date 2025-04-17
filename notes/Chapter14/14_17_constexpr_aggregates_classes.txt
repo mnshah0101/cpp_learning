@@ -1,0 +1,49 @@
+14.17 — Constexpr aggregates and classes
+
+
+constexpr are functions that may be eval at compile time or runtime
+
+constexpr member functions:
+member functions can be made constexpr using constexpr
+
+we need our aggregates to be constexpr to work
+
+
+  constexpr Pair p { 5, 6 };        // now constexpr
+    std::cout << p.greater() << '\n'; // p.greater() evaluates at runtime or compile-time
+
+Constexpr class objects and constexpr constructors
+a literal type is any type which is possible to create an object within a constexpr
+
+literal - constexpr value in soucre copied
+literal type - type that can be used as a constexpr value
+
+literal types include:
+
+Scalar types (those holding a single value, such as fundamental types and pointers)
+Reference types
+Most aggregates
+Classes that have a constexpr constructor
+
+
+we can make our consturctor constexpr and it will work
+
+
+Constexpr members may be needed with non-constexpr/non-const objects
+
+When a constexpr function is evaluating in a compile-time context, only constexpr functions can be called.
+
+Constexpr member functions may be const or non-const C++14
+
+However, as of C++14, constexpr member functions are no longer implicitly const. This means that if you want a constexpr function to be a const function, you must explicitly mark it as such.
+
+
+Constexpr non-const member functions can change data members Optional
+
+- it can still change as long as object isnt const
+
+Constexpr functions that return const references (or pointers) Optional
+
+Normally you won’t see constexpr and const used right next to each other, but one case where this does happen is when you have a constexpr member function that returns a const reference (or (const) pointer-to-const).
+
+constexpr const int& getX() const { return m_x; }

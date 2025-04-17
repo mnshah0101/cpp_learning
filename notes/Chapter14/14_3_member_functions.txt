@@ -1,0 +1,63 @@
+14.3 — Member functions
+
+
+properties > variables
+actions > functions
+
+Classes have their own functions
+- functions that are not members are non member functions or free functions
+
+Member functions are declared inside the class type definition
+
+
+// Member function version
+#include <iostream>
+
+struct Date
+{
+    int year {};
+    int month {};
+    int day {};
+
+    void print() // defines a member function named print
+    {
+        std::cout << year << '/' << month << '/' << day;
+    }
+};
+
+int main()
+{
+    Date today { 2020, 10, 14 }; // aggregate initialize our struct
+
+    today.day = 16; // member variables accessed using member selection operator (.)
+    today.print();  // member functions also accessed using member selection operator (.)
+
+    return 0;
+}
+
+
+Calling member functions (and the implicit object)
+- we must call with the class type
+
+inside the function the object is implicitly called, so inside the member function date turns into today.date
+
+
+Member variables and functions can be defined in any order
+
+
+THis is because when the compiler encounters a member function:
+- the member function is implicitly forward declared
+- the definition is moved immediately to the end of the class definition
+
+Members functions can also be overloaded
+Structs and member functions
+structs can do everything classes can and convention dictates how they are used
+
+structs have everything except constructors > makes it not an aggregate
+
+Class types with no data members
+
+It is possible to create class types with no data members (e.g. class types that only have member functions). It is also possible to instantiate objects of such a class type:
+
+However, if a class type does not have any data members, then using a class type is probably overkill. In such cases, consider using a namespace (containing non-member functions) instead. This makes it clearer to the reader that no data is being managed (and does not require an object to be instantiated to call the functions).
+

@@ -1,0 +1,62 @@
+14.10 — Constructor member initializer lists
+
+
+Member initialization via a member initialization list
+
+
+member init lists are best learned by example
+
+public:
+    Foo(int x, int y)
+        : m_x { x }, m_y { y } // here's our member initialization list
+    {
+        std::cout << "Foo(" << x << ", " << y << ") constructed\n";
+    }
+
+
+beings with colon and then uses direct init with braces
+
+
+Member initializer list formatting, doesnt care where you put your colon
+
+Foo(int x, int y)
+    : m_x { x }
+    , m_y { y }
+{
+}
+
+this is recomended way
+
+
+Member initialization order
+
+- in order of way they are defined not in the function
+
+Member variables in a member initializer list should be listed in order that they are defined in the class.
+
+member initalizer list vs defeault member initalizers
+Members can be initalized in a few diffferent ways
+- if it is listed in the member initalizer list, that init value is used
+- otherwise if member has default value that is used
+- otherwise member is default init
+
+Constructor function bodies:
+
+the bodies of constructors are most often left empty
+this is because we usually only use for initialization
+
+Detecting/handling invalid arguements to constructor:
+- we can use assert os static_assert or we can just set to a valid number
+
+
+suggestions:
+- resovle error within the function
+- pass error back to caller
+- halt program
+- throw an exception
+
+
+we can add a isValid function that tells whether it is valid or not
+in most cases you want to throw an exception
+
+

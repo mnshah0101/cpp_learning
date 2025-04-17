@@ -1,0 +1,53 @@
+14.16 — Converting constructors and the explicit keyword
+
+
+implicit type conversion: compiler will implicitly convert a value of one type to another 
+
+
+
+user defined conversions:
+
+compiler will see if we can convert from some type to a class type if we need it
+user-defined conversion
+
+
+Converting constructors
+prior to C++11 5 is implicily turned into a temporary Foo using the Foo(int) and then copy consturcted into paramater f
+
+
+in C++ onward, the copy is mantorly elided, paramter f is copy init with value 6 and no call to the copy constructor is required and will work even if it is deleted
+
+all constuctors are converting constructors
+
+
+Only one user-defined conversion may be applied
+
+we can cast to make yp for it
+
+explicity keyowrd tells the compiler that a constructor should not be used as a ocnverint constructer
+
+Making a constructor explicit has two notable consequences:
+
+An explicit constructor cannot be used to do copy initialization or copy list initialization.
+An explicit constructor cannot be used to do implicit conversions (since this uses copy initialization or copy list initialization).
+
+
+Explicit constructors can be used for direct and direct list initialization
+
+Return by value and explicit constructors
+
+- functions cant implicitly convert when returning by value so have to only return with that object
+
+Best practices wiht explicity:
+- consturctor that takes single arguement explicity
+- disallows mistakes
+
+dont make these explicity:
+- copy
+- default
+- multiple arguements 
+
+
+sohould bemade
+- single arguemeent
+

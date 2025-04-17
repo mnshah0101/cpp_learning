@@ -1,0 +1,38 @@
+14.2 — Introduction to classes
+
+
+Class Invariant Problem:
+- they dont provide an effective way to document and enforce clas invariants, which is a condition that must be true
+- a class invariant is a condition that must be through throughout the lifetime of an object so that its a valid state
+
+
+for example a fractionn shouldnt have a 0 in the denominator
+
+
+A more complex invariant:
+#include <string>
+
+struct Employee
+{
+    std::string name { };
+    char firstInitial { }; // should always hold first character of `name` (or `0`)
+};
+
+- we rely on use to make sure firstInitial is properly Introduction
+
+Relying on the user of an object to maintain class invariants is likely to result in problems.
+
+we want to bulletproof our objectes
+
+When developing C++ Bjane Resoustroup wanted to introduce capabiltiies that would allow developer to create program defined types that could be used mo intuitively,
+
+he walso was intrested in finding elegant solutions to some frequent pitfalls
+
+he called it a class
+
+this is a program defined compoound type that can have many member variables with different types
+
+Defining a class:
+Because a class is a program defined data type it must be defined before it can be used
+
+Most of C++ standard library is classes

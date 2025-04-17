@@ -1,0 +1,29 @@
+14.9 — Introduction to constructors
+
+
+As soon as we make any members variables rpivate, class is no longer aggregate, and we cant use aggregate Introduction
+
+Reasons:
+ - aggregate requires knowledge about implementation of class
+ - invariant would be relied on user
+
+
+ Constructor:
+ - a special member function that is called after non aggregate is created
+
+ - if a matching constructor found, memory for the object is allocated, and the constructor is called
+ - if non then compiler error
+
+ constructors dont create object, compilation sets this up right before the initializer
+
+
+
+Perform two functions:
+- init of any member variables via member init list
+- performs other set up functions
+
+Naming constructirs:
+- no return type not even void
+- same name as class
+
+constructors should not be cost

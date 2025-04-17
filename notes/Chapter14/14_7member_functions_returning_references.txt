@@ -1,0 +1,19 @@
+14.7 — Member functions returning references to data members
+
+can return data members by lvalue const reference
+usually safe since live for same lifespan
+
+The return type of a member function returning a reference to a data member should match the data member’s type
+
+What if we have a function that returns by value, returns a class and we use a reference to a data member, this is unsafe
+
+using member functions that return by reference safely
+it is convention to return by const reference not value
+How tod o safely:
+- prefer to use return value imediately instead of reference
+- if you need to persist, use the returned reference as the init for a non reference vairbale, which will make a copy of the member
+
+Do not return non-const references to private data members- subvert access control system
+
+Const member functions can’t return non-const references to data members
+

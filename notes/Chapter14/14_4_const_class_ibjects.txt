@@ -1,0 +1,38 @@
+14.4 — Const class objects and const member functions
+
+All const vars must be init at time of creation
+
+class type objectes (struct, classes, unions) can be made const
+
+they  must be init at creation
+
+they cant be modified after creation
+
+Modifying the data members of const objects is disallowed
+
+Const objects may not call non-const member functions
+
+Const member functions
+
+
+const member function gaurantees it doesnt modify the object
+
+A const member function that attempts to change a data member or call a non-const member function will cause a compiler error to occur. 
+
+
+Const member functions may be called on non-const objects
+this doesnt change the object, so doesnt do anything bad
+
+Const objects via pass by const references
+
+, a more common way to get a const object is by passing an object to a function by const reference.
+
+- const acceptn lvalue and rvalue
+
+
+const object cant call non const function
+
+
+Member function const and non-const overloading
+
+we can overload for const and non-const version of same function, this is part of functions signature

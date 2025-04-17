@@ -1,0 +1,52 @@
+14.14 — Introduction to the copy constructor
+
+
+a copy contructor is a constructor that is used to init an object with an existing object of the same type
+after the copy constructor executes teh newly created object should be copy of the object passed in as its init
+
+
+
+AN implicit copy constructor:
+
+C++ will create one if you didnt create one
+
+
+Fraction fCopy {f};
+- each member will be created with the corresponding member of the class
+
+Defining your own copy constructor
+
+the copy constructor should do noting except copy an object, this is because the compiler might optimize the copy constructirs
+
+Prefer the implicit copy constructor
+
+The copy constructor’s parameter must be a reference
+
+- lvalue reference or const lvalue refrence, since not modifying, the const lvalue reference is preferred
+
+
+Pass by value and the copy constructor
+
+Return by value and the copy constructor
+
+return by value creates a temporary object, when the return value and type are same type, the temporary ibject is initliazed by implicity calling the copy constructor
+
+everytime return and return type > copy epsilon
+
+
+Using = default to generate a default copy constructor
+
+we can request one from the = default
+Fraction(const Fraction& fraction) = default;
+
+
+using = delete to prevent copies
+
+we can call delete to make certain classes not copyable
+
+you can also make the copy constructor private
+
+Rule of three is a well known C++ princoples that states if a class reqires a user-defined copy constructor destructor or copy assignment, then it  prolly requires all three, in C+11, this became rule of 5 which has move constructor and move oeprator
+
+not folloing will lead to malfunctioning copied
+

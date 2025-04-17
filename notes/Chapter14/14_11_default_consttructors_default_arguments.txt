@@ -1,0 +1,42 @@
+14.11 — Default constructors and default arguments
+
+
+Default constructors doesnt accept arguements
+
+value init vs default init for class types:
+
+both value init and default init will call the default constructor
+safer to use value init for everything
+
+Constructors with default arguments
+Foo(int x=0, int y = 0)
+
+Overloaded constructors:
+because constructors are functions, they can be overloaded for different parameter types
+
+only one default constructor
+
+Implicit default constructor: - generate an implicit one
+equivalent to no parameters, no member init list, and no statements
+
+using = default to generate explicitly default constructor
+
+Foo() = default; //generate explicity defaulted default constructor
+
+if we have a user declared constructor, then implicit default constructor not generated
+
+
+Explicitly defaulted default constructor vs empty user-defined constructor
+
+there are two cases where the explictly defaulted constructor behaves different than empty user defined constructors
+- When value init a class, if user defined default constructor, object will be default init, however if the class has a default constructor that is not user provided or defined using = default, the object will be zero init before being default init
+
+zero init means non random content
+In practice, this shouldn’t matter since you should be providing default member initializers for all data members!
+
+default init is more performant but less safer
+
+Only create a default constructor when it makes sense
+
+A default constructor allows us to create objects of a non-aggregate class type with no user-provided initialization values. Thus, a class should only provide a default constructor when it makes sense for objects of a class type to be created using all default values.
+

@@ -1,0 +1,37 @@
+14.12 — Delegating constructors
+
+
+DRY < dont repeat yourself
+
+Constructors are allowed to call other functions including member functions of the other class
+
+
+we can create less and less specific constructors that call more specific ones earlier
+
+calling a constructor in the body of a function creates a temporary object
+
+when called from a function body it direct initalizers a temporary object
+
+
+Delegating constructors
+constructor chaning > delgating constructors
+
+to delegate
+
+public:
+    Employee(std::string_view name)
+        : Employee{ name, 0 } // delegate initialization to Employee(std::string_view, int) constructor
+    {
+    }
+downside of this is it requires duplication of init values, as we needed to harcdcode certain default values
+
+first a constructeor that delegates to another constructor is not allowed to do any member init itself
+delegate or init, not both
+
+
+Second, it’s possible for one constructor to delegate to another constructor, which delegates back to the first constructor. This forms an infinite loop, and will cause your program to run out of stack space and crash. You can avoid this by ensuring all of your constructors resolve to a non-delegating constructor.
+
+A conundrum: Redundant constructors vs redundant default values
+- more straightforward to have fewer constructors
+
+- when you have init value that is used in multiple places, we can define a named constant for it

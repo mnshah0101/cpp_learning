@@ -1,0 +1,56 @@
+14.5 — Public and private members and access specifiers
+
+
+Member access:
+each member has access level: who can access that
+
+3 different levels: public, private, protected
+
+whenever member is accesed, compiler checks whether access level of the member permits that member to be accessed, this is called access controls
+
+The members of a struct are public by default
+
+
+Members that have public access are called public members
+
+they dont have any restirctions, and the public: code outside the members
+
+Members of class are private by default
+only can be accesed by other members of the same class
+
+can't use aggregate init for qualifiers
+
+Naming private members:
+m_ prefix for members, allows us to differentiate from other variables
+
+Setting access levels via access specieicers:
+
+we can set with access specifiers
+
+
+public: // here's our public access specifier
+
+    void print() const // public due to above public: specifier
+    {
+        // members can access other private members
+        std::cout << m_year << '/' << m_month << '/' << m_day;
+    }
+
+    since default to private, you can leave that, but many prefer to be explicity
+
+
+ structs should avoid specifiers all together
+
+ Classes should only have private data members and functions can be either
+
+Classes can access private for other objects of same class
+
+
+Technical and practical difference bewteen structs and classes:
+
+only differnce: class defaults private struct defaults members to public
+
+Technical and practical difference between structs and classes:
+structs inhereit from other class types publically and classes inherent privately
+
+
