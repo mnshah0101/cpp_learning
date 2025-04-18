@@ -1,0 +1,72 @@
+15.3 — Nested types (member types)
+
+
+Nested Types are types inside the class
+Nested types follow normal access rules with whatever they are under
+
+Nested typedets and typealisases
+
+
+classes can also contain typedefs of type alises
+
+
+Nested typedefs and type aliases:
+Class types can also contain nested typedefs or type aliases:
+
+
+
+Nested classes and access to outer class members
+- nested classes dont have this for outer class
+but they can access private members of otuer class
+iterators are used as nester classes many times
+
+
+Nested types and forward declarations
+
+
+A nested type can be forward declared within the class that encloses it. The nested type can then be defined later, either within the enclosing class, or outside of it. For example:
+
+While you can forward declare a nested type after the definition of the enclosing class, since the enclosing class will already contain a declaration for the nested type, doing so is redundant.
+
+#include <iostream>
+
+class outer
+{
+public:
+    class inner1;   // okay: forward declaration inside the enclosing class okay
+    class inner1{}; // okay: definition of forward declared type inside the enclosing class
+    class inner2;   // okay: forward declaration inside the enclosing class okay
+};
+
+class inner2 // okay: definition of forward declared type outside the enclosing class
+{
+};
+
+int main()
+{
+    return 0;
+}
+
+However, a nested type cannot be forward declared prior to the definition of the enclosing class.
+
+#include <iostream>
+
+class outer;         // okay: can forward declare non-nested type
+class outer::inner1; // error: can't forward declare nested type prior to outer class definition
+
+class outer
+{
+public:
+    class inner1{}; // note: nested type declared here
+};
+
+class outer::inner1; // okay (but redundant) since nested type has already been declared as part of outer class definition
+
+int main()
+{
+    return 0;
+}
+
+
+While you can forward declare a nested type after the definition of the enclosing class, since the enclosing class will already contain a declaration for the nested type, doing so is redundant.
+

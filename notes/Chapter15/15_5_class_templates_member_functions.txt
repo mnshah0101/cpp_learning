@@ -1,0 +1,16 @@
+15.5 — Class templates with member functions
+
+Types in the template can be used for both member function parameters or member variables
+
+when member defined sepereately use typename again
+
+Also, when we define a member function outside of the class, we need to qualify the member function name with the fully templated name of the class template (Pair<T>::isEqual, not Pair::isEqual).
+
+Injected class names
+
+inside the class we dont have to use Pair<T> but we can use just Pair
+
+
+the compiler needs to see both the class definition (to ensure that the member function template is declared as part of the class) and the template member function definition (to know how to instantiate the template). Therefore, we typically want to define both a class and its member function templates in the same location
+Any member function templates defined outside the class definition should be defined just below the class definition (in the same file).
+

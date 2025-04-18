@@ -1,0 +1,68 @@
+15.1 — The hidden “this” pointer and member function chaining
+
+
+
+When a member function is called, how does C++ keep track of what object it was called on
+
+C++ utilizes a hudden pointer named this
+inside every member, this is a const pointer that holds the address of the current implicity object
+when we compile, compiler will implicitly prefix any member referencing the implicity obejct with this ->
+
+How is this set?
+
+although it looks like simple.setID(2); only has one id, it actually has two
+Simple::setID(&simple, 2); // note that simple has been changed from an object prefix to a function argument!
+
+
+also the function needs to be changed, how the compiler rewrites it is implementation specific
+
+void setID(int id) { m_id = id; }
+
+becomes static void setID(Simple* const this, int id) { this->m_id = id; }
+
+
+the function becomes static, which is crazy!
+
+The good news is that all of this happens automatically, and it doesn’t really matter whether you remember how it works or not. All you need to remember is that all non-static member functions have a this pointer that refers to the object the function was called on.
+
+this always points to the object being operated on
+each member function has a single this pointer that points to implicity object, since its just a function param, it doesnt make any larger class
+
+Explicitly referencing this
+
+Most of the time, you wont explicility reference this, however you can do so
+
+- if you have a paramater shadowing, you can use this
+- some developers explicilty add this-> to all class memebers to make it obvious, we can also just do m_ prefix
+
+
+Returning *this
+you can return the implicit object as a return value to help with chaining
+
+std::cout does this 
+
+
+std::cout << "Hello, " << userName;
+evals to (std::cout << "Hello, ") << userName;
+
+you can return *this by reference, then it can work
+
+
+Resetting a class back to default state
+- you can create a reset() member function, which assigns that new object the current implicit object
+void reset() { *this = {}; }
+
+
+
+this and const objects
+
+This is a const pointer to a non const value for non const mmember functions, for const member functions, this is a const pointer to a const value
+
+when calling a non-const member function on a const object, this function parameter is passed in as a const pointer to a non const object, which creates an error,
+
+
+Why this a pointer and not a reference
+- when this was added to C++ references pointers didnt exist yet
+
+
+in java in C# this is implemented as a reference

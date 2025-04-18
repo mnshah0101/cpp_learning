@@ -1,0 +1,11 @@
+15.4 — Introduction to destructors
+
+Can be used when the object is out of scope to make sure it does what it needs before destroyed
+
+its the name of the function followed by the tilda
+
+you can do these operations here
+If a non-aggregate class type object has no user-declared destructor, the compiler will generate a destructor with an empty body. This destructor is called an implicit destructor, and it is effectively just a placeholder.
+
+
+when we use std:exit(), this wont get called and same with exceptions
